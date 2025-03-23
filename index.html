@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Generative Art Online</title>
+    <meta name="author" content="Nick Briz">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png"  href="https://netart.rocks/images/icon.png">
+    <!-- TODO: social media stuff -->
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+      #title {
+        margin-top: calc(20vh - 1em);
+      }
+
+      #sub-title {
+        text-align: center;
+        margin-top: -2em;
+        font-size: 1.2em;
+      }
+
+      #desc {
+        margin-top: 15vh;
+        text-align: center;
+      }
+
+      .center-column {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+
+    <section id="introduction">
+      <div class="content">
+
+        <h1 id="title">generativeArt.online</h1>
+        <h2 id="sub-title">(aka Creative Coding Online : MADD 23632)</h2>
+
+        <p id="desc">
+          Though the web was originally conceived as an online space for sharing hyperlinked documents, the modern Web browser has evolved into a creative coding playground capable of producing all manner of networked art and algorithmic compositions. In this course we'll learn <a href="https://eloquentjavascript.net/" target="_blank">JavaScript</a>, the Web's defacto programming language. Throughout the quarter we'll experiment with various different Web APIs for creating generative and interactive Internet art including <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction" target="_blank">the DOM</a> (for interactive/dynamic content creation), <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial" target="_blank">Canvas</a> (for 2D/3D animations) and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API" target="_blank">Web Audio</a> (for algorithmic sound/music). We'll learn how to produce work that <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Events" target="_blank">responds to various input sources</a> (trackpad/mouse, touchscreen, keyboard, cameras, microphones) and how to <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch" target="_blank">fetch</a> and incorporate data from external APIs elsewhere on the Internet.
+        </p>
+
+        <div class="flex" style="margin: 60px 0px;">
+          <a class="button" target="_blank" href="Generative Art Online (SP 25) syllabus.pdf">syllabus</a>
+          <a class="button" target="_blank" href="https://canvas.uchicago.edu/courses/64031">canvas</a>
+        </div>
+
+        <div class="center-column">
+          <a href="http://www.evan-roth.com/~/works/a-tribute-to-heather-series/#hemisphere=east&amp;strand=97" target="_blank" style="">
+            <img style="width:100px;" src="/images/hotairballoon copy 21.gif" alt="From A Tribute to Heather by Evan Roth">
+          </a>
+
+          <ul>
+            <li class="comming-soon">
+              <a href="#">Introduction</a>: the Internet and Generative Art
+            </li>
+            <li class="comming-soon">
+              <a href="#">10print</a>: Core Concepts + Randomness
+            </li>
+            <li class="comming-soon">
+              <a href="#">emoji.ink</a>: Interactivity + Event Based Programming
+            </li>
+            <li class="comming-soon">
+              <a href="#">A Tribute to Heather</a>: 2D Algorithmic Compositions
+            </li>
+            <li class="comming-soon">
+              <a href="#">the Cut-up Technique</a>: Data Driven Compositions
+            </li>
+            <li class="comming-soon">
+              <a href="#">Musikalisches</a>: Musical Algorithmic Compositions
+            </li>
+            <li class="comming-soon">
+              <a href="#">The Demoscene</a>: 3D Algorithmic Compositions
+            </li>
+            <li class="comming-soon">
+              <a href="#">Final Project</a>: Notes + Considerations
+            </li>
+          </ul>
+
+          <a href="https://elephant.art/what-does-net-art-mean-in-the-post-digital-age-olia-lialina-30032020/" target="_blank" style="">
+            <img style="width: 240px;" src="/images/olia_lialina.gif" alt="Olia Lialina, GIF portrait">
+          </a>
+        </div>
+
+
+      </div>
+    </section>
+
+    <section style="height: 50vh"></section>
+
+    <script src="/js/libs/nn.min.js"></script>
+    <script src="/js/libs/netitor.min.js"></script>
+    <script src="/js/MouseTrails.js"></script>
+    <script src="/js/RainbowText.js"></script>
+    <script src="/js/utils.js"></script>
+    <script>
+
+
+
+
+      animateFontWave(nn.get('h1#title'), ['Smooch Sans', 'Geo', 'DotGothic16', 'PlaywriteHU'])
+
+      Array.from(document.querySelectorAll('a'))
+        .filter(a => a.className !== 'button')
+        .forEach(a => RainbowText.hoverShimmer(a))
+
+      const trail = new MouseTrails('rainbow')
+      nn.on('mousemove', e => trail.mouseMoved(e.x, e.y))
+
+
+    </script>
+  </body>
+</html>

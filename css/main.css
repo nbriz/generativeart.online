@@ -1,0 +1,280 @@
+/* libre-baskerville-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Libre Baskerville';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/libre-baskerville-v14-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* smooch-sans-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Smooch Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/smooch-sans-v13-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* geo-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Geo';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/geo-v21-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* dotgothic16-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'DotGothic16';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/dotgothic16-v19-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+@font-face {
+  font-family: 'PlaywriteHU';
+  src: url('fonts/PlaywriteHU-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PlaywriteHU';
+  src: url('fonts/PlaywriteHU-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PlaywriteHU';
+  src: url('fonts/PlaywriteHU-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PlaywriteHU';
+  src: url('fonts/PlaywriteHU-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+
+:root {
+    --blue: #0000ff;
+    --white: #ffffff;
+    --red: #ff0000;
+    --green: #00ff00;
+    --background-color: white;
+    --text-color: black;
+    --accent-color1: #de09ab; /* aka --netizen-attribute */
+    --accent-color2: #0576e8; /* aka --netizen-tag */
+    --accent-color3: #8811d9; /* aka --netizen-variable */
+    --accent-color4: #269921; /* aka --netizen-property */
+    --accent-color5: #0b47ad; /* aka --netizen-string */
+    --accent-color6: #4c4c51; /* aka --netizen-operator */
+}
+
+* { box-sizing: border-box; }
+
+*::-moz-selection {
+  background-color: var(--blue);
+  color: var(--white);
+}
+
+*::selection {
+  background-color: var(--blue);
+  color: var(--white);
+}
+
+
+/* image files by bokuwatensai */
+/* https://www.cursors-4u.com/cursor/2014/03/14/rainbow-pinwheel-set.html */
+@keyframes rainbow-cursor {
+  0% { cursor: url(/images/rainbow-cursor/0.gif), auto; }
+  5% { cursor: url(/images/rainbow-cursor/1.gif), auto; }
+  9% { cursor: url(/images/rainbow-cursor/2.gif), auto; }
+  14% { cursor: url(/images/rainbow-cursor/3.gif), auto; }
+  18% { cursor: url(/images/rainbow-cursor/4.gif), auto; }
+  23% { cursor: url(/images/rainbow-cursor/5.gif), auto; }
+  27% { cursor: url(/images/rainbow-cursor/6.gif), auto; }
+  32% { cursor: url(/images/rainbow-cursor/7.gif), auto; }
+  36% { cursor: url(/images/rainbow-cursor/8.gif), auto; }
+  41% { cursor: url(/images/rainbow-cursor/9.gif), auto; }
+  45% { cursor: url(/images/rainbow-cursor/10.gif), auto; }
+  50% { cursor: url(/images/rainbow-cursor/11.gif), auto; }
+  55% { cursor: url(/images/rainbow-cursor/12.gif), auto; }
+  59% { cursor: url(/images/rainbow-cursor/13.gif), auto; }
+  64% { cursor: url(/images/rainbow-cursor/14.gif), auto; }
+  68% { cursor: url(/images/rainbow-cursor/15.gif), auto; }
+  73% { cursor: url(/images/rainbow-cursor/16.gif), auto; }
+  77% { cursor: url(/images/rainbow-cursor/17.gif), auto; }
+  82% { cursor: url(/images/rainbow-cursor/18.gif), auto; }
+  86% { cursor: url(/images/rainbow-cursor/19.gif), auto; }
+  91% { cursor: url(/images/rainbow-cursor/20.gif), auto; }
+  95% { cursor: url(/images/rainbow-cursor/21.gif), auto; }
+  100% { cursor: url(/images/rainbow-cursor/22.gif), auto; }
+}
+
+body {
+  font-family: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+  font-weight: 100;
+  height: 100vh;
+  margin: 0;
+
+  cursor: url(/images/cursors/rainbow/0.gif), auto;
+  animation: rainbow-cursor 1.5s infinite;
+
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+body.dark-mode {
+  --background-color: black;
+  --text-color: white;
+  --accent-color1: #ff7de9; /* aka --netizen-attribute */
+  --accent-color2: #75bfff; /* aka --netizen-tag */
+  --accent-color3: #b98eff; /* aka --netizen-variable */
+  --accent-color4: #86de74; /* aka --netizen-property */
+  --accent-color5: #b98eff; /* aka --netizen-string */
+  --accent-color6: #cfcbc4; /* aka --netizen-operator */
+}
+
+
+a, .link {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+a:hover, .link:hover {
+  color: var(--blue);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@keyframes rainbow {
+  0% { background-position-x: -200%; }
+  100% { background-position-x: 0%; }
+}
+
+a.button {
+  font-family: 'Geo', monospace;
+  font-size: 2em;
+  padding: 0.5em 1em;
+  border-radius: 2em;
+  border: 4px solid var(--blue);
+  animation: rainbow 5s linear infinite;
+  text-align: center;
+}
+
+a.button:hover {
+  color: var(--white);
+  background: linear-gradient(to left, var(--red), var(--red), var(--blue), var(--blue), var(--green), var(--green), var(--red));
+  background-size: 200%;
+  text-decoration: none;
+  opacity: 0.6;
+}
+
+.comming-soon {
+  opacity: 0.5;
+}
+
+/*
+a[href^="/editor/"] {
+  color: var(--accent-color4);
+} */
+
+/* .hidden-link {
+  color: var(--text-color);
+  user-select: none;
+}
+
+.hidden-link:hover {
+  color: var(--accent-color1);
+  text-decoration: underline;
+  cursor: pointer;
+} */
+
+h1 {
+  font-size: 4em;
+  text-align: center;
+}
+
+@media (max-width: 650px) {
+  h1 { font-size: 3em }
+}
+
+@media (max-width: 485px) {
+  h1 { font-size: 2em }
+}
+
+@media (max-width: 328px) {
+  h1 { font-size: 1em }
+}
+
+p, li, cite {
+  max-width: 800px;
+  font-size: 1.1em;
+  line-height: 1.6em;
+}
+
+li {
+  margin-bottom: 1em;
+}
+
+hr {
+  max-width: 800px;
+  border: none;
+  border-top: 1px solid var(--text-color);
+}
+
+@media (max-width: 800px) {
+  p, ul, ol, hr {
+    padding: 5vw;
+  }
+}
+
+blockquote {
+  border-left: 0.2em solid var(--accent-color5);
+  padding-left: 2em;
+  margin-left: 2em;
+}
+
+blockquote p {
+  font-style: italic;
+  color: var(--accent-color5);
+}
+
+cite::before {
+  content: '—';
+}
+
+cite a {
+  color: var(--accent-color4);
+  text-decoration: underline;
+}
+
+strong {
+  font-weight: bold;
+  font-style: italic;
+  color: var(--accent-color2);
+}
+
+code {
+  color: var(--accent-color3);
+}
+
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-around;
+}
