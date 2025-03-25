@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Generative Art Online</title>
+    <meta name="author" content="Nick Briz">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png"  href="/images/hotairballoon.gif">
+    <!-- TODO: social media stuff -->
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+
+    </style>
+  </head>
+  <body>
+
+    <section id="introduction">
+      <div class="content">
+        <h1>10print</h1>
+
+        <blockquote>
+          <p>A Digital Computer has the wrong name to begin with. John von Neumann, at the very beginning (late forties), called it the All-Purpose Machine, and that was the right name, but it got mislaid somewhere. A digital computer is a device which can be programmed to move information [, they] can also count, and do arithmetic. But this numerical activity of computers has been vastly overemphasized. For it is their ability to vary and combine programs, test the outside world and modify it (through input and output), and handle the general diddling of vast quantities of information [...] that makes it, in some very important sense, the ultimate machine.</p>
+          <p>A computer language is usually a set of artificial words [...] which a programmer may combine by some set of rules into a long spell (a program). This spell is then given in some way to another program in the computer, the “language processor”, which turns the relatively few instructions in the computer language into the many ittybitty instructions needed by the computer itself. If the spell is properly cast, the system does what the programmer wants [...]</p>
+          <cite><a href=https://en.wikipedia.org/wiki/Ted_Nelson" target="_blank">Ted Nelson</a> <br>from "Computers are not what you think" <br>pg 66 in the <a href="/files/software-exhibition-catalogue-c.pdf" target="_blank">"Software" exhibition catalogue</a> 1970</cite>
+        </blockquote>
+
+      </div>
+    </section>
+
+    <section style="height: 50vh"></section>
+
+    <script src="/js/libs/nn.min.js"></script>
+    <script src="/js/libs/netitor.min.js"></script>
+    <script src="/js/MouseTrails.js"></script>
+    <script src="/js/RainbowText.js"></script>
+    <script src="/js/utils.js"></script>
+    <script>
+
+      animateFontWave(nn.get('h1'), ['Smooch Sans', 'Geo', 'DotGothic16', 'PlaywriteHU'])
+
+      Array.from(document.querySelectorAll('a'))
+        .filter(a => a.className !== 'button')
+        .forEach(a => RainbowText.hoverShimmer(a))
+
+      const trail = new MouseTrails('rainbow')
+      nn.on('mousemove', e => trail.mouseMoved(e.x, e.y))
+
+
+    </script>
+  </body>
+</html>

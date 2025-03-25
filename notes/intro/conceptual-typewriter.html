@@ -1,0 +1,74 @@
+<!--
+
+  Conceptual Typewriter v3
+                      by Nick Briz (2024)
+  ...a remix of Allison Parrish's
+     ...remix of Carl Fernbach-Flarsheim's work:
+        "The Boolean Image/Conceptual Typewriter" 1970
+
+  ref: https://editor.p5js.org/allison.parrish/sketches/BJSGiUl67
+  ref: https://netart.rocks/files/software-exhibition-catalogue-c.pdf
+
+  (NOTE: resize the window for full effect!)
+
+-->
+<body><!-- composition will appear here --></body>
+<script src="https://cdn.jsdelivr.net/gh/netizenorg/netnet-standard-library/build/nn.min.js"></script>
+<script>
+  /* global nn */
+
+  let words = [
+    "machinery",
+    "madness",
+    "magnificence",
+    "mahogany",
+    "mailing",
+    "mainframe",
+    "maintenance",
+    "majority",
+    "manga",
+    "mango",
+    "manifesto",
+    "mantra",
+    "manufacturer",
+    "maple",
+    "martin",
+    "martyrdom"
+  ]
+
+  function conceptualTypewriter () {
+    let gridSize = 4
+    let spacing = nn.width / gridSize
+
+    // setup the <body> as a CSS "3D" space
+    nn.get('body').css({
+      'height': '100vh',
+      'perspective': '500px',
+      'perspective-origin': 'right center'
+    })
+
+    // loop: for every word in words (or words[i])
+    for (let i = 0; i < words.length; i++) {
+      // loop: for every character in the word (or words[i][j])
+      for (let j = 0; j < words[i].length; j++) {
+        let ch = words[i][j] // letter or "character"
+        let zaxis = j * 50 * -1
+        // create a <div> ...
+        nn.create('div')
+          .content(ch) // ...with the character in it ...
+          .css({ // ...composed in the style of "Conceptual Typewriter"...
+            position: 'absolute',
+            left: (i % gridSize) * spacing + 'px',
+            top: (i / gridSize) * spacing + 'px',
+            transform: `translateZ(${ zaxis }px)`,
+            fontFamily: 'sans-serif',
+            fontSize: '24px'
+          })
+          .addTo('body') // ...add the <div> to the <body>
+      }
+    }
+  }
+
+  nn.on('load', conceptualTypewriter)
+
+</script>
