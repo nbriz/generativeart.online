@@ -12,7 +12,6 @@
   (NOTE: resize the window for full effect!)
 
 -->
-<body><!-- composition will appear here --></body>
 <script src="https://cdn.jsdelivr.net/gh/netizenorg/netnet-standard-library/build/nn.min.js"></script>
 <script>
   /* global nn */
@@ -42,9 +41,9 @@
 
     // setup the <body> as a CSS "3D" space
     nn.get('body').css({
-      'height': '100vh',
-      'perspective': '500px',
-      'perspective-origin': 'right center'
+      height: '100vh',
+      perspective: '500px',
+      perspectiveOrigin: 'right center'
     })
 
     // loop: for every word in words (or words[i])
