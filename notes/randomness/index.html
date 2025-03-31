@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Generative Art Online</title>
+    <meta name="author" content="Nick Briz">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png"  href="/images/hotairballoon.gif">
+    <!-- TODO: social media stuff -->
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+
+    </style>
+  </head>
+  <body>
+
+    <section id="introduction">
+      <div class="content">
+        <h1>Randomness</h1>
+
+        <iframe width="800" height="450" src="https://www.youtube.com/embed/d2LC6Am9bZI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="caption">
+          From the <a href="https://www.youtube.com/playlist?list=PL9LyZcEeKzXptIlmyVo6zvPBUw8KhN9jR" target="_blank">Generative Art Exploration</a> series from the art auction corporatino Sotheby's
+        </div>
+        <br><br>
+
+        <p>
+          <b>READ:</b> the chapter on <a href="/files/randomness-10print.pdf">Randomness</a> from the book <a href="https://10print.org/" target="_blank">10 PRINT CHR$(205.5+RND(1)); : GOTO 10 </a> (the title of which is the algorithm implemented in the language Basic).
+        </p>
+
+        <blockquote>
+          <p>The allure of gambling—and more generally, the allure of chance in all games—rests on uncertainty. Uncertainty is so compelling that even otherwise skill based games usually incorporate formal elements of chance, such as the coin toss at the beginning of a football game. As Katie Salen and Eric Zimmerman put it, uncertainty “is a key component of meaningful play” (2004, 174). Once the outcome of a game is known, the game becomes meaningless. Incorporating chance into the game helps delay the moment when the outcome will become obvious.</p>
+          <cite>
+            <a href="https://10print.org/" target="_blank">from Randomness (10 PRINT CHR$(205.5+RND(1)); : GOTO 10)</a>
+          </cite>
+        </blockquote>
+
+        <p>
+          Among the many examples of "chance" and "randomness" in the history of art discussed in the assigned chapter are:
+          <ul>
+            <li>The authors describe how for Dada artists, like Marcel Duchamp (the book specifically mentions his piece <a href="https://www.moma.org/learn/moma_learning/marcel-duchamp-3-standard-stoppages-1913-14/" target="_blank">"3 Standard Stoppages</a>" (1914)), <i>"artistic experimentation with randomness in the early part of the twentieth century can be seen as a response to the sterile functionality of rationality and empiricism wrought by the Industrial Age and as a deliberate reaction against World War I."</i></li>
+            <li>They menation the "the cut-up method", proposed by the writer William Burroughs as well as Tristan Tzara's "<a href="https://www.takedadaseriously.com/dada-resources/to-make-a-dadaist-poem-cut-up/" target="_blank">To Make a Dadaist Poem</a>" (1920). -- <i>check out this <a href="https://timely-meringue-bd64ab.netlify.app/" target="_blank">modern remix</a> on that piece by Nick Turgeon (2022)</i></li>
+            <li>In the 50s and 60s experimental composer John Cage made a name for himself by incorporating random elements in his compositional process in order to "remove individual bias from creation, [...] from Cage’s point of view, random elements remove individual bias from creation; they may be used to reach beyond the limitations of taste and bias through 'chance operations.'". Elements of randomness can be found throughout his most influential pieces, including arguably his most famous work <a href="https://en.wikipedia.org/wiki/4%E2%80%B233%E2%80%B3" target="_blank">"4:33"</a>(1952)</li>
+          </ul>
+        </p>
+
+        <blockquote>
+          <p>Those involved with the composition of experimental music find ways and means to remove themselves from the activities of the sounds they make. Some employ chance operations, derived from sources as ancient as the Chinese Book of Changes, or as modern as the tables of random numbers used also by physicists in research”</p>
+          <cite>
+            John Cage
+          </cite>
+        </blockquote>
+
+        <p>
+          <ul>
+            <li>Techniques like these are still used by musicians today, the reading mentions that Thom Yorke, the lead singer of the band Radiohead, used the cut-up method to write the lrycis to the song <a href="https://en.wikipedia.org/wiki/Kid_A" target="_blank">"Kid A"</a> (1999). Except rather than a "response to the sterile functionality of rationality and empiricism wrought by the Industrial Age" (a la the Dadaists) or the desire to reject taste and escape one's bias (a la John Cage), Yorke deployed these techniques as a means to work through his own writers block.</li>
+            <li>
+              The reading goes on to discuss "Early Experiments in Computational Art", one such artist (not mentioned in the reading) is early computer art pioneer <a href="https://en.wikipedia.org/wiki/Vera_Moln%C3%A1r" target="_blank">Vera Molnár</a> who began creating algorithmic compositions in the 1960s, for example <a href="https://youtu.be/efZfR7U7cM4" target="_blank">134 photographies d'écran</a>" (1984-1986).
+            </li>
+          </ul>
+        </p>
+
+        <iframe width="800" height="450" src="https://www.youtube.com/embed/8tNESHtfkr0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        <div class="caption">
+          From the <a href="https://www.youtube.com/playlist?list=PL9LyZcEeKzXptIlmyVo6zvPBUw8KhN9jR" target="_blank">Generative Art Exploration</a> series from the art auction corporatino Sotheby's
+        </div>
+
+        <blockquote>
+          <p>There is this old romantic idea which is called "intuition". An artist has talent, a genius, sits down, has a drink and creates. And intuition does what it does, sometimes it creates something good, sometimes not. Now, when we work with computers we're modern and say intuition is old fashioned, I'm not interested. But there is a thing that can replace intuition. It's randomness.</p>
+          <cite>
+            <a href="https://www.youtube.com/watch?v=BCZNNZGz5YI" target="_blank" id="vera-link">Vera Molnár</a>
+          </cite>
+        </blockquote>
+
+      </div>
+    </section>
+
+    <section style="height: 50vh"></section>
+
+    <script src="/js/libs/nn.min.js"></script>
+    <script src="/js/libs/netitor.min.js"></script>
+    <script src="/js/RainbowText.js"></script>
+    <script src="/js/utils.js"></script>
+    <script>
+
+      animateFontWave(nn.get('h1'), ['Smooch Sans', 'Geo', 'DotGothic16', 'PlaywriteHU'])
+
+      Array.from(document.querySelectorAll('a'))
+        .filter(a => a.className !== 'button')
+        .forEach(a => RainbowText.hoverShimmer(a))
+
+    </script>
+  </body>
+</html>

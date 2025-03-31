@@ -1,0 +1,24 @@
+{
+  "loops (for/while)": [
+    {
+      "name": "setInterval",
+      "code": "<script>\n\nfunction animate () {\n  const message = 'hi!'\n  log(message)\n}\n\nsetInterval(animate, 1000)\n  \n</script>",
+      "text": "There are a few different ways to create animations in JavaScript, the most common approach in generative art is to create a function which we will run over and over again at a given interval. One way to do this is using JavaScript's <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Window/setInterval\" target=\"_blank\">setInterval</a> method which takes two arguments, first the name of the function you want to repeat (I've called mine \"animate\" which is common on creative coding circles, so is \"draw\") and the second argument is the \"interval\" (or how often) you want to call this function, this is a value in milliseconds. In this example we're calling animate once a second or once every 1000 milliseconds. Which means we have a framerate of 1 fps (frames per second)."
+    },
+    {
+      "name": "clearing the output",
+      "code": "<script>\n\nlet i = 0\n  \nfunction animate () {\n  clear()\n  const message = `${i} mississippi`\n  log(message)\n  i++\n}\n\nsetInterval(animate, 1000)\n  \n</script>",
+      "text": "In this example we've added a few more lines of code to the last one. First, we've created a global variable (a variable defined outside of any given function's scope) which keeps track of a number <code>i</code>, inside our animate function we increment that value by 1 (which will happen each time we run that function). We've also added a call to a function called \"clear\", this will clear our output console before logging anything new. While this is not required, when creating an animation loop it's pretty common to clear what was there before drawing something new to the screen. This creates the illusion of \"animation\" (things <i>changing</i> on the screen rather than getting <i>added</i> to the screen)"
+    },
+    {
+      "name": "setTimeout",
+      "code": "<script>\n\nlet i = 0\nlet fps = 1000 / 60 // 60 frames per second\n  \nfunction animate () {\n  setTimeout(animate, fps)\n  clear()\n  const message = `${i} mississippi`\n  log(message)\n  i++\n}\n\nanimate() // call it once to get started\n  \n</script>",
+      "text": "Another approach to creating animation loops in generative art is to create a \"recursive\" function, which is a function that calls itself. Recursive functions are useful in generative art beyond animation loops (for example to create <a href=\"https://en.wikipedia.org/wiki/Fractal\" target=\"_blank\">fractal patterns</a>). We have to be careful with recursion, like a while-loop that never ends, too much recursion can crash our browser. Key to avoiding this when using recursion to create animations is to delay the self-referential call. In JavaScript this can be done with the <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Window/setTimeout\" target=\"_blank\">setTimeout</a> function. Like the setInterval this function takes two arguments, the name of the function you want it to call and the amount of time to wait before calling it in milliseconds."
+    },
+    {
+      "name": "requestAnimationFrame",
+      "code": "<script>\n\nlet i = 0\n\nfunction animate () {\n  requestAnimationFrame(animate)\n  clear()\n  const message = `${i} mississippi`\n  log(message)\n  i++\n}\n\nanimate() // call it once to get started\n  \n</script>",
+      "text": "While setTimeout has the advantage of controlling the frame rate of your animation, because it depends on JavaScript \"timers\" the animations can be a bit choppy (here's a <a href=\"https://netnet.studio/?layout=dock-left#code/eJyVUcFugkAQvfMVE3tA0waQpD0gkrSHnnprfwCXUTZdWLoMijH+e2cXxbQ1MU1I2H3zdt57M2lLe4WZB8BfIbdw4D9Ao1tJUtcJGFQ5yS0uHL6TBZUJxFHU9ANSotyUlMDjiFS52Uh+OR8RoZU2CexKSa7PcZC7W+l+DgdY5eJzY3RXF1auWLi6Lca/iivVoa16aXiy7aXWsyyWE9trkrVIH7JC3VEaciX7UY8nmcGvDlt6rmWV23yvJq/wRPXSVhjZEJ8UknXyhmuCJUTubsVHwFt3tbANoNJbfLE5pjM3O6Hrlsm6Z16hRVdhTQGLmv07KhSkzdR3wf0Zs/kQuCiBGlqfVe/Bb3qfGSOwhDlfLwGnZ+UHnnQUQQhP0cw7/rUW/9dafN3aOIDR2wUZzF2d7tlnbM3x3m+RbiV02x8W9Q3LA9wC\" target=\"_blank\">comparison</a>). For smoother and more efficient animations there's another function called <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Window/requestAnimationFrame\" target=\"_blank\">requestAnimationFrame</a>. This one only requires one argument, the name of the function we want to call. Rather than being set by a second argument, the timing of this call is based on your screen's refresh rate, which is typically (but not always) 60hz (or 60 times a second). It also has other features different from setTimeout that helps improve performance. "
+    }
+  ]
+}

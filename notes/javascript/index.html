@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Generative Art Online</title>
+    <meta name="author" content="Nick Briz">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png"  href="/images/hotairballoon.gif">
+    <!-- TODO: social media stuff -->
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+
+    </style>
+  </head>
+  <body>
+
+    <section id="introduction">
+      <div class="content">
+        <h1>JavaScript</h1>
+
+        <p>
+          There are loads of different programming languages out there and they all basically do the same thing: allow you to write programs that get the computer to do what you want it to do. All programming languages contain the same core concepts (variables, functions, loops, conditional statements, etc) but they all have slightly different ways of expressing these concepts, which is to say, they all have different <i>syntax</i> and <i>APIs</i>. Although any solid programming language could be used for anything (whether you're creating a website, or an iPhone app, or a video game, or a robot) some languages have special features that make them better suited for certain contexts or tasks. Different languages also have different communities of developers writing <i>libraries</i> and <i>frameworks</i> for that language.
+        </p>
+
+        <p>
+           Although JavaScript is not the only programming language we can use on the Internet, it's definitely the most popular, which means there's a large community creating libraries, tutorials and answering questions online. Furthermore, although JavaScript can be used for everything from controlling robots to scripting PhotoShop, it was originally invented as a programming language for the Web specifically, and so it's obviously the natural choice for us.
+        </p>
+
+        <blockquote cite="https://www.goodreads.com/book/show/23492802-magic-and-loss">
+          <p>[Netscape, 1995] displayed Web pages that were not very lively. You could have a nice cartoon of a monkey on the Web page, but there was no way to make the monkey dance when you moved over it with your mouse. Figuring out how to make that happen was the job of a language developer named Brendan Eich. He sat down and in a few weeks created a language called JavaScript [...] as browsers proliferated and the Web grew from a document-delivery platform into a software-delivery platform, JavaScript became, arguably, the most widely deployed language runtime in the world. If you wrote some JavaScript code, you could run it wherever the Web was—everywhere.</p>
+          <cite>
+            Paul Ford, from <a href="http://www.bloomberg.com/graphics/2015-paul-ford-what-is-code/" target="_blank">What Is Code</a> in Bloomberg Business (2015)
+          </cite>
+        </blockquote>
+
+        <p>For a more thorough review of the core programming concepts discussed below (as they appear in the JavaScript language), consider reading the first few chapters from Marijn Haverbeke's book <a href="https://eloquentjavascript.net/" target="_blank">Eloquent JavaScript</a> (4th edition 2024) as well as the Mozilla Developer Network's <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Language_Overview" target="_blank">JavaScript language overview</a>.</p>
+
+        <h2 id="core-concepts">Core Concepts</h2>
+      </div>
+    </section>
+
+    <section id="de1"></section>
+
+    <section>
+      <div class="content">
+        <h2 id="data-structures">Data Structures</h2>
+
+        <p>
+          It's possible to store more than one value in the same variable. These variables become "data structures" the most fundamental of which is called an <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object\" target=\"_blank\">object</a> which is the 6th and final "data type" in JavaScript, refer to <i>variables (simple data types)</i> in the Core Concepts example above for the other 5 data types. To create a new object we typically assign an empty set of curly braces <code>{}</code> to a variable. Below you'll find of set of examples going over basics objects in JavaScript.
+        </p>
+      </div>
+    </section>
+
+    <br><br>
+    <section id="de2"></section>
+    <br><br><br>
+
+    <section>
+      <div class="content">
+        <p>
+          Another common data structure is called an <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array\" target=\"_blank\">Array</a>. You can create one of these by accessing a set of square brackets <code>[]</code> to a variable. Technically, an Array is just another kind of \"object\" (we'll come to realize that nearly everything in JavaScript is some kind of object, but more on that later). Below you'll find of set of examples going over the basics of arrays in JavaScript.
+        </p>
+      </div>
+    </section>
+
+    <br><br>
+    <section id="de3"></section>
+    <br><br>
+
+    <section>
+      <div class="content">
+        <h2 id="animation-loops">Animation Loops</h2>
+      </div>
+    </section>
+
+    <section id="de4"></section>
+
+    <!-- TODO: object oriented programming: Date object && custom classes -->
+
+    <!-- TODO: functional programming: array methods -->
+
+
+    <section style="height: 100vh"></section>
+
+    <script src="/js/libs/nn.min.js"></script>
+    <script src="/js/libs/netitor.min.js"></script>
+    <script src="/js/RainbowText.js"></script>
+    <script src="/js/JSDemoEditor.js"></script>
+    <script src="/js/utils.js"></script>
+    <script>
+
+      animateFontWave(nn.get('h1'), ['Smooch Sans', 'Geo', 'DotGothic16', 'PlaywriteHU'])
+
+      Array.from(document.querySelectorAll('a'))
+        .filter(a => a.className !== 'button')
+        .forEach(a => RainbowText.hoverShimmer(a))
+
+      new JSDemoEditor({ parent: '#de1', dataUrl: 'basics.json' })
+
+      new JSDemoEditor({ parent: '#de2', dataUrl: 'objects.json' })
+      de = new JSDemoEditor({ parent: '#de3', dataUrl: 'arrays.json' })
+      new JSDemoEditor({ parent: '#de4', dataUrl: 'animation-loops.json' })
+
+
+    </script>
+  </body>
+</html>

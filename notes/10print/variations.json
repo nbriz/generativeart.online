@@ -1,0 +1,54 @@
+{
+  "variations": [
+    {
+      "name": "while loop 10print",
+      "code": "<link rel=\"stylesheet\" href=\"https://generativeart.online/css/10print.css\">\n<body></body>\n<script>\n\nlet i = 0\nwhile (i < 1000) {\n  if (Math.random() > 0.5) {\n    document.body.innerText += '／'\n  } else  {\n    document.body.innerText += '＼'\n  }\n  i++\n}\n\n</script>",
+      "text": "Here's a simple algorithm which will create a static version of the 10print pattern (with 1000 characters). Let's explore other variations on this same algorithm to learn a bit about how JavaScript can be written a number of different ways to express the same idea."
+    },
+    {
+      "name": "for loop 10print",
+      "code": "<link rel=\"stylesheet\" href=\"https://generativeart.online/css/10print.css\">\n<body></body>\n<script>\n\nfor (let i = 0; i < 1000; i++) {\n  if (Math.random() > 0.5) {\n    document.body.innerText += '／'\n  } else {\n    document.body.innerText += '＼'\n  }\n}\n\n</script>",
+      "text": "The previous example used a <code>while</code> loop, but we could also implement it using a <code>for</code> loop. Both variations produce the same output, but the <code>for</code> loop allows us to write our instructions in fewer lines of code."
+    },
+    {
+      "name": "declarative function",
+      "code": "<link rel=\"stylesheet\" href=\"https://generativeart.online/css/10print.css\">\n<body></body>\n<script>\n\nfunction p (c) {\n  document.body.innerText += c\n}\n\nfor (let i = 0; i < 1000; i++) {\n  if (Math.random() > 0.5) {\n    p('／')\n  } else {\n    p('＼')\n  }\n}\n\n</script>",
+      "text": "Let's create a function called <code>p</code> (short for \"print\") in order to set ourselves up for some other code variations down the line. This function will take care of \"printing\" (ie. outputting) our text to our document's body. In this example we defined our <code>p()</code> function using the <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#function_declarations\" target=\"_blank\">declarative approach</a>, this is the most conventional way, but we can also define it as a <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#function_expressions\" target=\"_blank\" style=\"\">function expression</a> (next example)."
+    },
+    {
+      "name": "function expression",
+      "code": "<link rel=\"stylesheet\" href=\"https://generativeart.online/css/10print.css\">\n<body></body>\n<script>\n\nconst p = function (c) {\n  document.body.innerText += c\n}\n\nfor (let i = 0; i < 1000; i++) {\n  if (Math.random() > 0.5) {\n    p('／')\n  } else {\n    p('＼')\n  }\n}\n\n</script>",
+      "text": "If you toggle back and fourth between this and the previous example you'll notice that the logic inside the function hasn't changed, but our style of creating the function has, rather than using the <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#function_declarations\" target=\"_blank\">declarative approach</a> (last example), here we're using the <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#function_expressions\" target=\"_blank\">function expression</a> approach which looks more like we're defining a variable (like all variables creating a function is really about storing data in memory and assigning it a name, in this case the datatype we're storing is a \"function\", rather than a \"number\", \"string\", etc). There is nothing functionally different about these two approaches, it's just different syntax which allow us to express functions in different ways."
+    },
+    {
+      "name": "arrow function",
+      "code": "<link rel=\"stylesheet\" href=\"https://generativeart.online/css/10print.css\">\n<body></body>\n<script>\n\nconst p = (c) => {\n  document.body.innerText += c\n}\n\nfor (let i = 0; i < 1000; i++) {\n  if (Math.random() > 0.5) {\n    p('／')\n  } else {\n    p('＼')\n  }\n}\n\n</script>",
+      "text": "Here is yet another way to create that same function, this variation is known as an <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#arrow_functions\" target=\"_blank\">arrow function</a>, notice the absence of the <code>function</code> keyword and the presence of the <code>=&gt;</code> between the function's parenthesis <code>()</code> and its brackets <code>{ }</code>. Arrow functions do behave a little different from the traditional declarations (refer to this <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#arrow_functions\" target=\"_blank\">MDN</a> page for more on that), but for our purpose of exploring variations on this code, what's most interesting is that they can be written even more compactly."
+    },
+    {
+      "name": "shorter arrow function",
+      "code": "<link rel=\"stylesheet\" href=\"https://generativeart.online/css/10print.css\">\n<body></body>\n<script>\n\nconst p = (c) => document.body.innerText += c\n\nfor (let i = 0; i < 1000; i++) {\n  if (Math.random() > 0.5) {\n    p('／')\n  } else {\n    p('＼')\n  }\n}\n\n</script>",
+      "text": "When an arrow function only has one line of code in it's code block (ie. between its brackets) it can be written in an even more compact manner, notice how we are no longer placing our code within brackets <code>{ }</code>, instead the single line of code is placed right after the <code>=&gt;</code> on the same line"
+    },
+    {
+      "name": "even shorter arrow function",
+      "code": "<link rel=\"stylesheet\" href=\"https://generativeart.online/css/10print.css\">\n<body></body>\n<script>\n\nconst p = c => document.body.innerText += c\n\nfor (let i = 0; i < 1000; i++) {\n  if (Math.random() > 0.5) {\n    p('／')\n  } else {\n    p('＼')\n  }\n}\n\n</script>",
+      "text": "Similarly, when an arrow function only contains a single parameter between its parenthesis <code>()</code> then we don't actually need to write the parenthesis, we can simply declare the variable name after the <code>=</code> and before the <code>=&gt;</code>"
+    },
+    {
+      "name": "one-liner conditional statements",
+      "code": "<link rel=\"stylesheet\" href=\"https://generativeart.online/css/10print.css\">\n<body></body>\n<script>\n\nconst p = c => document.body.innerText += c\n\nfor (let i = 0; i < 1000; i++) {\n  if (Math.random() > 0.5) p('／')\n  else p('＼')\n}\n\n</script>",
+      "text": "Now that we've tightened up our function, let's do the same with the rest of our code.  When conditional statements only have 1 line in their code block, their brackets can also be omitted and the statement can be written on the same line."
+    },
+    {
+      "name": "ternary expressions",
+      "code": "<link rel=\"stylesheet\" href=\"https://generativeart.online/css/10print.css\">\n<body></body>\n<script>\n\nconst p = c => document.body.innerText += c\n\nfor (let i = 0; i < 1000; i++) {\n  (Math.random() > 0.5) ? p('／') : p('＼')\n}\n\n</script>",
+      "text": "When we have an <code>if</code> / <code>else</code> like this which is a simple \"either / or\", we can write both on the same line using a <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator\" target=\"_blank\">ternary</a> expression like this."
+    },
+    {
+      "name": "one-liner for loop",
+      "code": "<link rel=\"stylesheet\" href=\"https://generativeart.online/css/10print.css\">\n<body></body>\n<script>\n\nconst p = c => document.body.innerText += c\nfor (let i = 0; i < 1000; i++) Math.random() > 0.5 ? p('／') : p('＼') \n\n</script>",
+      "text": "Just like functions and conditionals, when a <code>for</code> loop only has a single statement in its code block (as it does now) we can also omit the brackets and write that on the same line.  This code produces the same exact output as the first example, except now we've written our instructions in just two lines of code. This version is real compact, but it's also not the most readable code. The sweet spot is probably somewhere in-between. The purpose of these variations is not necessarily to end up at this last version, but rather to learn how the same instructions can be written in a number of different ways. You should write code in a style that reflects your own values."
+    }
+  ]
+}

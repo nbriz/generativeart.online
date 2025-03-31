@@ -144,6 +144,9 @@ body.dark-mode {
   --accent-color6: #cfcbc4; /* aka --netizen-operator */
 }
 
+b {
+  font-weight: bold;
+}
 
 a, .link {
   color: var(--blue);
@@ -301,6 +304,9 @@ strong {
 
 code {
   color: var(--accent-color3);
+  border: 1px solid var(--accent-color3);
+  padding: 0.2em 0.6em;
+  border-radius: 0.4em;
 }
 
 

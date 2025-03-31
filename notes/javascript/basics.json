@@ -1,0 +1,124 @@
+{
+  "introduction": [
+    {
+      "name": "html tags",
+      "text": "Because we're writing code meant to run in a web browser, we need to write our JavaScript inside an <b>HTML</b> file, which means we need an HTML <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#examples\" target=\"_blank\">script element</a> to contain our JavaScript code.",
+      "code": "<script></script>"
+    },
+    {
+      "name": "comments",
+      "text": "Between the script element's \"opening tag\" and \"closing tag\" we can write some JavaScript. In this example we've written a couple of comments, notes for humans to read which the browser ignores. We're using the two different comment syntax available to us in JavaScript, a single line comments which must always being with a <code>//</code>, and block comments which being with a <code>/*</code> and end with a <code>*/</code>",
+      "code": "<script>\n/* this is a comment */\n// this is also a comment\n</script>"
+    }
+  ],
+  "variables (declaring/assigning)": [
+    {
+      "name": "var",
+      "code": "<script>\n\nvar year = 2025\n\n</script>",
+      "text": "When we run our program, our data is stored in our computer's memory (aka RAM). When we create a variable we not only store that data in memory but we also name it so that we can use or change it's data elsewhere in our code. We've named this one \"x\". To create, or \"declare\", a new variable we first specify a declaration keyword, here we're using the <code>var</code> keyword. However, we should try not to use this old keyword anymore. You might come across old example code online that uses <code>var</code>, it still works, but it can lead to buggy code so it's best to avoid it."
+    },
+    {
+      "name": "const",
+      "code": "<script>\n\nconst year = 2025\n\n</script>",
+      "text": "In place of <code>var</code>, these days it's typically better to use either <code>const</code> or <code>let</code>. The <code>const</code> keyword is used when the variable's value isn't going to change. We've named this one \"year\", if we reference it later, it will always return the value 2025"
+    },
+    {
+      "name": "let",
+      "code": "<script>\n\nlet year = 2025\nyear = 2000\n\n</script>",
+      "text": "Instead of <code>const</code>, we can use the <code>let</code> keyword when we plan on changing this variable's value elsewhere in our code. Here we change, or \"reassign\", our \"year\" variable's value from 2025 to 2000 using the <code>=</code> \"operator\""
+    },
+    {
+      "name": "log values",
+      "code": "<script>\n\nlet year = 2025\nyear = 2000\nlog(year)\n\n</script>",
+      "text": "In these examples you can use a special <code>log()</code> function to display the value of a particular variable in the console on the right. Feel free to edit the code examples and then click on \"run code\" again to see the result."
+    },
+    {
+      "name": "arithmetic operators",
+      "code": "<script>\n\nlet year = 2025\nlog(year)\n\nyear = 2025 + 2 // addition, year is now 2027\nyear = 2025 - 2 // subtractin, year is now 2023\nyear = 2025 * 2 // multiplication, year is now 4050\nyear = 2025 / 2 // division, year is now 1012.5\nyear = 2025 % 7 // remainder, year is now 2\n\n</script>",
+      "text": "You can use \"arithmetic operators\" like <code>+</code> to add variables containing number values, or <code>-</code> to subtract them, or <code>*</code> to multiply and <code>\/</code> to divide. The <code>%</code> operator (aka modulus or modulo) is similar to the division operator except that it only returns the remainder of the operation. Try placing the <code>log()</code> statement on a different line then run the code again to see how the output changes."
+    },
+    {
+      "name": "incrementing values",
+      "code": "<script>\n\nlet year = 2025\n\nyear = year + 1 // increment by 1\n  \nyear += 1 // increment by 1\n  \nyear++ // increment by 1\n  \nlog(year)\n\n</script>",
+      "text": "Reassigning the value of a variable to it's current value <code>+</code> 1, as I've done on line 5, is a way of incrementing that value by a given amount. You can also write the same statement using slightly different syntax. <br><br>On line 7 I've incremented the value of year by 1 yet again, this time using the <code>+=</code> operator. We can increment by any value we want, for example <code>year += 8</code>, we can also scale it, by doing this <code>year *= 2</code>, essentially the equivalent of writing <code>year = year * 2</code>, which would double it's current value. Likewise we can do things like <code>year /= 2</code> to divide it in half or <code>year -= 1</code> to decrease it's curren value by one.<br><br>When specifically incrementing or decrementing by 1 there is an even shorter way to write this <code>year++</code> (as I've done on line 9) and <code>year--</code>."
+    }
+  ],
+  "variables (simple data types)": [
+    {
+      "name": "number",
+      "code": "<script>\n\nconst a = 100 // a number\nconst b = 3.14 // also a number\n\nlog(typeof a)\nlog(typeof b)\n\n</script>",
+      "text": "We can store different \"data types\" in our variables. All programming languages have more or less the same data types (though the details will vary). As we learned in the first few examples the most obvious sort of value we might store in a variable is a \"number\". Some programming languages specify two (or more) different data types for numbers like \"integer\" for whole numbers and \"float\" for decimal numbers, but in JavaScript all numbers have the same data type: <code>\"number\"</code>."
+    },
+    {
+      "name": "string",
+      "code": "<script>\n\nconst a = 100 // a number\nconst b = 3.14 // also a number\n\nconst c = 'hello world' // a string\nconst d = \"bye bye now\" // also a string\nconst e = `Pi is equal to ${b}` // special \"template\" string\n\nlog(e)\n\n</script>",
+      "text": "Another very common data type is a \"string\", which is how we store text in our variables. This can be a single letter or an entire essay, so long as we surround this text with quote marks. You can use single quote mark <code>'</code> or the double quote mark <code>\"</code>, so long as you use the same quote mark on either side of your string.<br><br>The <code>`</code> marks can also be used to create special type of strings in JavaScript known as <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals\" target=\"_blank\">Template literals or Template strings</a>, which are used for \"string interpolation\" (think f-strings in python). You can pass variables into these special strings using the <code>${ }</code> styntax."
+    },
+    {
+      "name": "boolean",
+      "code": "<script>\n\nconst f = true // this is a boolean value\nconst g = false // this is also a boolean\n\nlog(typeof g)\n\n</script>",
+      "text": "Another data type is a \"boolean\", named after <a href=\"hhttps://en.wikipedia.org/wiki/George_Boole\" target=\"_blank\">George Boole</a>. Boolean's can only ever be one of two values, either <code>true</code> or <code>false</code>. In some sense all of our data can be understood as a series of boolean values, ture/false, 1/0, on/off. Even the most complex algorithms are really just abstractions of boolean logic, because at the end of the day that's all computer's really understand."
+    },
+    {
+      "name": "undefined",
+      "code": "<script>\n\nlet h = undefined\nlet i // also \"undefined\"\n\nlog(typeof i)\n\n</script>",
+      "text": "This next data type, \"undefined\", which is being assigned to our <code>h</code> variable might seem strange at first, but consider the next variable declaration for <code>i</code>. We've explicitly declared the variable <code>i</code> but never gave it any value. Because all variables need to have some data type, when we haven't explicitly given it any data, it gets assigned the special placeholder value of \"undefined\" (which in JavaScript is it's own data type)."
+    },
+    {
+      "name": "null (object)",
+      "code": "<script>\n\nconst j = null\n\nlog(typeof j)\n\n</script>",
+      "text": "If that last one seemed odd, this one's even stranger. We've assigned the value <code>null</code> to our variable <code>hj</code>. <code>null</code> essentially means \"nothing\", which is different from \"undefined\" because it has been defined, specifically as \"nothing\". This is also different from the value <code>0</code> which is a data type of \"number\" (specifically the value 1 less than 1), which our \"null\" is not... because our \"null\" is the specific declaration of nothingness.<br><br>If that wasn't strange enough, consider this: there is no data type for \"null\", when we set a variable to \"null\" its data type is \"object\". What's an \"object\"? ...we'll get to that in another example."
+    }
+  ],
+  "conditional statements (if/else)": [
+    {
+      "name": "if statement",
+      "code": "<script>\n\nconst age = 21\n\nif (age >= 21) {\n  log('have a dink')\n}\n\n</script>",
+      "text": "Conditional statements allow you to specify alternative lines of code to run depending on some \"condition\". These are \"boolean statements\", which are questions that return \"true\" or \"false\" and can be written in a lot of different ways. Here we're asking the question: \"is the age greater than or equal to 21?\", because the answer is \"true\" then any code we write between the <code>{</code> and <code>}</code> will run, if the answer were \"false\" then our program would skip all the code between the brackets.<br><br>We can use the following \"boolean operators\" to ask questions like <code>&gt;</code> (greater than), <code>&lt;</code> (less than), <code>===</code> (equal to), <code>!==</code> (not equal to), <code>&gt;=</code> (greater than or equal to) and <code>&lt;=</code> (less than or equal to)"
+    },
+    {
+      "name": "logical operators",
+      "code": "<script>\n\nconst country = 'United States'\nconst age = 18\n\nif (country === 'United States' && age >= 21) {\n  log('have a drink')\n}\n\n</script>",
+      "text": "We can also combine more than one question (boolean statement) using \"logical operators\" like <code>&&</code> which means \"and\", as well as <code>||</code> which means \"or\". Here we're asking the question: is country equal to 'US' and is age greater than or equal to 21? This will return \"false\" because although the country is equal to 'United States', age is not greater than or equal to 21."
+    },
+    {
+      "name": "else if",
+      "code":"<script>\n\nconst country = 'Japan'\nconst age = 20\n\nif (country === 'United States' && age >= 21) {\n  // ...this is false, so we move onto the next\n} else if (country === 'Japan' && age >= 20) {\n  // .. this is true, so we run any code we place in here\n} else if (country === 'Australia' && age >= 18) {\n  // ...if the previous answer had not been true\n  // then we'd ask this follow up question\n} else {\n  // if all the previous answers were false\n  // then the code inside this {} would run\n}\n\n</script>",
+      "text": "We can use the \"else\" and \"else if\" keywords to add follow up questions when the answer to a previous \"if\" or \"else if\" question is false. Try adding some <code>log()</code> statements and adjusting the variable values to test how it works."
+    }
+  ],
+  "functions (aka methods)": [
+    {
+      "name": "function",
+      "code": "<script>\n\n// declare the function\nfunction greet (name) {\n  const message = `hello there, ${name}!`\n  log(message)\n}\n\n// run the function\ngreet('Nick')\n  \n</script>",
+      "text": "We can group a specific set of instructions into a reusable package called a \"function\" or \"method\". These are like mini-programs inside our program. We use the <code>function</code> keyword to create a new function, we give it a name (just like we do with variables) followed by <code>()</code> (parenthesis) and then opening <code>{</code> and closing <code>}</code> brackets within which we'll write the instructions we want to execute when we \"call\" (or \"run\") this function.<br><br>We can declare variables known as \"arguments\" within the function's parenthesis <code>()</code> when definine it. This argument variable will only exist within the <a href=\"https://developer.mozilla.org/en-US/docs/Glossary/Scope\" target=\"_blank\">scope</a> of the function (ie. inside the function), it's value will be whatever we \"pass\" it when we later run the function. It's worth noting here that any variable you create inside of a function only exists within the context (ie scope) of that function."
+    },
+    {
+      "name": "pure functions",
+      "code": "<script>\n\nfunction square (num) {\n  const x = num * num\n  return x\n}\n    \nconst a = square(5) // returns 25\nconst b = square(100) // returns 10000\n  \nlog(a)\n  \n</script>",
+      "text": "When a function has some effect on another part of your program, like the way our last example's function would log the gretting to the screen, this is considered a \"side effect\". Some functions have no side effects, they simply take in some data as arguments (within the parenthesis) do something to/with that data inside the function, and then <code>return</code> some new data back outside of itself. These are known as \"pure<br><br> functions\".<br><br>In This example, the \"square\" function takes a number as an argument, then internally it creates a new variable to store the squared value of the argument before \"returning\" the value of that variable back out."
+    },
+    {
+      "name": "variable declaration",
+      "code": "<script>\n\n// variable declaration syntax\nconst cube = function (num) {\n  return num * num * num\n}\n\nconst x = cube(5) // returns 125\nlog(x)\nlog(typeof cube)\n  \n</script>",
+      "text": "Technically speaking, a function is also a variable. Except rather than storing data, it stores instructions. For this reason we could also declare a function similar to how we would any other variable. If we were to check the <code>tyepof cube</code> we'd get the data type \"function\"."
+    },
+    {
+      "name": "arrow function",
+      "code": "<script>\n\nconst greet = (name) => {\n  const m = `Oh, hi there ${name}!`\n  log(m)\n}\n\ngreet('nick')\n  \n</script>",
+      "text": "Instead of using the \"function\" keyword we can also use the alternative <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions\" target=\"_blank\">arrow function</a> syntax. Technically, the way arrow functions handle scope is a bit different from functions declared the other ways, but more often than not, programmers use this syntax because it's shorter (and programmers like short concise code) so it's not uncommon to see it in modern day examles or tutorials."
+    }
+  ],
+  "loops (for/while)": [
+    {
+      "name": "while loop",
+      "code": "<script>\n\nlet i = 0\n\nwhile (i < 10) {\n  log(`i is currently ${i}`)\n  i++\n}\n  \nlog('the loop is finished')\n  \n</script>",
+      "text": "A \"loop\", as the name implies, runs a block of code over and over again, until some condition is met. The most basic type of loop is a <code>while</code> loop. We first create a variable. Then similar to our \"if\" statements, we'll ask a question by writing the while keyword followed by <code>{}</code> (parenthesis) with a boolean expression within it (which will return either <code>true</code> or <code>false</code>).<br><br>In this case we're asking the question: \"is i less than 10?\", so long as the answer is <code>true</code> we'll run it's block of code, everything we've got between the opening <code>{</code> and closing <code>}</code> brackets, over and over again.<br><br>The first time our while loop runs the value of <code>i</code> is 0 (what we initially set it to) which is less than 10, and so we'll <code>log()</code> that value. We have to reassign the value of <code>i</code> inside of our loop, because if we don't, then <code>i</code> will always be less than 10 and our loop will never end... it'll keep calling that <code>log()</code> over and over as fast as it can eventually crashing our browser.<br><br>You might recall from the reassigning variables example that <code>i++</code> is a shorthand for <code>i = i + 1</code> which means on the second iteration of our loop <code>i</code> will be equal to 1, the next time it will be 2, then 3, and so on until it runs 10 times and i is no longer less than 10."
+    },
+    {
+      "name": "for loop",
+      "code": "<script>\n\nfor (let i = 0; i < 10; i++) {\n  log(`i is currently ${i}`)\n}\n  \nlog('the loop is finished')\n  \n</script>",
+      "text": "A \"for\" loop does the same thing that a \"while\" loop does but it's written differently. The variable declaration, the boolean expression (the question) and the reassignment of that variable are all written within the loops parenthesis. This allows us to express the same instructions in less lines of code. And because programmers love \"efficiency\" we tend to see lots more for loops than while loops."
+    }
+  ]
+}

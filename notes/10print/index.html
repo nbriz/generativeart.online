@@ -10,6 +10,13 @@
     <link rel="stylesheet" href="/css/main.css">
     <style>
 
+      .ten-print {
+        font-size: 2em;
+        text-align: center;
+        margin: 5em auto 3em auto;
+        color: var(--blue);
+      }
+
     </style>
   </head>
   <body>
@@ -21,8 +28,178 @@
         <blockquote>
           <p>A Digital Computer has the wrong name to begin with. John von Neumann, at the very beginning (late forties), called it the All-Purpose Machine, and that was the right name, but it got mislaid somewhere. A digital computer is a device which can be programmed to move information [, they] can also count, and do arithmetic. But this numerical activity of computers has been vastly overemphasized. For it is their ability to vary and combine programs, test the outside world and modify it (through input and output), and handle the general diddling of vast quantities of information [...] that makes it, in some very important sense, the ultimate machine.</p>
           <p>A computer language is usually a set of artificial words [...] which a programmer may combine by some set of rules into a long spell (a program). This spell is then given in some way to another program in the computer, the “language processor”, which turns the relatively few instructions in the computer language into the many ittybitty instructions needed by the computer itself. If the spell is properly cast, the system does what the programmer wants [...]</p>
-          <cite><a href=https://en.wikipedia.org/wiki/Ted_Nelson" target="_blank">Ted Nelson</a> <br>from "Computers are not what you think" <br>pg 66 in the <a href="/files/software-exhibition-catalogue-c.pdf" target="_blank">"Software" exhibition catalogue</a> 1970</cite>
+          <cite><a href="https://en.wikipedia.org/wiki/Ted_Nelson" target="_blank">Ted Nelson</a> <br>from "Computers are not what you think" <br>pg 66 in the <a href="/files/software-exhibition-catalogue-c.pdf" target="_blank">"Software" exhibition catalogue</a> 1970</cite>
         </blockquote>
+
+        <pre class="ten-print">10 PRINT CHR$(205.5+RND(1)); : GOTO 10</pre>
+
+        <iframe width="800" height="450" src="https://www.youtube.com/embed/m9joBLOZVEo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        <h2>10 PRINT JavaScript</h2>
+
+        <p>
+          In the <a href="https://10print.org/" target="_blank">book</a>, the programming language used to create the 10print composition is <a href="https://en.wikipedia.org/wiki/BASIC" target="_blank">BASIC</a>, this language was incredibly popular for many years (including among artists, especially in the 1980s) but is no longer considered a very modern language. Today, there are loads of different programming languages out there, they all basically do the same thing: allow you to "cast spells" (as Ted Nelson put it) or write programs that get the computer to do what you want it to do. While all programming languages share the same fundamental principles, some are better suited for certain tasks over others. Often this has to do with the context you're writing your program in/for. In our case, we're writing code to create generative art online, and so we'll be using the Web's native programming language: JavaScript.
+        </p>
+
+        <div class="flex" style="margin: 60px 0px;">
+          <a class="button" target="_blank" href="/notes/javascript#core-concepts">JavaScript Core Concepts</a>
+        </div>
+
+
+        <p>For a more thorough review of the core programming concepts discussed in the link above, consider reading the first few chapters from Marijn Haverbeke's book <a href="https://eloquentjavascript.net/" target="_blank">Eloquent JavaScript</a> (4th edition 2024) as well as the Mozilla Developer Network's <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Language_Overview" target="_blank">JavaScript language overview</a>.</p>
+
+        <p>
+          After reviewing the JavaScript notes above, we should now be familiar with all the core components of our craft: variables and data types, functions, loops and conditional statements. Apart from these fundamental principles of programming, there is only one more thing we need in order to recreate 10print in JavaScript: Randomness. Assuming you've already done <a href="/files/randomness-10print.pdf" target="_blank">the reading</a> and reviewed <a href="/notes/randomness" target="_blank">the notes on randomness</a>, it's now time to unlock it's potential using JavaScript's built-in random number function <code>Math.random()</code>
+        </p>
+      </div>
+    </section>
+
+    <br><br>
+
+    <section id="de1"></section>
+
+    <br><br>
+
+    <section>
+      <div class="content">
+        <p>
+          The coding concepts we've covered so far are built into the JavaScript programming language. Like most programming languages, you can run JavaScript code by "compiling" it in a terminal (most commonly with <a href="https://nodejs.org/" target="_blank">node.js</a> that's the JIT, or "just in time" compiler used to create all sorts of web servers and modern applications). But other JavaScript compilers (or interpreters) are actually built into many common applications, allowing you to use JavaScript to "script" or control these applications in numerous ways. For example, JavaScript can be used in many different contexts, you write JavaScript in Adobe software like Photoshop or Illustrator to automate different processes which would otherwise need to done manually by a user. You can write JavaScript in the Microsoft Office suite to automate processes there as well. You can also write JavaScript within other graphical programming environments like Max to extend it's capabilities.
+        </p>
+
+        <h2>JavaScript on the Web</h2>
+
+        <p>
+          The most common application we use JavaScript to control is the app you're using to read this page right now, the web browser (of which there are many iterations of, Chrome, Firefox, etc). As described in the introduction section of the <a href="/notes/javascript#core-concepts">JavaScript Core Concepts</a>, inorder to write JavaScript in a Web page (which is traditionally writtin in HTML) we need a special HTML element, the <code>&lt;script&gt;</code> element. We can use the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script" target="_blank">script element</a> to include JavaScript on the web a couple of different ways, either by placing our JavaScript code in it's own file and then importing it using this element's "src" property, like this <code>&lt;script src="my-file.js"&gt;&lt;/script&gt;</code> or we can simply write our JavaScript between a pair of opening and closing scrip tags (which is what we'll be doing for this 10print project).
+        </p>
+
+        <p>
+          In addition to a script element, we'll also be including a couple of other elements in our 10print project's template. The first is a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link" target="_blank">link</a> element. This element is used to import other resources into our HTML page, most commonly CSS code, which is what we'll be using it for. By default text on a webpage is usually black on a white background. But in order to simulate the look of an old-school Commodore 64 computer (which is light text on a blue background), as well as handle a couple of other styling inconsistencies across browsers, we'll be importing <a href="https://generativeart.online/css/10print.css" target="_blank">simple CSS</a> file I wrote. Lastly, we'll also need a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body" target="_blank">body</a> element, the element which will contain all the text characters we'll be algorithmically generating. All together our HTML template looks like this:
+        </p>
+
+        <section id="template"></section>
+
+        <h2>Web APIs</h2>
+
+        <p>
+          When we use JavaScript inside a particular application we gain access to that application's "APIs", or Application Programming Interface. In this context, an API is just a set of coding tools (functions, classes, etc) built into the browser (or any given application) which we can access and use via JavaScript.
+        </p>
+
+        <p>
+          Later in this course we'll start using JavaScript "frameworks" or "libraries" which will abstract some of these APIs making them easier to use, but for now we'll interact with some of these APIs directly, by making use of the following objects:
+        </p>
+
+        <p>
+          <code>window</code>, the window object gives us access to different parts of our browser window, both data about it, but also functions to control parts of it. Below are just some of the properties (internal variables) and methods (internatl functions) of the window object.
+        </p>
+        <ul>
+          <li>
+            <code>window.innerHeight</code> this will tell us how tall the inner portion of our window is in pixels, everytime we change the size of our browser window this value gets automatically updated. We can also get the <b>window.outerHeight</b> which includes the address bar, bookmarks, menu items or other aspects of the browser window (but this is usually less useful for our generative art pieces)
+          </li>
+          <li>
+            <code>window.innerWidth</code> this tells us the width of our window in pixels, like the previous property, this also updates anytime the browser is resized. There is also <b>window.outerWidth</b>
+          </li>
+          <li>
+            <code>window.scrollTo(x, y)</code> in our 10print variations, it is very likely that we'll add enough content to our page that it'll go off screen, this means the viewer will need to scroll the page to see anything "below the fold". We could, however, control the scroll bar programatically using the window object's scrollTo method. This method takes two arguments, first the position of the horizontal scroll bar (in pixels) and second the position you want to place the vertical scroll bar at.
+          </li>
+        </ul>
+
+        <p>
+          <code>document</code> the document object gives us access to every part of our HTML document, meaning any/all HTML elements (the code which structures an HTML page) and their CSS values (the code that changes the look/presentation of a web page). This is part of one of the most fundamental web API's called the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction" target="_blank">DOM</a> (or document object model). Later we'll use libraries which will make it easier for us to work with this API, but for now we'll use just a few parts of it directly.
+        </p>
+        <ul>
+          <li>
+            <code>document.body</code> this is how we access our web page's "body" element, the main element which contains everything we can visually see on our page. There's lots we can do to the body (and any other element using the DOM API) but we'll focus on just a few.
+          </li>
+          <li>
+            <code>document.body.innerText</code> this property allows us to access the text currently within the body element, as well as modify it. To change the body's text you can reassign this property new value as you would any other variable: <code>document.body.innerText = 'some new text'</code> we can also append text (meaning add to the text that's currently there, rather than replacing it) by using the <code>+=</code> operator instead of <code>=</code>.
+          </li>
+          <li>
+            <code>document.body.style</code> if you're familiar with CSS, you should know that you can modify any of the body's CSS values using the "style" property, for example <code>document.body.style.color = 'red'</code> will change all of the body's text color to red. Note: if you want to modify a CSS value that normally contains a dash like  "font-family" you must write this property name in <a href="https://en.wikipedia.org/wiki/Camel_case" target="_blank">camel case</a> like this: <code>document.body.style.fontFamily = 'monospace'</code>
+          </li>
+        </ul>
+
+        <p>
+          With that we now know everything we need to recreate 10print in the browser with JavaScript. You can <a href="https://netnet.studio/?layout=dock-left#code/eJyNTkGOwjAQu+cVVi8UVUrCgQub9gfc+EBppzTakFTJgECIN/Ah/sQXSBF7X2lGtmRbtnHW/yKSq4vEV0dpJOICY6ShLkbmKW2UOpCn2LI9UxtZBp8zpLqU1EpP0XqWmReNMPvQXxujPiBM6qKduBFAviFElI4YFjX0TwaDldYzq6olbtkC2AHltuVRxtb34Vgu0UDL9Z8M9KE7HSkXzhXS+jxrRxdGVWPxej4WH9sd5BL9M/P8ZsT8wqjv6DeQ4lZX" target="_blank">experiment with the example below in netnet.</a>
+        </p>
+
+        <iframe id="static-10print" src="./10print-static.html" style="border: none; width: 100%; height: 400px; overflow: hidden;" scrolling="no"></iframe>
+
+        <button id="re-run" style="cursor: pointer">refresh 10print</button>
+
+        <br><br>
+
+        <p>
+          Of course this is a "static" version of 10print, we can "refresh" (or re-run) the example above by clicking the "refresh" button below it to create another randomly generated iteration, but these will always be static. To recrate that character by character animated feel of the original Commodore 64 version we need to introduce another set of JavaScript functions which will unlock another key aspect of generative art: animation.
+        </p>
+
+        <div class="flex" style="margin: 60px 0px;">
+          <a class="button" target="_blank" href="/notes/javascript#animation-loops">JavaScript Animation Loops</a>
+        </div>
+
+        <p>
+          As mentioned in the Web API section above, as we add more content to our page in an animation loop, eventually the text will start to go off screen, the user will need to scroll the page to see the bottom of the text. To automate this scrolling we can use the <code>window.scrollTo()</code>, passing in <code>0</code> as its first argument (aassuming we don't have a horizontal scroll bar) and passing in <code>document.body.offsetHeight</code> as it's second argument. The body's offsetHeight is a property which updates every time the body's size changes (say for example because we've added more text into it) to match the current height of the body element in pixels. If we pass this value as the second argument to our scrollTo method then it essentially scrolls to the bottom of the page. Here's a <a href=\"https://netnet.studio/?layout=dock-left#code/eJyNUEFOwzAQvOcVq1zqCGSHAxeUROKCuHDrB0yyqa06drA3lAr1DXyof+ILbE0QEicka71azezMbOOs30NE15aJjg6TQaQSTMSxLQ3RnO6U2qHHqMm+oo4kg2cOqj4ldVPP0XqS3Jdd0TyH4dg1Kn9Fk/poZ+oKAH7j4nuywYP2dtKEICp45zmw9suCie7znBEPUU8oVliVIbnYEcSTJiOj9kOYmN9BLW9/1gAMoV8mZDcXfWk9e97iG8FVC5vP88cmw06ALuE/OeeV82viYFn7IDlacG4bRH39Z0UYx4T0iHZn6GL+9B1/jSOqomjUepgv/1B4vQ==\" target=\"_blank\">netnet example with auto-scrolling</a>.
+        </p>
+
+        <h2>10 PRINT in your own style</h2>
+
+        <p>
+          Our meditation on 10print, our first assignment, is as much about the code we write as it is the visual output it generates. We want to use this as a chance not only to practice the core concepts of programming (variables, functions, loops and conditional statements) and of generative art (randomness and animation), but also to start developing our own coding style, the way we express our ideas in code. Even with this simple example, 10print, there are a number of different ways we could write this in JavaScript each with it's own style reflecting different values. We might value <i>clarity</i>, in which case we might write it very verbosely, with lots of comments and clearly named variables. Or, we might value <i>efficiency</i>, choosing to keep our code compact, minimizing the number of operations we require of the computer. Or, we might value <i>poetics</i>, choosing to write code in a style which is as much about form as it is function, like this piece <a href="https://www.instagram.com/p/Cj5__ZoLjAM/?img_index=1" target="_blank">Ode to a Chain of Blocks</a> by artist Kaspar Ravel.
+        </p>
+
+      </div>
+    </section>
+
+    <br><br>
+
+    <section id="de2"></section>
+
+    <br><br>
+
+    <section>
+      <div class="content">
+        <p>
+          The examples above are each a more compact version of the one that came before it. We start with a version that values clarity over efficiency and we end with a version that prioritizes tightly written efficient code. But there are countless of other values we might prioritize. For example check out this incredibly tiny, creative and demoscene inspired implementation by <a href=\"http://www.p01.org/64b_thread_js\" target=\"_blank\">Mathieu 'p01' Henri</a>.
+        </p>
+      </div>
+    </section>
+    <br><br>
+
+    <section id="de3"></section>
+
+    <br><br>
+    <section>
+      <div class="content">
+        <h2>more 10 PRINT variations</h2>
+
+        <p>
+          Below are a couple of examples of creative remixes of the original 10print algorithm, but instead of running on a Commodore 64, these are running on the Commodore PET (an older model from 1977), which displays its text in a green color on a black background. You can replace the link element from the original template with this one:<br><br>
+          <code>
+            &lt;link rel="stylesheet" href="https://generativeart.online/css/10print-PET.css"&gt;
+          </code>
+          <br><br>
+          if you'd like to go with a more PET color scheme. Keep in mind, if you're familiar with CSS you could always write your own CSS code between a pair of style elements in place of this link element (the CSS code we're importing isn't all that complicated).
+        </p>
+
+        <iframe width="800" height="450" src="https://www.youtube.com/embed/bCTrdVhjjWo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        <p>
+          The video above demonstrates a very simple "video game" based on the 10print algorithm, written in BASIC (same as the original 10print). The video below is an absolutely beautiful "demo" which features a reference to 10print towards the beginning of the piece. The video below is a recording of a demo by <a href="https://shiru.untergrund.net/" target="_blank">shiru8bit</a> you can check out his own <a href="https://www.youtube.com/@shiru8bit" target="_blank">YouTube</a> channel here. Unlike Vera Molnár and the other artists we discussed in the intro to Generative Art and Randomness notes, shiru8bit is not a part of the "art world" proper, but instead practices generative art in an "outsider" computer art sub-culture known as the <a href="https://en.wikipedia.org/wiki/Demoscene" target="_blank">demoscene</a> which we'll discuss later this quarter.
+        </p>
+
+        <iframe width="800" height="450" src="https://www.youtube.com/embed/3ZcYNUNvOBI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        <br><br>
+        <br><br>
+
+        <p>
+          Keep in mind, everything we've just discussed has been primarily focused on recreating 10print, meaning we've limited the characters generated to the <code>╱</code> (Unicode value 9585) and <code>╲</code> (Unicode value 9586), but we could have used <a href="https://en.wikipedia.org/wiki/List_of_Unicode_characters" target="_blank">other characters</a> and we could have used other logic to probabalistically determine which to render. There are loads of creative possabilities in terms of the compositions we can algorithmically create simply by drawing text characters onto the screen. For more inspiration check out the work by contemporary generative artists like <a href="https://www.instagram.com/julian_hespenheide/" target="_blank">Julian Hespenheide</a> and <a href="https://www.instagram.com/andreasgysin/" target="_blank">Andreas Gysin</a>.
+        </p>
+
+        <img src="images/julian_hespenheide.gif" alt="Julian Hespenheide Piece" class="rwd">
+
+        <div class="caption">
+          FSM Scanner by Julian Hespenheide
+        </div>
 
       </div>
     </section>
@@ -31,8 +208,8 @@
 
     <script src="/js/libs/nn.min.js"></script>
     <script src="/js/libs/netitor.min.js"></script>
-    <script src="/js/MouseTrails.js"></script>
     <script src="/js/RainbowText.js"></script>
+    <script src="/js/JSDemoEditor.js"></script>
     <script src="/js/utils.js"></script>
     <script>
 
@@ -42,9 +219,29 @@
         .filter(a => a.className !== 'button')
         .forEach(a => RainbowText.hoverShimmer(a))
 
-      const trail = new MouseTrails('rainbow')
-      nn.on('mousemove', e => trail.mouseMoved(e.x, e.y))
+      const de = new JSDemoEditor({ parent: '#de1', dataUrl: 'Math.json' })
 
+      new Netitor({
+        ele: '#template',
+        code: "<link rel=\"stylesheet\" href=\"https://generativeart.online/css/10print.css\">\n<body><\/body>\n<script>\n\n// all our JavaScript will go here...\n\n<\/script>",
+        lint: false,
+        hint: false,
+        readOnly: false,
+        autoUpdate: false,
+        friendlyErr: false
+      })
+
+      nn.create('a')
+        .content('open in netnet')
+        .set({ href: 'https://netnet.studio/?layout=dock-left#code/eJwti8ENwjAMAP+ewsoAMXxRmgH4MkEopomIksg2rbo9VcXrTiddqKV9ULhOTm2vrJnZHGbh9+Sy2dAb0cKNJVlZOYn53o6HaVal62VIaeYPdxHCs7/2GOgEBJ2lDIsARJhqxf4VvKc1Pc6OWzna0jGzsPceIND/+AEtWTKg', target: '_blank' })
+        .addTo('#template')
+
+      nn.get('#re-run').on('click', () => {
+        nn.get('#static-10print').src = './10print-static.html'
+      })
+
+      const de2 = new JSDemoEditor({ parent: '#de2', dataUrl: 'variations.json' })
+      const de3 = new JSDemoEditor({ parent: '#de3', dataUrl: 'basic-copy.json' })
 
     </script>
   </body>

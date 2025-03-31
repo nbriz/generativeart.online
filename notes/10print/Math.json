@@ -1,0 +1,29 @@
+{
+  "Math": [
+    {
+      "name": "the Math Object",
+      "code": "<script>\n\nlog(typeof Math)\n\n</script>",
+      "text": "There's a variable built into the JavaScript language called <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math\" target=\"_blank\">Math</a>. The \"type\" of this variable is <code>object</code> which is the only datatype not discussed in the Core Concepts examples linked above. It's not a simple data-type like numbers or strings, instead it's a data structure, a way of collecting all the previously mentioned types of data into a single \"object\"."
+    },
+    {
+      "name": "Math properties",
+      "code": "<script>\n  \nconst p1 = Math.PI\nlog(p1)\n  \nconst p2 = Math['PI']\nlog(p2)\n\n</script>",
+      "text": "To access an object's internal variables (referred to as \"properties\"), you can use one of two notation styles. The first, and most common, is the <code>.</code> syntax, the second is the <code>[]</code> syntax. The latter has the advantage of passing strings (which might be stored in another variable for example), where as the former has the advantage of being shorter and easier to read (and thus more common)."
+    },
+    {
+      "name": "Math methods",
+      "code": "<script>\n  \nconst a = Math.sqrt(25)\nlog(`the square root of 25 is ${a}`)\n  \nconst b = Math.pow(2, 8)\nlog(`2 to the power of 8 is ${b}`)\n\n</script>",
+      "text": "In addition to properties (built-in variables) objects can also have methods (built-in functions). There are many more than these, to see the full list visit the <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math\" target=\"_blank\">Math</a> documentation page on the Mozilla Developer Network (mdn)."
+    },
+    {
+      "name": "Math.random()",
+      "code": "<script>\n  \nconst a = Math.random()\nlog(a)\n  \nconst b = Math.random() * 100\nlog(b)\n  \nconst c = Math.random() * 100 + 2000\nlog(c)\n\n</script>",
+      "text": "One of the most important methods for the purposes of generative art is <code>Math.random()</code>. This method always returns a random number between 0 and 1. We can get a larger range by scaling this value, multiplying by the max value of our desired range. We can also shift the range by adding or subtracting."
+    },
+    {
+      "name": "Math.round()",
+      "code": "<script>\n  \nconst ran = Math.random() * 100\nlog(`initial random number is: ${ran}`)\n  \nconst a = Math.round(ran)\nlog(`the rounded value is: ${a}`)\n  \nconst b = Math.floor(ran)\nlog(`rounded down would be: ${b}`)\n  \nconst c = Math.ceil(ran)\nlog(`rounded up would be: ${c}`)\n\n</script>",
+      "text": "Keep in mind that <code>Math.random()</code> always returns a decimal (or float) value, if you want an integer (or whole number) you'll need to round it. Thankfully there are also methods in the Math object for doing that."
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "objects": [
+    {
+      "name": "creating an object",
+      "code": "<script>\n\nconst a = {}\nconst b = new Object()\n\nlog(typeof a)\nlog(typeof b)\n\n</script>",
+      "text": "There's actually a couple of ways to create a new object in JavaScript, the most common is to assign an empty set of curly braces <code>{}</code> to a variable. But we can also create a new \"instance\" of an object using the constructor method like <code>new Object</code>, which is less common when creating basic objects like these, instead that's used to create instances of more complex types of objects (some of which we'll discuss later)."
+    },
+    {
+      "name": "object properties",
+      "code": "<script>\n\nconst a = { name: 'Nick', location: 'Chicago', height: 5.9 }\n\n// dot syntax\nlog( a.name )\n\n// bracket syntax\nlog( a['name'] )\n\n// bracket syntax using a variable\nconst prop = 'name'\nlog( a[prop] )\n  \n</script>",
+      "text": "Typically we create objects with some data in them to start. Objects are essentially a series of key/value pairs. These internal variables are refered to as \"properties\". An object's property has a name or \"key\" followed by a colon <code>:</code> and then the value of that property. We separate each property (the key/value pairs) with commas <code>,</code>.<br><br>There are a couple of different ways to reference a specific property within an object, the first is using the dot <code>.</code> syntax, the other is by passing the name of the property as a string into a pari of square brackets <code>[]</code>. The dot syntax is much more common, but the square brackets have their advantage (say for example you have a properties name stored in a changing variable elsewhere in your code, you could place that variable between the square brackets to access that particular value)."
+    },
+    {
+      "name": "reassigning properties",
+      "code": "<script>\n\nconst person = { name: 'Nick', location: 'Chicago', height: 5.9 }\n\n// before reassigning\nlog(`my name is ${person.name}`)\n\nperson.name = 'Nicholas'\n\n// after reassigning\nlog(`my name is ${person.name}`)\n\ndelete person.name\n\n// after deleting it\nlog(`my name is ${person.name}`)\n\n// uncomment the line below to log the full object\n// log(person)\n  \n</script>",
+      "text": "We'll stick to the dot syntax for the rest of these examples as they are more common. You can reassign any of these properties like we would any other variable. We can remove a particular property from an object using the <code>delete</code> keyword."
+    },
+    {
+      "name": "larger objects",
+      "code": "<script>\n\nconst person = {\n  firstName: 'Nick',\n  lastName: 'Briz',\n  height: 5.9,\n  sleeping: false,\n  location: {\n    birth: 'Miami',\n    current: 'Chicago'\n  }\n}\n\nlog(`I was born in ${person.location.birth}`)\n  \n</script>" ,
+      "text": "When an object gets very long, it's best to write the values into multiple lines. An object's properties can contain any kind of data, including other objects (like the \"city\" property in this example), We can access nested properties with the dot syntax as shown in this example."
+    },
+    {
+      "name": "object methods",
+      "code": "<script>\n\nconst person = {\n  firstName: 'Nick',\n  lastName: 'Briz',\n  height: 5.9,\n  sleeping: false,\n  location: {\n    birth: 'Miami',\n    current: 'Chicago'\n  },\n  sing: function () {\n    log('la la la la la')\n  }\n}\n\nperson.sing() // run the person's sing \"method\"\n  \n</script>",
+      "text": "Again, you can store any type of data inside an object, including a function. When there's a function inside of an object we typically refer to it as a \"method\", this is what we call a function that belongs to an object rather than being it's own global variable."
+    }
+  ]
+}

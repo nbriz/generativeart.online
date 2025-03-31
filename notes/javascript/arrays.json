@@ -1,0 +1,29 @@
+{
+  "objects": [
+    {
+      "name": "creating arrays",
+      "code": "<script>\n\nconst a = []\nconst b = new Array()\n\n// arrays are technically \"objects\"\nlog(typeof a)\nlog(typeof b)\n\n// but what type of object?\nlog(a instanceof Array)\nlog(b instanceof Array)\n  \n</script>",
+      "text": "Like basic objects, an array can be created a couple of different ways, either by assigning a set of empty square brackets <code>[]</code> to a variable, or using the Array constructor <code>new Array()</code>. If we check to see what type of data is stored in these variables it will return \"object\", this is because anything we can create a <code>new</code> instance of is essentially some kind of object. But these special kind of objects (of which Arrays are only one) have their own built in properties and methods that we can use just by creating them. Another operator, similar to <code>typeof</code> which will tell us what <i>kind of object</i> a particular variable might be is the <code>instanceof</code> keyword."
+    },
+    {
+      "name": "modifying arrays",
+      "code": "<script>\n\nconst a = ['nick', 'tina', 'andy']\nconst b = new Array('nick', 'tina', 'andy')\n\nlog( a[0] )\nlog( b[1] )\n\na[0] = 'frank'\n\nlog( a )\n\n</script>",
+      "text": "Like objects, we can create arrays with data in them to start. But unlike objects, the data aren't stored in key/value pairs, instead array's are simply a list of comma separated values. To access a piece of data we must use the bracket <code>[]</code> syntax, passing in the <i>index</i> number (or position in the list) of the item we want, starting from 0. We can reassign a particular item in the array using this way as well.<br><br>It's also worth noting, that although in this example the values in the array are all strings, you can technically store any combination of values (of any data type) in arrays, for example <code>const c = [1, 'hi', true]</code>"
+    },
+    {
+      "name": "array methods",
+      "code": "<script>\n\nconst names = ['nick', 'tina', 'andy']\n\n// adding a couple new items\nnames.push('frank')\nnames.push('ana')\n\nlog(names)\n\n// removing the last item\nnames.pop()\n\nlog(names)\n\n</script>",
+      "text": "Arrays have their own bult-in <i>methods</i> (which is what we call functions built-in to some object). There are loads which you can learn about in the <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#instance_methods\" target=\"_blank\">MDN documentation page</a>, in these examples we'll just cover the basic ones. To add a new item to the end of an array's list we use the <code>push()</code> method, to remove an item from the end of the list we use the <code>pop()</code> method."
+    },
+    {
+      "name": "more array methods",
+      "code": "<script>\n\nconst names = ['nick', 'tina', 'andy']\n\n// removing an item from the start of the list\nnames.shift()\n\nlog(names)\n\n// adding a a new item to the start of the list\nnames.unshift('frank')\n\nlog(names)\n\n</script>",
+      "text": "We can also add and remove items from the start of the list. To add a new item to the start of an array's list we use the <code>unshift()</code> method, to remove an item from the start of the list we use the <code>shift()</code> method."
+    },
+    {
+      "name": "iterating over an array",
+      "code": "<script>\n\nconst names = ['nick', 'tina', 'andy']\n\nfor (let i = 0; i < names.length; i++) {\n  log( names[i] )\n}\n\n</script>",
+      "text": "We can use a <code>for</code> loop to iterate over an array. Array's have a property called <code>length</code> which returns the number of items currently in the array. We can use this to define the loops <i>condition</i> as <code>i < names.length</code>, this way we know our loop will only ever loop as many times as there are items in the array. We can then use the <code>i</code> variable as our index value for the items we want to log from the array."
+    }
+  ]
+}
