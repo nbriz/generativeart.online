@@ -183,7 +183,7 @@ a.button:hover {
 }
 
 .comming-soon {
-  opacity: 0.5;
+  opacity: 0.15;
 }
 
 h1 {
@@ -331,6 +331,19 @@ article.center a {
 
 article.center a:hover {
   border-bottom: none;
+}
+
+a[href^="https://developer.mozilla.org"]::after {
+  content: "";
+  display: inline-block;
+  position: relative;
+  bottom: -0.05em;
+  margin-left: 0.3em;
+  margin-right: 0.2em;
+  background-image: url("/images/document.svg");
+  width: 0.65em;
+  height: 0.8em;
+  background-size: 100%;
 }
 
 .flex {

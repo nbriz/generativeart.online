@@ -5,6 +5,10 @@ function animateFontWave (el, fontFamilies) {
   el.textContent = ''
   const spans = []
 
+  el.style.display = 'flex'
+  el.style.alignItems = 'center'
+  el.style.justifyContent = 'center'
+
   for (let i = 0; i < text.length; i++) {
     const span = document.createElement('span')
     span.textContent = text[i]

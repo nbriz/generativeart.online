@@ -89,7 +89,7 @@
         </p>
 
         <p>
-          <code>window</code>, the window object gives us access to different parts of our browser window, both data about it, but also functions to control parts of it. Below are just some of the properties (internal variables) and methods (internatl functions) of the window object.
+          <code>window</code>, the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window" target="_blank">window object</a> gives us access to different parts of our browser window, both data about it, but also functions to control parts of it. Below are just some of the properties (internal variables) and methods (internatl functions) of the window object.
         </p>
         <ul>
           <li>
@@ -104,7 +104,7 @@
         </ul>
 
         <p>
-          <code>document</code> the document object gives us access to every part of our HTML document, meaning any/all HTML elements (the code which structures an HTML page) and their CSS values (the code that changes the look/presentation of a web page). This is part of one of the most fundamental web API's called the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction" target="_blank">DOM</a> (or document object model). Later we'll use libraries which will make it easier for us to work with this API, but for now we'll use just a few parts of it directly.
+          <code>document</code> the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document" target="_blank">document object</a> gives us access to every part of our HTML document, meaning any/all HTML elements (the code which structures an HTML page) and their CSS values (the code that changes the look/presentation of a web page). This is part of one of the most fundamental web API's called the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction" target="_blank">DOM</a> (or document object model). Later we'll use libraries which will make it easier for us to work with this API, but for now we'll use just a few parts of it directly.
         </p>
         <ul>
           <li>
@@ -137,7 +137,7 @@
         </div>
 
         <p>
-          As mentioned in the Web API section above, as we add more content to our page in an animation loop, eventually the text will start to go off screen, the user will need to scroll the page to see the bottom of the text. To automate this scrolling we can use the <code>window.scrollTo()</code>, passing in <code>0</code> as its first argument (aassuming we don't have a horizontal scroll bar) and passing in <code>document.body.offsetHeight</code> as it's second argument. The body's offsetHeight is a property which updates every time the body's size changes (say for example because we've added more text into it) to match the current height of the body element in pixels. If we pass this value as the second argument to our scrollTo method then it essentially scrolls to the bottom of the page. Here's a <a href=\"https://netnet.studio/?layout=dock-left#code/eJyNUEFOwzAQvOcVq1zqCGSHAxeUROKCuHDrB0yyqa06drA3lAr1DXyof+ILbE0QEicka71azezMbOOs30NE15aJjg6TQaQSTMSxLQ3RnO6U2qHHqMm+oo4kg2cOqj4ldVPP0XqS3Jdd0TyH4dg1Kn9Fk/poZ+oKAH7j4nuywYP2dtKEICp45zmw9suCie7znBEPUU8oVliVIbnYEcSTJiOj9kOYmN9BLW9/1gAMoV8mZDcXfWk9e97iG8FVC5vP88cmw06ALuE/OeeV82viYFn7IDlacG4bRH39Z0UYx4T0iHZn6GL+9B1/jSOqomjUepgv/1B4vQ==\" target=\"_blank\">netnet example with auto-scrolling</a>.
+          As mentioned in the Web API section above, as we add more content to our page in an animation loop, eventually the text will start to go off screen, the user will need to scroll the page to see the bottom of the text. To automate this scrolling we can use the <code>window.scrollTo()</code>, passing in <code>0</code> as its first argument (aassuming we don't have a horizontal scroll bar) and passing in <code>document.body.offsetHeight</code> as it's second argument. The body's offsetHeight is a property which updates every time the body's size changes (say for example because we've added more text into it) to match the current height of the body element in pixels. If we pass this value as the second argument to our scrollTo method then it essentially scrolls to the bottom of the page. Here's a <a href="https://netnet.studio/?layout=dock-left#code/eJyNUEFOwzAQvOcVq1zqCGSHAxeUROKCuHDrB0yyqa06drA3lAr1DXyof+ILbE0QEicka71azezMbOOs30NE15aJjg6TQaQSTMSxLQ3RnO6U2qHHqMm+oo4kg2cOqj4ldVPP0XqS3Jdd0TyH4dg1Kn9Fk/poZ+oKAH7j4nuywYP2dtKEICp45zmw9suCie7znBEPUU8oVliVIbnYEcSTJiOj9kOYmN9BLW9/1gAMoV8mZDcXfWk9e97iG8FVC5vP88cmw06ALuE/OeeV82viYFn7IDlacG4bRH39Z0UYx4T0iHZn6GL+9B1/jSOqomjUepgv/1B4vQ==" target="_blank">netnet example with auto-scrolling</a>.
         </p>
 
         <h2>10 PRINT in your own style</h2>
@@ -158,7 +158,7 @@
     <section>
       <div class="content">
         <p>
-          The examples above are each a more compact version of the one that came before it. We start with a version that values clarity over efficiency and we end with a version that prioritizes tightly written efficient code. But there are countless of other values we might prioritize. For example check out this incredibly tiny, creative and demoscene inspired implementation by <a href=\"http://www.p01.org/64b_thread_js\" target=\"_blank\">Mathieu 'p01' Henri</a>.
+          The examples above are each a more compact version of the one that came before it. We start with a version that values clarity over efficiency and we end with a version that prioritizes tightly written efficient code. But there are countless of other values we might prioritize. For example check out this incredibly tiny, creative and demoscene inspired implementation by <a href="http://www.p01.org/64b_thread_js" target="_blank">Mathieu 'p01' Henri</a>.
         </p>
       </div>
     </section>
@@ -213,7 +213,7 @@
     <script src="/js/utils.js"></script>
     <script>
 
-      animateFontWave(nn.get('h1'), ['Smooch Sans', 'Geo', 'DotGothic16', 'PlaywriteHU'])
+      // animateFontWave(nn.get('h1'), ['Smooch Sans', 'Geo', 'DotGothic16', 'PlaywriteHU'])
 
       Array.from(document.querySelectorAll('a'))
         .filter(a => a.className !== 'button')
@@ -223,7 +223,7 @@
 
       new Netitor({
         ele: '#template',
-        code: "<link rel=\"stylesheet\" href=\"https://generativeart.online/css/10print.css\">\n<body><\/body>\n<script>\n\n// all our JavaScript will go here...\n\n<\/script>",
+        code: "<link rel="stylesheet" href="https://generativeart.online/css/10print.css">\n<body><\/body>\n<script>\n\n// all our JavaScript will go here...\n\n<\/script>",
         lint: false,
         hint: false,
         readOnly: false,
