@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Generative Art Online</title>
+    <meta name="author" content="Nick Briz">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png"  href="/images/hotairballoon.gif">
+    <!-- TODO: social media stuff -->
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+
+      .example-editor > nav {
+        margin: 10px;
+      }
+      .example-editor > div {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 3fr 1fr;
+        height: 30vh;
+      }
+
+      .example-editor > div > .editor {
+        overflow-y: scroll;
+        background: var(--netizen-background);
+      }
+
+      .example-editor > div > .render {
+        grid-row: 1 / 3;
+        grid-column: 2 / 2;
+      }
+    </style>
+  </head>
+  <body>
+
+    <section id="introduction">
+      <div class="content">
+        <h1>Interactivity</h1>
+
+        <h3>using the <a href="https://github.com/netizenorg/netnet-standard-library" target="_blank">nn.min.js</a> library</h3>
+        <ul>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJw9TUsKwjAU3OcUxU3aQvP2EnsKL5DkhTYSX8pLFOrWS7jzih7BVFEYmA/MjM6Ow1KazO6wm0tZ8h7AIalTRh/DlRX5AtMMlcLNU+JpkxVDLobQMA4xWDa8gr2EiECkzmHr70YN3/VRaJtwrf5DQv9i6JspJmtiQ9T0IEQtO/am+FbmxZDslEtUPJVWvp6Pe/UG8ZhauQ3JToj/xRtw0EXs" target="_blank">Creating a span/text element</a>
+          </li>
+        </ul>
+
+        <h3>load event</h3>
+        <ul>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJxNkM9KAzEQxu95iqGX7JZ2c5e2N9/Am3jIbmI3JZ0sSSpUEfwvCuLRrRcP6sGb+GQ+gml3rELgN9+QL5n5RqHypokQfDXu1TE2YUeISmExC0pbc+QL1FFMa5FgjjU6P12X6QxDlKikV0NrSi/9UpQLY5VALOZm7e9NRqJ7fcJGv4Xow9S6UlpAhL5g7HCBVTQOofJaRr07dzMDWQ4nDKByGCLUsmmWXX8M+6kNwL9f2jM+2PCSeEU8J94Qrzu+vZK+6LgitnfEe+Jtx/dP0g/k/yDdEp+Iz8QV+b74YC0feZr0YLuEpvlTOj7F5ubZ31p5upX6XQAZD41EnhfJFzXGbOPMC6nUnst46dSS5+w0WVjyOMy4dVKlv//llzO2jf4HUuKutQ==" target="_blank">Random emoji from array</a>
+          </li>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJxlkb9OwzAQxnc/xamLkyqNmau2G2/Ahhic2E1cpXZku6BSVeI/Agkx0rIwAAMb4sl4BJzmSpGQovzuO9/Z/s4Dl1tVe3A2H3ZK72vXZywXOp04ISt1bFMtPStKFqBOpTa2aMLw9ZznWnArepXKLLdzls1UJZjW6VQ1/Z3RgLW7j8hgG7AuFJXJeAVaQ5cRMp7p3CujIbeSe7k/NRMFUQwLApAb7TyUvK7nbX4IhyENQL9fVmc02fASeYU8R94gr1u+vaK+aLlGru6Q98jblu+fqB+w/wP1CvmEfEause+LJo18pOGmRyT8wkBabxF1Ndc03lhIgzkvtY/Csg2DNNNoZzTe1jgXLTYhQG2cagbVB8ozZ6qZlzTBtUqOfR92O+0ljThRwpfxtsab+n9JKVVR+va0JR7KhTgwEc2MmIe7LkOShEqjI1oZLoLLPy8VE/L7yD9lccmy" target="_blank">Randomly placed emoji</a>
+          </li>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJxlkr9OwzAQxvc8xamLk6qtmau2EgM8ARticGI3cZXYwXZAparEfwQSYqRlYQAGNsST8Qg4zZWCkCz97uzvbH9nD2xiZOnAmmTYypwrbZ/ShKvexHKRyyPTU8LRNKMe8kQobdI69KNrHVOcGd7NZWyYmdK4kjmnSvUKWde3RgPa7D4KBuuAtiHNdcxyUAraNAjGlUqc1AoSI5gTO4WeSAgjmAUARhxWwrptJQtWa3YNK0T4SxgFXpVoZR1krCynTfUQ9v00APl6XpySzooXyEvkGfIaedXw9QXz84ZL5OIWeYe8afj2gfk91r9jvkA+Ip+QS6z7JJ06fSD+pge1C9+2xlhIbMkUiVYWet6cE8qFftn4dusi3BiN1hprw9kqBCi1lXWr+kBYbHVeOUE6uJaLsevDZqetTp0cS+6yaK1xuvwvyYRMM9ecNsdDGed7OiSx5lN/17mfDLxSq5DkmnHv8u8z/XyFb49l11M=" target="_blank">Random emoji animation</a>
+          </li>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJxVks+O0zAQxu95ilEuTlZtfK/aSkjAE3AAIQ5OPE28OONgO7sqq0r8RyAhjnS5cAAO3BBPxiNgb0wDkq1fZjyf7W+ctVb0GCzqTe78XqPrEH0OncXdJu+8H9yK8xYJrfDqAoX1laGgQd44x6UVl4rapRiGKsT5Nlu7xqrBg7PNrG8kVedOolYXtiL0vO14gHqKZGwbP8NYOi9ICiuXWtVW2D2vR6UlJ6p6FfX5ds2n3U/HbDN+Bq02tdBABGc8y3YjNV4Zgsai8HinN+cKihKuMgg2n4zo/C1SvYg1d63osfinsMxCVWPIeeiCp/2k3sDDkAZgv78cn7HFDV8mvkp8nvgm8fXEb19T/GLideLxXeL7xLcTv/9M8Yek/5HiY+KnxM+J10n3iy1i+JGFmz4KMwy1gyI2z4wOb5tLmnoAoVHVZLlgbhDEypssQBWMeyQfRTY8hemLuQnlXOVccZUCgME4FVu5AiZqZ/TokS1Oqxp3fgV/L3F/XvBmmPMPUvpwOkNIec8UrDZyz8ro5ZAdoqmgMFQwbYQMvv9/uNPP8QfVhfYx" target="_blank">Random emoji drawer (with animation loop)</a>
+          </li>
+        </ul>
+
+        <h3>mouse events</h3>
+        <ul>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJxNkcuu0zAQhvd5ilE2To7aeF+1XcEbsAAhFk48TXxwx5E97VE5qsQdgYRY0sOGBbBgh3gyHgGnMQ2SrS//OL/n4qU19BQ82lUe+GAxdIicQ+dxs8o75j4spGyR0Cs2e1SeK0fRg7IJQWqvbgy1c9X3VdT5OluGxpueIfhm8jeaquug0Zq9rwhZtp2MMM+QnG+Hz7jmgRVp5fXcmtorf5D1zlgtiaqtGfz5einH2y9p1pm8gta6WlkggiuZZZsdNWwcQeNRMd7fumsDRQm3GUDjKDB0sdrDGF/B4xgGEH++np6L2ZmvEl8nvkh8m/hm5PdvSb8ceZd4ep/4IfHdyB+/kv6Y/D+TPiV+TvySeJd8v8VskJ9ErPRJ3HGZDRTDWNwu4D13Q2N3EEdQjV0XIvSKRHmOAlSxcUbiweTjkN22mIZQTn+FUNwmAdC7YIZBLkCoOji7YxSzy6nFDS/gXxEPpwN2/RR/lMLHSw6l9QNXiNrpgyiHXo7ZcWgqOhwV4uzaun1M9f8Dlll2efu/CS3q0A==" target="_blank">Random emoji drawer (with mouse move event)</a>
+          </li>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJxdks2O0zAQx+95ilEuTrZpvBy4lLY33oAb4uAk08a7rh3Z06VhVYlvBBLiuF0uHIADN8ST8Qg4tfshJEe/+XtmnJmxp0rqa7CoZqmjXqFrESmF1uJilrZEnZtwvkSNVpC8QWGpNNrnIK+d440Vz6VejkXXlV6n82Tqais7AmfrU37d6PLKNajkjS01El+23EO+QG3scjD9GjsSuhG2GStZWWF7Xq2larjW5UoO+el8ysPpx9/ME34BS2UqoUBruOBJsljrmqTRUFsUhI9X5kpCtimgz+E2AaiNdgStr7gPvhk89dsA7O+33UtW7Pkm8m3kq8j3ke8Cf3yP+nXgfeTuY+SnyA+BP39H/Tnm/4p6F3kX+TXyPub9YcUgvzBf6TP/+eXHEjrMmOuEZvm+idK3R6gp827rx2lW2anV/BDjXHa7NwE64+QwrgkwUTmj1oSsiD6FC5rA5iDJdBPo92IbTxJN88RkrDJNz3JItkNpxwtwtSBCG28Aw/gXxkKmkGAY/OUjjyk8GDgahYDDDW28/9QElhsYw8PLAgZr5K38LLb/L7Y/xvbnsacHEd6D392Gmn2y0Rmrlayv/cjPK8+T5Pjs/gH+iwwM" target="_blank">scatter emoji drawer (with mouse click event)</a>
+          </li>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJx1U02P0zAQvedXjHpxsm3j5cCltD3BgRtC3BAHN560Xlw7sp1uw6oS32iREEe6XDgAB26IX8ZPwKnddlOJKNKbsd9z/GYmYynUczAoJz3rGol2geh6sDBYTnoL5yo7onSOCg1zYoXMuFwrr0FaWEu5YZdCzYesqnKf96bJ2BZGVA6sKY76gqv8wnKUYmVyhY7OF9SDeIFKm3kb+ndoHVOcGT6UYmaYaeisFpJTpfKlaPW96ZiG0w+fmSb0DOZSz5gEpeCMJolEB0tdW3xo7+tLBRMombSYJGWtCie0CruPDFqLHNIMrhI4UThTY7LxyyeixyiR/VcVvtOVFQaZwwdLfSEgXQ+gCcJCK+tg4cvWhL0JPPXLAOTvt+1LMtjhm4hvI76K+D7iu4A/vsf8dcCbiNvriB8jfgj483fMP0X9r5hvI36J+DXiTdT9IYM2/Uz8TZ+1LsHXPA8OU2Irpki2M5F7ew6VS/228T3Vy/RoNdtzrE2vdiFApa1oyzUCwmZWy9ohGcQ9iaUbwXqfOl2NoNklm3gS4/yJTslM84ZkcNIAWzDn0MQOYCi/KCG91buw6J9SG0jbAWobcn7PwxjutNjvHzixd2vPONrDfA1DuHs+gDbq+yjrsJsTdnNgN132cVzCtASjbak3wZg/RauU7G7P/d19b27Pc9YhLPXKF7JTgy6hrvb6/WhnSXL4y/4BGzJZuw==" target="_blank">scatter emoji drawer (mousedown, mousemove, mouseup)</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="examples">
+
+    </section>
+
+    <section style="height: 100vh"></section>
+
+    <script src="/js/libs/nn.min.js"></script>
+    <script src="/js/libs/netitor.min.js"></script>
+    <script src="/js/RainbowText.js"></script>
+    <script src="/js/JSDemoEditor.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="examples.js"></script>
+    <script>
+
+      // animateFontWave(nn.get('h1'), ['Smooch Sans', 'Geo', 'DotGothic16', 'PlaywriteHU'])
+
+      Array.from(document.querySelectorAll('a'))
+        .filter(a => a.className !== 'button')
+        .forEach(a => RainbowText.hoverShimmer(a))
+
+    </script>
+  </body>
+</html>
