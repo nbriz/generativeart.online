@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Generative Art Online</title>
+    <meta name="author" content="Nick Briz">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png"  href="/images/hotairballoon.gif">
+    <!-- TODO: social media stuff -->
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+
+    </style>
+  </head>
+  <body>
+
+    <section id="introduction">
+      <div class="content">
+        <h1>context aware <br>code + concept</h1>
+
+        <p>
+          One of the most exciting things about the Web as a platform is its broad reach and adaptability. We've already discussed how around half the planet has access to the Internet, and how practically all (user facing) devices connected to the Internet have some sort of Web browser installed by default. This means all anyone needs to do to interact with your art is click on a link to "visit" your work. For this reason, we tend to think of our audience as individuals interacting with our work on small personal screens like phones or laptops, but these screens can also be much larger and site-specific, say for example in the context of an art installation in a museum or gallery. However, for our piece to be intentionally created not only for small personal screens but also large public screens requires certain considerations.
+        </p>
+
+        <p>
+          In web design there's this concept of adaptive or responsive design, which refers to coding websites in such a way so that they look good on different screen sizes. Responsive web design aims to keep the overall look and content of a webpage consistent, while adjusting layout and details to fit different screen sizes and devices. But this isn't the only way the code driving our pieces can become contextually aware. Take the piece <a href="https://www.evan-roth.com/~/works/a-tribute-to-heather-series" target="_blank" style="">A Tribute To Heather</a> (2013) by <a href="https://www.evan-roth.com/" target="_blank">Evan Roth</a>.
+        </p><br><br>
+
+        <img src="images/blimp-720x480.gif" alt="A Tribute To Heather - Blimp" style="margin: 0 auto; display: inherit;">
+        <div class="caption">
+          <a href="https://blimp-on-deepskyblue.com" target="_blank">blimp-on-deepskyblue.com</a> (2013) by Evan Roth, one of ten different compositions for the series "A Tribute To Heather"
+        </div><br><br>
+
+        <p>
+          Evan's pieces (ten in the series) are generated from code, algorithmic compositions which take as part of their inputs/variables the screen's width and height, in this way they are "responsive" to the specific screen rendering the composition (the details of how this is done is explained in the  <a href="/notes/2d" target="_blank">2D Algorithmic Compositions</a> notes). This is important because Evan designed this piece not only to be viewed on small mobile devices and larger laptop screens, but also even more specifically for a large projection art installation at the Museum of Moving Image which commissioned the creation of the work.
+        </p><br><br>
+
+        <img src="images/evan-mobile.jpg" alt="A Tribute To Heather - Blimp" style="margin: 0 auto; display: inherit;">
+        <div class="caption">
+          <a href="https://blimp-on-deepskyblue.com" target="_blank">blimp-on-deepskyblue.com</a> (2013) by Evan Roth viewed on a mobile phone.
+        </div><br><br>
+
+        <p>
+          While adapting to different screen sizes is the most common example of what it means for a piece of online generative art to be aware of it's contexts, it is by no means the only one. For example, this series appears slightly differently each time it is displayed because the gifs always load at slightly different speeds (more on that later) and so part of what is required for the audience to fully appreciate the piece is the act of refreshing the page. This is something we can easily do on our personally devices, but there is no "refresh" button in the museum where the piece was installed. For this reason, Evan included some extra logic in his algorithm which uses code placed in the browser's URL to render a museum-ready variation of the piece. The Web provides an API for updating and interacting with URLs (the web addresses) which includes what are called <a href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams" target="_blank">Search Parameters</a> aka query strings, these allow us to define variables in the URL itself, which means we can change details of our composition simply by changing the variables in our URLs (more on that in the  <a href="/notes/2d" target="_blank">2D Algorithmic Compositions</a> notes). In Evan's case he has an optional URL parameter called <code>sec</code> which museum's can use to set a delay (a number in seconds) for when the piece should automatically click that refresh button. A simple solution to what otherwise may have required creating custom hardware or other interfaces for the museum context.
+        </p><br><br>
+
+        <img src="images/evan-install.jpg" alt="A Tribute To Heather - Blimp" style="margin: 0 auto; display: inherit;">
+        <div class="caption">
+          <a href="https://blimp-on-deepskyblue.com" target="_blank">blimp-on-deepskyblue.com</a> (2013) by Evan Roth installed at the Museum of Moving Image.
+        </div>
+
+        <blockquote cite="https://www.goodreads.com/book/show/23492802-magic-and-loss">
+          <p>A Tribute to Heather consists of ten compositions created by embedding a single animated GIF in a website hundreds of times to produce a rich tapestry of color and motion. The URL of each composition serves as its title, describing the repeated animation and the background color. Because file load times vary every time a One Gif Composition website is accessed, each viewing is unique.</p>
+          <p>The animations in A Tribute to Heather were sourced from Heathers Animations, a sprawling hand-coded archive of 90s-era animated GIFs and background images operated by its elusive namesake, Heather. Founded in 1999, the site maintains the ethos of the early web, eschewing author attribution and copyright concerns to offer a wandering taxonomy of thousands of downloadable images." </p>
+          <cite>
+            <a href="https://movingimage.us/" target="_blank">Museum of Moving Image</a>
+          </cite>
+        </blockquote>
+
+        <p>
+          While this piece is a great example of simple technical techniques which can be used to make our compositions more context aware, the subject matter of the work is also a great example of a <i>conceptually</i> context aware piece. As the didactic text from the Museum of Moving Image (quoted above) makes clear, Evan's piece is also very much <i>about</i> what it means to create content online in more ways than one. First, as other works we've looked at this quarter, the URL is not just a technical tool (a way to access the site and change it's parameters as explained above) but also the title of the work. The titles of each piece in the series also follow their own sort of "algorithm" which is: [name of gif]-on-[name of background color].com, in this way the title follows a classic art convention of calling it out the materials often seen in museum didactic text (ex: oil on canvas) except here done to call attention to the medium of the web in a couple of ways. First, the background colors are all based on colors which have official <a href="https://en.wikipedia.org/wiki/Web_colors#Extended_colors" target="_blank">HTML color names</a> (rather than colors which require specific color codes), reminding us that the "web" is our medium (not paper or canvas).
+        </p><br><br>
+
+        <iframe width="800" height="450" src="https://www.youtube.com/embed/2LzyRcLJdlg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br><br>
+
+        <p>
+          Secondly, the the name of the gif before the word "-on-" implies that the gif is like pigment on a canvas, they are one of the most fundamental compositional assets native to the medium of the Web since it's inception. The "ethos" of the early web mentioned in the Museum's description of the piece refers to the "<a href="https://netart.rocks/files/digital-folklore.pdf" target="_blank">digital folklore</a>" we discussed in Internet Art and Web Design. For folks who did not take that course make sure to watch the video above for more context. More specifically, Evan's piece is a <i>tribute</i> to one specific site in the early days of the Web, run by it's namesake "Heather" which functioned as a repository of early/popular animated gifs from the time. Unforntuatley heatheranimations.com no longer exists but you can visit an <a href="https://web.archive.org/web/20040123095913/http://heathersanimations.com/" target="_blank" style="">archived version</a> of it on the Internet Archive.
+
+        </p> <br><br>
+
+        <h2>A Tribute to Heather (a case study)</h2>
+
+        <img src="images/hotairballoon-on-whitesmoke.jpg" alt="A Tribute To Heather - balloon" style="margin: 0 auto; display: inherit;">
+        <div class="caption">
+          <a href="https://hotairballoon-on-whitesmoke.com" target="_blank">hotairballoon-on-whitesmoke.com</a> (2013) by Evan Roth.
+        </div><br><br>
+
+
+        <p>For our meditation this week we'll create our own "Tribute to Heather" by selecting a gif and a background color and creating a algorithmic composition using the concepts covered thus far. Consider using a gif from the heathersanimations.com (<a href="https://web.archive.org/web/20040123095913/http://heathersanimations.com/" target="_blank">archived here</a>) as well as an <a href="https://en.wikipedia.org/wiki/Web_colors#HTML_color_names " target="_blank">HTML color</a> that has a name. Refer to the <a href="/notes/2d">2D Algorithmic Composition notes</a> for step by step examples. Make sure that you "publish" your project on the web and submit your published URL to canvas.</p>
+
+
+
+      </div>
+    </section>
+
+    <section style="height: 50vh"></section>
+
+    <script src="/js/libs/nn.min.js"></script>
+    <script src="/js/libs/netitor.min.js"></script>
+    <script src="/js/RainbowText.js"></script>
+    <script src="/js/utils.js"></script>
+    <script>
+
+      // animateFontWave(nn.get('h1'), ['Smooch Sans', 'Geo', 'DotGothic16', 'PlaywriteHU'])
+
+      Array.from(document.querySelectorAll('a'))
+        .filter(a => a.className !== 'button')
+        .forEach(a => RainbowText.hoverShimmer(a))
+
+    </script>
+  </body>
+</html>

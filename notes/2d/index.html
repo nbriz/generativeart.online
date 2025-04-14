@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Generative Art Online</title>
+    <meta name="author" content="Nick Briz">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png"  href="/images/hotairballoon.gif">
+    <!-- TODO: social media stuff -->
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+
+      .example-editor > nav {
+        margin: 10px;
+      }
+      .example-editor > div {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 3fr 1fr;
+        height: 30vh;
+      }
+
+      .example-editor > div > .editor {
+        overflow-y: scroll;
+        background: var(--netizen-background);
+      }
+
+      .example-editor > div > .render {
+        grid-row: 1 / 3;
+        grid-column: 2 / 2;
+      }
+    </style>
+  </head>
+  <body>
+
+    <section id="introduction">
+      <div class="content">
+        <h1>2D Algorithmic Compositions</h1>
+
+        <h3>responsive code (using the <a href="https://github.com/netizenorg/netnet-standard-library" target="_blank">nn.min.js</a> library)</h3>
+        <ul>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJxtUsFq4zAQvecrhlzklMaCPZo0eyjsslAolP0BWZrI2pUlI43TpiX/vmM7jrOlILA8TzPvvZnZZZ1cR5CTflg3RF2upNQmlH+yQe+OqQxI0jaSP+4dQ0x2uPLZZlLBqGS23tVJpZOse+eNDKFs3ZC/3u/kVH2/2s0XAHkH1sdaeQgB7uSKQzqGTPDz1w94ADGLsBgwKXJHVInKGLwLKF2rLGZmIsJ08KfSuoO4Vnh8fnp+GWp0vm+HMJ9DHzS5GCAj9R0UG/jgKMuQ0HdGEULHJaFW+q9NsQ8GKEKrSDezzPVYdg1HlZyqPY7p7NIiFaKO5iQ2pc65+Lgp8hh9TNVF0Hkzpsy0OuFA61WyKDUGdoIG2Aj02QU79kFllktjxmTtjW0x56sz1ICEbzfQaYIadLahT5jnEWWtOrxN3y/Pb55mHi+/WjK+/0cI1RckcysmS4VwrRWTWYCSHXBPeLGq0dL5CozNuvwAdDG7YUAVCFXn6HtCcX9FR/5qFLcEJxWfox4PHHuD7WSFNS4Yxa7iRi3QBVlEKWN+x3meHDxP68PmYiiEj8qI+2mHBnR1Xe1/0Nz5vg==" target="_blank">responsively positioned and sized gif</a>
+          </li>
+          <li>
+            more modular code with <a href="https://netnet.studio/?layout=dock-left#code/eJxdU9uK2zAQfc9XDHmxd3Es6KPJpg8LXQqFhaU/IFsTWa2iMZKcxA377x3ZieMNGFk+c2bmzMXb0HjTRQi+eVm3MXahEqJRrvwTFFpz9KXDKHQr+GX+oSOv05WfTYjSKenVxpraSz+IujdWCefKg0n+691WTNF3q+3tAiCeQVuqpQXn4FmsGGrIhQhvP3/AC2Q3ERodehnNEaWPJTlrHApzkBoDZ4oR/d4OpTb7bI7w+v7r/SPF6Gx/SDA/+9410ZCDxqOM+Gb2kJ8LGAo4FdAW0Hv7BBcmAuspJ1KemYPOnkYQoAwY80vqUJXY8DkbmhDyy/UDYNT2gU6hN05XrMKc0XI4lRUgBJCHdTgQxXY9+3QUTFLHbFkHsn3ErJitJ6NiW7HQGWnR6DZWLHyGLO4ZOMMGTiDg290QqatgYLxN+BW+i5dK/aY8q0kNY6mfD/3iqvsO8kVzNPfhyv9Sei2bv9pT79QrWfLVNIebEDqmSdGJS2yNUuiy1ULIeEzTO/PkOMtY9Kx4Mg2Taar+wWZ5C0MjO1y67+70BTXwBjPr7vH9S0KoHpJMrre9ua5NCnI7eWUXrWNncnlmSaaJj/1L1tX8G/wHRCYAjg==" target="_blank">createGif()</a> function (also image rendering / anti-alias control)
+          </li>
+          <li>
+            using <a href="https://netnet.studio/?layout=dock-left#code/eJxNUtFq6zAMfe9XiL04HWkMewzdXgYbgwuDy/0Bx3Ycb64dbGVtbtm/T67TdGAS5RxZOkfKPsloR4QU5ePdgDimlnOpfPORlHb2KzZeIzcDp5f9r32IJod0dgmFVyKqnbNdFHHm3WSd4t43B5vv3z3tean+tNlfAwB+D8aFTjjwHu75hiAZfEJ4fXuBR2BXEUZ7HQXaLy0iNsE76zW3B2F0ok6IOvZubozt2Vrh+f3P+99cY3TTIcN0+slLtMGDjFqgfrU9VKca5hqONQw1TNFt4UyJQHqaklQxezBsewEBmqSxOucJtTkbvldCplSdlw+AMSSbO7XARJeCm1CzemWPVuHQUtMVGbQ1A7YkYoWc7gk4wQ6OwOHhRmAYW5gJHzK+wDchQql/oWJdUPNF9nfxLtLs5W0C5GMaofpl15Cz5VYxA52QnyaGyavn4EJsl5kurS6PMmsaPE1aHIXFXMkFod7ycipa4/ZX3omyiL/YX7UXai5UmcONu+5pWRM1KrdLWLJrWNosTqlM8BXLKlhdjGZ2s/6BP+5z2v4=" target="_blank">nn.loadImage</a> and <code>async</code> / <code>await</code> to responsively center the gif at its native resolution.
+          </li>
+        </ul>
+        <br><br>
+        <h3>Evan Roth inspired compositions</h3>
+        <ul>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJxdU01r3DAQve+vGHKxd+O1Q2kpuJtcAk0DhUAo9CxLsq1Elowkr9dd8t87WvlrA0KWZp5m3rwZHyw1onVgDb2/qZ1rbZ5llKn0zTIuxdGkirusqjP8iH9caVP5I669dUQxYtheisIQM2RFJyTLlEob4d/fPByyEP1hc5gOANkOKqkLIkEp2GUbNFGtrIOn559wD9FEouKKG+LEkRPjUq2kUDwTDam4xUzOcVPKIa1EGc0RHl9+v7z6GK3sGm/GVXaKOqEVUMOJ40+ihPiUwJBAn0CdQGfkFs4IBOSTBlAciaaKthcjQGq5i89eodyj4WN2UGvj83gBaLUVPlMOESmslp3jUTJ7e8FcnWPS2VJzUdUuRxKzSfISDSfYQw8ZfFkcTrc5DGivvX00L0QIY390HBWaDRfaH6F2YgdFFwWwjq6FeFVuhZWNr66KKQh9r4zuFHvUUps8KDvR0Uevve6x0FowxlW0WdG5bKEf2BzsBumJcD6b1IQ9+wbG2OrtCke5lH+9PojGN+lFKyz06yfMr4tiIyjI9wmlugYZd42yiMKUU6Q5wzX2VfceGCNyDrck2sIO7tLv35aySm0gltyBwVd3P/BzmMLg5fZ2knaFpAFJA3Ikh/c1eGJ0QizFpNdsF/+AfjP6A8UFME33ONyzjMlKrARm4cOMhH2cFhRBqzjyXYqSMCweu5n/4v9ZpDVw" target="_blank" style="">GIF Grid</a>, here's a version with a composition similar to <a href="https://hotairballoon-on-whitesmoke.com/" target="_blank" style="">hotairballoon-on-whitesmoke.com</a>
+          </li>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJxdU21r2zAQ/p5fcXQF26ljlbEx8NJ+KawrbBTKYF+rSLKsTZaCJCf1Qv77TvFLnIKxrbvn7p577rT2zKltAO/Y3VUdwtaXhDBuij+eC612rjAiEFkT/Kh/wlgn4y8+Kx+o4dTxlVYbR11HNq3SnBhTNCrGX92vSZ/9frEefwDIEqS2G6rBGFiSBZqYNT7A49M3uINkJCGFEY4GtRPUhcIarYwgqqFSeKwUgnCV7gqpqmTK8PD84/kl5tjqtolmfKrWsKCsAeYEDeJRVZC+5dDlsM+hzqF1OoMDAgH5FD0oTVQjk+xkBCi8COkhKlTC6/UBA44frg8/aagLhwrYJs2Or3DMgBCorAPURUrhBAdtKVdGjnmY9+lhOABsrVeRWAkJ3Xir2yCSfPLuFQ91iRwnSy2UrEOJnCeTFhUa3mAFeyDw8ewIdltCh/Y62gfzcWqIcv7LpsnG8u7U5bGXivrOsLNg2Ha7hXSmjkQhhqiLZjaU/ZXOtoY/WG1d2Q9ipGN3cVR2j43WinNhksWMzunVjw9nicOje6pCrBbVe4rzTnEzshmOCa1/R30QjTHFSSts9NM7zPeTYgOol+8dyrQNMm4b4xGFJcdMU4VL7IvdR2CKyCnduVAGS7gtvnw+txW3IdUigMOo26/4WY9p8HBzM0o7Q7IeyXrkQA7Pc/DI6A2xDItesj37O/S7wd9TPAPGyzDchUnGfCZWDpPw/Y7072FbUARr0iROKcn7ZYnYxXTp/wP2BUXO" target="_blank">GIF Grid</a>, this time making use of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Location/hash" target="_blank">location API</a>'s URL fragment or "hash" property to "trick" the browser into thinking each of these gifs are different files and thus have them load sporatically (simulating the load times of the original composition from 2013)
+          </li>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJyNVNtu2zAMfc9XEF0BK4ljZxn24qV9CbCiwIYCwz6giiTb2mTJkOSkXpB/H2U5aYJdAQGiycNj8pD22jErWw/Osrub2vvWFXnOuM6+OS6U3NlMC59XdY6X/CG0sVUw8Sycp5pTyxdKbi21fb7tpOK51lkjQ/7N/TqP7PeT9ckAyGdQKbOlCrSGWT5BFzPaeXh4/Ah3kJyKqIQWlnq5E9T6zGgltchlQyvh8E3eC1uqPqtkmZwZNk+fnr4EjlZ1TXDjKTvNvDQamBXUiwdZAnlJoU9hn0KdQmfVFA4IBKwniyCSyKZKpoMTIHPCk0NQqIDn2wMmHN/cHj5TX2cWFTANmR6f4XiGM+fIYXwAaI2T4f0FJHTrjOq8SNJzdC+5rwss5eyphaxqX2BpZ5cSJTpeYAF7yGH1GvCmLaBHfx38o/u1EMr5V0OSreH90MwxKkJdr9lvdNlIy5QAorsmBceoEilYymXnrlSKUqPuKDTdU+mDbspQ/hhmQwJywJXGAlHCg0Tg8gNea0BqNObzE9eJjb0gBmkGOS56GaN9jEZpfgmHXCSYwzASJzWRMIsNTNGILVxlBD4kHTOYcX/LOMkzbg02HsuMZqwpCjRkHP8oNK5R1wK52LYKF2scz9XWbCn7XlnTab4xytgiLvZp7mYXVt/scaNqybnQyWSc++Sq4DhPslqlsMzepfB2uUzDRzb9B+z9f8FWF2xjv9iR0SQJu5Cksd0QnZx/Az8BxZpIKw==" target="_blank" style="">GIF Circles</a>, here's a version with a composition similar to <a href="http://blimp-on-deepskyblue.com/" target="_blank">blimp-on-deepskyblue.com</a>, it makes use of the <a href="https://en.wikipedia.org/wiki/Sine_and_cosine" target="_blank" style="">sine and cosine</a> methods of the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math" target="_blank" style="">Math</a> object in JavaScript.
+          </li>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJyNVNtu2zAMfc9XEF0BK61rZxn24qV9KbCiwIYWQz+gisXY2mQpkOSkXpB/HxXZbrI7YMDKIXlEHh5n4Uor1x6cLa/Pau/XrsjzUujsqxOo5MZmGn1e1Tm95HfUxlbhSM+V81wLbsWVkkvLbZcvW6lErnXWyFB/drPII/vNZDEcAPILqJRZcgVaw0U+Iag02nm4u/8I15AMTVSo0XIvN8itz4xWUmMuG16ho5u8R7tSXVbJVTIy3D58evgSONaqbQJMz6rVpZdGg1OIa2CNm8KOcACLvrUaNG7h0ZpGOmQWnVEbhOsbcOifZIOm9QOaAtVOqXT/E3NpkXu8kytgLyl0KWxTqFNorRquIk1iEktkUyXTAwiQ0SVsF7Qv4Pl8RwX7N+e7z9zXmSVtTcOm+2fYj+mlc2zX/wBYGyfD/QUkfEkdth6TdIxupfB1Qa2MSI2yqn1BrY2QwhUBL3AFW8hh/hrwZl1AR3gd8B5+bYQL8WRYsjSiS44U4a7T5W90uZW2VAhMt00KruSKtLRcyNadqBSXSBulFfItlz7opgwX92HrLGQe8lbGAlPoQVLi7AO9FkDUdLi8HLgGtvKFcojmIMfRLH20i9EozS/hUEsEl3BYiZOaSbiIA0zpEEc4qQh8RNpXlMb9pSKOeLAlezubDeKOqvVmIj1i9/EYW426HSr2f9Sf3NWS449MWJHf+q2dmGnJy2+VNa0Wt0YZW8QvabCD2YRvzWzJaLUUAnUy6e0wOWk4rpnN5ynMsncp0FBp+Kqn/0h7/19p8yO2fl6ayGiWBIskaRw3RCfj/84Pj/xrWw==" target="_blank">GIF Circles</a>, this time using a <code>sleep</code> function, a combination of JavaScript's <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/setTimeout" target="_blank">setTimeout</a> function and the Web's <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Async_JS/Implementing_a_promise-based_API" target="_blank">Promises API</a> to further imitate slow internet speeds and introduce more staggering
+          </li>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJyNVNtunDAQfd+vGKWRgITAZqu+0E1eIjWK1CpSkw9YLzbg1tjINnvpin/vGAObbZK2EgIzl+OZM8demlzzxoLR+c1ZZW1jsjTNqUx+GMoE3+hEMpuWVYof/otJpUu3xOfKWCIp0fRK8LUmep+uWy5oKmVSc5d/drtMPfrtbDkuANILKIVaEwFSwkU6Q1OupLFw//AFbiAYiyiZZJpYvmFE20RJwSVLeU1KZnAna5kuxD4peRFMCHePXx+/O4xGtLUz41O0MrdcScg1I5bd8wLCXQz7GLYxVDG0WkRwwMARBBERArvwCWHA6zKI+gCAxDAbHhxbGazOD5jcfTg/fCO2SjSyoeow6lbQTeG5MeFh+AFolOGulgwCsjZKtJYF8eTdcmqrDMuaLBXjZWUzLHMyCVagYQdXsIUUFkeHVU0Ge7RXf9ixruOuQsC1CSBNwSiwFUHOnp4gr4hEWoFoBkQix5bRAeDYCqH0WYXBWtH9QEf/Qij0cFlCrVrDgG2YtAbLQXjmyOyj8IsjDIM+Rm2YDmIII7i5hZEdF9GzNfIQzJsdRo0c9L9jOd2LAk6hW/sKGUf2zGvnCk8db2yKM912zW513BctlbMcmehiuJ7P5y8q6bzUiNnL/A3B3XGdCwahbOsYTE4Ei0ETylvzrvzIlnDrRCgUoQ9O9KGL7OMKpSEUzALHwPln/CwBoXFxeRlNzXm0fOe13LfnhHHq3Xuv7/WV2+UiwCX0+jZchhwufAMRLnwLJxkOD0GHjFyZv2WM9AzH0c2iL9MvfU2eIM/0u0TjgNvGDd33jg2VeEoHpZ4cwTXJf5ZatZLeKaF05m+M8bA4XRZCbVFsFaeUyWAc8eykYD/PcLGIYZ587NUQu9sr+kfYp/8KW7xAG/rFjpzCnRZQ3X27zjub7tffEzOpUA==" target="_blank">GIF Cirlces</a>, this time with some interactivity, by changing the GIF's css on <code>'mouseover'</code> and <code>'mouseout'</code> events.
+          </li>
+        </ul>
+        <br><br>
+        <h3>Using URL Parameters</h3>
+      </div>
+    </section>
+
+    <br><br>
+    <section id="de1"></section>
+    <br><br>
+
+
+    <section>
+      <div class="content">
+        <ul>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJytVVtr2zAUfs+vOGwF261jpyl7yZK+BFYKHR3d9lQKVWTZ1iZLQZKTeiH/fUeWnSZb2g02MLY4l+9c9J3jqaGaLy0YTWdvSmuXZpKmNJPJN5MxwVc6kcymRZnih/9gUunCHfEZGktkRnQ2FHyhiW7SRc1FlkqZVNz5v7mcph79cjDtDwDpKRRCLYgAKeE0RQk+glm4uv4Qw/z25vYOBVRJY2HFtOF4ghncoxBg074BCp5PIOjzLZhkmli+YkTbREnBJUt5RQpmMClrmc5Fk6BPEHf+VAmlEWEp6ipoZdv4XwMMGyaEWh+NM1eaiP8WCMFkwY4GumGVkvOS57mSXTx8P/gu57WkFvsJVDNi2RXPIXyKoYlhHUMZQ61F1CWGt+iNwoBXRRB1YRLDbLhxbJnA48kGHbZvTzYfiS0TzClTVRhtH2G7M6fGhH2lAEtluIuPeZKFUaK2bFcAwJpntpxgKjtJyXhR2gmmthMJlqPgCYawhhTGzwqrlhNoUF46eSd+ToRk2RcVBguVNW0xW98RYhpJj/RlzjUVDEJZVzEYSgSLQZOM1+agS56leA9IULIm3Lq+CUWya3dlobNs7XKlIXQc52g4eo+fKSA0Hs7Ooh0VPBp9QhuEaduxV0unbbzWt+Y3tfNFgDNor8RwGXI49QVEePAlHHg4PATtPKgyr3n07elYg4X7NP3R5+QbtKPe8UYjjeolhFi7s9vr5ZJoUrl5l2wNX+9uPuMg0PJTKw2FosS5IwudNNrzW6GL900KpGjQbY6OuI7oaDGbQXARPDccNw669UvmfvzgRqrTtYvoF207ZL4yYMKwfdzxy7jnr+KeH8F9AWj0KtDoAKiz6oe5bYpn/8FQLgj9XmhVy2zuN0gL24+VWrmFo9ZuQ/EsY/1KiQaDAz74cQnH4xhGyUUM56NR7JKP/mD27q/MxntoHZ2wIiXDwI1aEHs2Oe1g98f5Cd0/+m4=" target="_blank">GIF Cirlces</a>, this time with the ability to pass different URL parameters to change details of the piece.
+          </li>
+        </ul>
+        <p>
+          It's important to note that within the context of netnet.studio, you can not directly access <a href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams" target="_blank">URL parameters</a>, because there is no URL Address Bar for your sketch (keep in mind that the URL in your browser's address bar isn't for your piece, but for netnet.studio itself). For this reason, in order to test any code you write that uses URL parameters you will first need to "publish" your project so that GitHub creates a URL and rolls up a server for your work. You can then "visit" your published site on the web (using the generated URL) and modify the parameters on that URL.
+        </p>
+      </div>
+    </section>
+
+    <section style="height: 100vh"></section>
+
+    <script src="/js/libs/nn.min.js"></script>
+    <script src="/js/libs/netitor.min.js"></script>
+    <script src="/js/RainbowText.js"></script>
+    <script src="/js/JSDemoEditor.js"></script>
+    <script src="/js/utils.js"></script>
+    <script>
+
+      // animateFontWave(nn.get('h1'), ['Smooch Sans', 'Geo', 'DotGothic16', 'PlaywriteHU'])
+
+      Array.from(document.querySelectorAll('a'))
+        .filter(a => a.className !== 'button')
+        .forEach(a => RainbowText.hoverShimmer(a))
+
+      const de = new JSDemoEditor({ parent: '#de1', dataUrl: 'params.json' })
+
+    </script>
+  </body>
+</html>
