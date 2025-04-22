@@ -1,0 +1,19 @@
+{
+  "geo": [
+    {
+      "name": "nn.askForGPS",
+      "code":"<script>\nlog('waiting for data...')\n\nasync function getTemperature () {\n  const gps = await nn.askForGPS()\n  log(`got GPS data, ${gps.lat}, ${gps.lng}`)\n}\n  \ngetTemperature()  \n</script>",
+      "text": "We'll start by getting our GPS coordinates, this time we'll use the async/await syntax to make sure that the next line of code doesn't run until after we've got our GPS coordinates ready."
+    },
+    {
+      "name": "NWS Point Data",
+      "code": "<script>\nlog('waiting for data...')\n\nasync function getTemperature () {\n  const gps = await nn.askForGPS()\n  log(`got GPS data, ${gps.lat}, ${gps.lng}`)\n  \n  const pointURL = `https://api.weather.gov/points/${gps.lat},${gps.lng}`\n  const nws1 = await fetch(pointURL)\n  const pointData = await nws1.json()\n  log(`got NWS point data data`)\n}\n  \ngetTemperature()  \n</script>",
+      "text": "Now we'll use thet latitude and longitude coordinate we got from the user's GPS to send a request to the National Weather Service asking for the coordinate/point information associated with that location"
+    },
+    {
+      "name": "NWS Forecast Data",
+      "code": "<script>\nlog('waiting for data...')\n\nasync function getTemperature () {\n  const gps = await nn.askForGPS()\n  log(`got GPS data, ${gps.lat}, ${gps.lng}`)\n  \n  const pointURL = `https://api.weather.gov/points/${gps.lat},${gps.lng}`\n  const nws1 = await fetch(pointURL)\n  const pointData = await nws1.json()\n  log(`got NWS point data data`)\n\n  const forecastURL = pointData.properties.forecast\n  const nws2 = await fetch(pointData.properties.forecast)\n  const forecast = await nws2.json()\n  const temp = forecast.properties.periods[0].temperature\n  const unit = forecast.properties.periods[0].temperatureUnit\n  log(`The current temperature is ${temp}${unit}`)\n}\n  \ngetTemperature()  \n</script>",
+      "text": "Lastly, we'll retrieve the 'forecast url' for that location and use it to send a subsequant request to the National Weather Service API for the forecast information in that area"
+    }
+  ]
+}

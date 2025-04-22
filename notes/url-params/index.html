@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Generative Art Online</title>
+    <meta name="author" content="Nick Briz">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png"  href="/images/hotairballoon.gif">
+    <!-- TODO: social media stuff -->
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+
+      .example-editor > nav {
+        margin: 10px;
+      }
+      .example-editor > div {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 3fr 1fr;
+        height: 30vh;
+      }
+
+      .example-editor > div > .editor {
+        overflow-y: scroll;
+        background: var(--netizen-background);
+      }
+
+      .example-editor > div > .render {
+        grid-row: 1 / 3;
+        grid-column: 2 / 2;
+      }
+    </style>
+  </head>
+  <body>
+
+    <section id="introduction">
+      <div class="content">
+        <h1>URL Parameters</h1>
+      </div>
+    </section>
+
+    <br><br>
+    <section id="de1"></section>
+    <br><br>
+
+    <section>
+      <div class="content">
+        <ul>
+          <li>
+            Here is a remix of the <a href="https://netnet.studio/?layout=dock-left#code/eJytVVtr2zAUfs+vOGwF261jpyl7yZK+BFYKHR3d9lQKVWTZ1iZLQZKTeiH/fUeWnSZb2g02MLY4l+9c9J3jqaGaLy0YTWdvSmuXZpKmNJPJN5MxwVc6kcymRZnih/9gUunCHfEZGktkRnQ2FHyhiW7SRc1FlkqZVNz5v7mcph79cjDtDwDpKRRCLYgAKeE0RQk+glm4uv4Qw/z25vYOBVRJY2HFtOF4ghncoxBg074BCp5PIOjzLZhkmli+YkTbREnBJUt5RQpmMClrmc5Fk6BPEHf+VAmlEWEp6ipoZdv4XwMMGyaEWh+NM1eaiP8WCMFkwY4GumGVkvOS57mSXTx8P/gu57WkFvsJVDNi2RXPIXyKoYlhHUMZQ61F1CWGt+iNwoBXRRB1YRLDbLhxbJnA48kGHbZvTzYfiS0TzClTVRhtH2G7M6fGhH2lAEtluIuPeZKFUaK2bFcAwJpntpxgKjtJyXhR2gmmthMJlqPgCYawhhTGzwqrlhNoUF46eSd+ToRk2RcVBguVNW0xW98RYhpJj/RlzjUVDEJZVzEYSgSLQZOM1+agS56leA9IULIm3Lq+CUWya3dlobNs7XKlIXQc52g4eo+fKSA0Hs7Ooh0VPBp9QhuEaduxV0unbbzWt+Y3tfNFgDNor8RwGXI49QVEePAlHHg4PATtPKgyr3n07elYg4X7NP3R5+QbtKPe8UYjjeolhFi7s9vr5ZJoUrl5l2wNX+9uPuMg0PJTKw2FosS5IwudNNrzW6GL900KpGjQbY6OuI7oaDGbQXARPDccNw669UvmfvzgRqrTtYvoF207ZL4yYMKwfdzxy7jnr+KeH8F9AWj0KtDoAKiz6oe5bYpn/8FQLgj9XmhVy2zuN0gL24+VWrmFo9ZuQ/EsY/1KiQaDAz74cQnH4xhGyUUM56NR7JKP/mD27q/MxntoHZ2wIiXDwI1aEHs2Oe1g98f5Cd0/+m4=" target="_blank">GIF Cirlces</a> covered in the <a href="/notes/2d">2D Algorithmic Compositions</a> notes, this time with the ability to pass different URL parameters to change details of the piece.
+          </li>
+        </ul>
+        <p>
+          It's important to note that within the context of netnet.studio, you can not directly access <a href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams" target="_blank">URL parameters</a>, because there is no URL Address Bar for your sketch (keep in mind that the URL in your browser's address bar isn't for your piece, but for netnet.studio itself). For this reason, in order to test any code you write that uses URL parameters you will first need to "publish" your project so that GitHub creates a URL and rolls up a server for your work. You can then "visit" your published site on the web (using the generated URL) and modify the parameters on that URL.
+        </p>
+      </div>
+    </section>
+
+    <section style="height: 100vh"></section>
+
+    <script src="/js/libs/nn.min.js"></script>
+    <script src="/js/libs/netitor.min.js"></script>
+    <script src="/js/RainbowText.js"></script>
+    <script src="/js/JSDemoEditor.js"></script>
+    <script src="/js/utils.js"></script>
+    <script>
+
+      // animateFontWave(nn.get('h1'), ['Smooch Sans', 'Geo', 'DotGothic16', 'PlaywriteHU'])
+
+      Array.from(document.querySelectorAll('a'))
+        .filter(a => a.className !== 'button')
+        .forEach(a => RainbowText.hoverShimmer(a))
+
+      const de = new JSDemoEditor({ parent: '#de1', dataUrl: 'params.json' })
+
+    </script>
+  </body>
+</html>

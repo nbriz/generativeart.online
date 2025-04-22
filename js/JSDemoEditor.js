@@ -72,9 +72,11 @@ class JSDemoEditor {
 
   buildUI () {
     // first part...
-    if (Object.keys(this.data).length > 1) {
+    if (Object.keys(this.data).length > 1) { // multiple sections
       nn.create('span').content(' load example ➞  &nbsp;').addTo(this.navEl)
-    } else {
+    } else if (this.data[Object.keys(this.data)[0]].length === 1) { // single section, one example
+      // if only one, then skip thes UI elements...
+    } else { // single section, multiple examples
       nn.create('span').content(' load &nbsp;').addTo(this.navEl)
 
       nn.create('button').content('prev').css({ cursor: 'pointer' })
@@ -91,7 +93,7 @@ class JSDemoEditor {
     }
 
     // second part...
-    if (Object.keys(this.data).length > 1) {
+    if (Object.keys(this.data).length > 1) { // mutiple sections
       nn.create('select')
         .set({ options: Object.keys(this.data) })
         .addTo(this.navEl)
@@ -115,7 +117,14 @@ class JSDemoEditor {
     }
 
     // last part
-    nn.create('span').content('&nbsp;; &nbsp; then ➞  &nbsp;').addTo(this.navEl)
+
+    if (Object.keys(this.data).length === 1 && this.data[Object.keys(this.data)[0]].length === 1) {
+      // single section, one example
+      nn.create('span').content('&nbsp; ➞  &nbsp;').addTo(this.navEl)
+    } else {
+      nn.create('span').content('&nbsp;; &nbsp; then ➞  &nbsp;').addTo(this.navEl)
+    }
+
 
     nn.create('button')
       .content('run code')

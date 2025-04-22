@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Generative Art Online</title>
+    <meta name="author" content="Nick Briz">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png"  href="/images/hotairballoon.gif">
+    <!-- TODO: social media stuff -->
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+
+      .example-editor > nav {
+        margin: 10px;
+      }
+      .example-editor > div {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 3fr 1fr;
+        height: 30vh;
+      }
+
+      .example-editor > div > .editor {
+        overflow-y: scroll;
+        background: var(--netizen-background);
+      }
+
+      .example-editor > div > .render {
+        grid-row: 1 / 3;
+        grid-column: 2 / 2;
+      }
+    </style>
+  </head>
+  <body>
+
+    <section id="introduction">
+      <div class="content">
+        <h1>Data Driven Compositions</h1>
+
+        <iframe width="800" height="450" src="https://www.youtube.com/embed/4v4XxlfVk3o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br><br>
+
+        <p>
+          In the video above <a href="https://www.aaronkoblin.com/" target="_blank">Aaron Koblin</a> shares some of his data driven online generative art projects. Aaron is an artist and creative technologist who at the time of this video (~2012) was the creator and head of the Data Arts Team at Google. Now he co-runs a company focused on cinematic (and fitness) VR experiences with Chris Milk, a music video director Aaron first started working with around the same time he gave this talk (towards the end he mentions a coupe of collaborations with Chris Milk).
+        </p>
+
+        <p>
+          There's all sorts of data we can pull from and use as inputs into our algorithmic compositions. We've already started exploring one of them, <a href="/notes/url-params" target="_blank">URL parameters</a> which is data we can add to the URL and then later access in our code to alter some detail of our generative art. In the notes below we'll explore a number of other ways to have different types of data drive some aspect of our generative systems.
+        </p>
+
+        <h2>Time and Date</h2>
+
+        <iframe width="800" height="450" src="https://www.youtube.com/embed/wXjiWD7j0fM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br><br>
+
+        <p>
+          We've spoken a lot about conceptual art this quarter. One of the artists referenced in the video we watched the first day of class was <a href="https://en.wikipedia.org/wiki/On_Kawara" target="_blank">On Kawara</a>. Like so many works from the conceptual art movement, On Kawara's pieces lend themselves quite nicely to modern day remixes for exploring generative art concepts. We'll specifically be taking a look at how we might remix his <i>Date Paintings</i> (discussed in the video above). JavaScript (the language itself) has a built-in <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date?utm_medium=firefox-desktop&utm_source=firefox-suggest&utm_campaign=firefox-mdn-web-docs-suggestion-experiment&utm_content=treatment" target="_blank">Date</a> object which can be used to pull the current date and time from the computer running your code.
+        </p>
+
+      </div>
+    </section>
+
+    <br><br>
+    <section id="de1"></section>
+    <br><br>
+
+    <section>
+      <div class="content">
+        <p>
+          As with so much of the JavaScript API (as well as the Web APIs) there also exists a library which will make it easier for us to work with the <code>Date</code> object called <a href="https://momentjs.com/" target="_blank">moment.js</a>.
+        </p>
+      </div>
+    </section>
+
+    <br><br>
+    <section id="de2"></section>
+    <br><br>
+
+    <section>
+      <div class="content">
+        <p>
+          The links below are all different remixes of Kawara's <i>Date Paintings</i>. It's worth noting that the <i>Date Paintings</i> aren't the only pieces we can draw inspiration from, there are data driven concepts/themes running throughout On Kawara's practice, watch this video on his <a href="https://www.youtube.com/watch?v=YxOynktWnMw" target="_blank">Self-Observation</a> piece as another example.
+        </p>
+        <ul>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJxdUk1r4zAQvftXDKFgpzh291rSQtkS2C7ZPaSXpRQ6lhRbXWVkJDnBW/zfd+Q4CS0YP2meZubNx9ILp9sA3om7WRNC62/LUkgq3r1URu9dQSqUdVMy6H+KrKvjkb+FD0gSnVwYXTl0fVl12siSqNjp6D+7X5bH6PfJ8nQor6E2tkIDRHBdJgDJtiMRtCWw9BMP6BCyOXwww5FqFbK0srJP54XwPotmgArF39rZjuQtpJXhW5qPRKN03QQ2fru52TeTUWrfGuzZWjstJ+N754Pe9t8tBUXRQzAoN7FodE0/gtr5C8PEME/4Lyz5ABLugNQBHjGobH4xY8+EjMK/MDtO1XgmX8YU6RNSmkO6UlWENboID6073voITx1NgvhoRr6rI2xUG+G3CBF+2X2ERyWiyNdLxpOSdUz9VQqTR0kvu4tLr9CdvFadMX/4/qm6oDbBaar50dvVxxhgKODqg+secsYYYHhLjtMTTsUepL7lWudjIYU4djy7hDoR5/HGbMY6bv2h0UFNLQDYsuuGl3Cc7/7wyb7CnTZxxqsudA5zmD07VXWiUQHWm1kOD06jycEj+YVXTm/T0XuYsqOUz/a0asmQJCzfUpYai7wy59XkBTgv9X9x5/oA" target="_blank">using Date object</a>: here's a web-based version of On Kawara's <i>Date Paintings</i> using the JavaScript Date object.
+          </li>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJxtUcFuozAQvfMVo1wMFeDutUojVVtVWq1ySi97HGwDzppxZJug7Cr/vgOhqVYqQti8pzfz3sw2qmBPCWJQz5s+pVN8klJpqo9RG2fPoSaTZNdLPuwfQz5085XfKiYkjUFXzjYBw0U2o3VaEtWDnfWb3Vbequ+y7VdtBj8YSsdYKz9I7SdyHnVc4Wqyqa+cV+hM/LraLpMP0DnfoAOiEm5CeJAZQNaOpJL1BJ5+4oQBIS/gLzPsrzMpF43XF1HUKsZ8hgEaVL+74EfSTyAax3+iXIje2K5PDH57fDz3K6htPDm8MNoFq1fwOMZk28t3T4mdMKf4MGFl0dmOfiQzxE+GiWuR8Vd5igk0JnNIwVIHz2uevKhbHwZky/v9Hl5fS/jFjyi4YnbLo4JhXS7iCUkUSy+e6eIh/6z4QdwDz02dD2xm6m0yq0uAlqUHXvaS+Dz9h7/hYN2c+m1MY8ASNu/BNKPqTYL9YVPCS7DoSohIsYom2FYs6uvaHbV+9x/Dz65ZxvY95WJevSjvy+KR3Nf9D4TA1EI=" target="_blank">using moment.js</a>: here's another web-based version of On Kawara's <i>Date Paintings</i>, this time using the moment.js library which abstracts the Date object.
+          </li>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJxtUT1PwzAQ3fMrTl3aoCQuSCwlREJCbJ1gYXRsx3Fx7OrstAqI/86ZhI+hlu2c7t3de36pQ5ysajKA1ssJPigA6JXRfdzB9XZ76u++U9KEo+XTDjQaOae4NdqVwruoHBULuhXO0GEM0XTTZbDl4k2jH53cAep2sy0g7Tyhn3SyxHZapAhvPc51N7e3Bfxc+TyrI4Ky44OxJO1pjCPyAlYvqNpR9CrC/nlVwAMabgsI3IUyKDTdv95g3lV66Ok809dsMSSrkyHJmJrUNJJHVbMUUcmMZHUQaI4RAor7VR/jMewYE9JVhyCVNSesnIpM94w+ROM86hTSLkPkTnKUpTUtcpxYOxormXPVYFL/qiEh39ObyzSDH8jSQ6iEH5j0Z2c9l2FJl2cT+9J6wa0Kl6c1GbsCbX3LLThXwNx4xbIsee5ChPTi54jGabhf4E1edR4HHjfr/X4Pj48FvNJa59RE0rUigCxa59Xy4zd/Q1JN9ivjCy7FyV8=" target="_blank">HTML / CSS</a>: here's another version for those familiar with HTML/CSS, in this one we only use JavaScript where it's necessary and leave the display/layout to our HTML and CSS code.
+          </li>
+        </ul>
+
+        <h2>Geolocation</h2>
+
+        <p>
+          We can also make work that responds to the specific location of our audience (remember, our works are online, anyone around the world can access them through a web browser). Modern Web browsers provide an API for accessing the users <a href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition" target="_blank">Geolocation</a> (not to be confused with the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Location" target="_blank">location</a> API we discussed last week which refers to the URL in the address bar). Like all Web APIs you can view their documentation and work with it directly, but the nn.min.js library we've been using has a <a href="https://github.com/netizenorg/netnet-standard-library/blob/main/docs/API.md#askForGPS" target="_blank">nn.askForGPS</a> method which makes this much easier to work with.
+        </p>
+      </div>
+    </section>
+
+    <br><br>
+    <section id="de3"></section>
+    <br><br>
+
+    <section>
+
+      <h2>The Weather (via REST APIs)</h2>
+
+      <div class="content">
+        <p>
+          Often times the data we want to use isn't available directly via JavaScript or any Web APIs, instead it's data stored on someone else's server. When others make data on their server's available to others they usually do this in the form of a "REST API". For example, the <a href="https://www.weather.gov/documentation/services-web-api" target="_blank">The National Weather Service</a> provides a free API we can use to get the forecast of a particular area. Third party REST APIs make data available to other programmers through "endoints", URLs which you can request data from, rather than websites. For example: <a href="https://api.weather.gov/gridpoints/LOT/75,72/forecast" target="_blank">https://api.weather.gov/gridpoints/LOT/75,72/forecast</a> will return forecast data for Chicago. In order to generate that URL it took a few steps which I'll walk through below.
+        </p>
+      </div>
+    </section>
+
+    <br><br>
+    <section id="de4"></section>
+    <br><br>
+
+    <section>
+
+      <div class="content">
+        <p>
+          That's only an overview on how to use REST APIs, for a more detailed walk through as well as other important considerations and examles see the class notes on how to <a href="/notes/fetch">fetch data</a>.
+        </p>
+      </div>
+
+      <h2>The Cut-Up Method (More REST APIs)</h2>
+
+      <div class="content">
+        <img src="dada-poem-invert.jpg" alt="a dadaist poem" class="rwd">
+        <br><br>
+        <p>
+          You may recall the "the cut-up method" from our reading on <a href="/files/randomness-10print.pdf">Randomness</a> earlier this quarter. The "method" proposed by the writer William Burroughs as well as Tristan Tzara's "<a href="https://www.takedadaseriously.com/dada-resources/to-make-a-dadaist-poem-cut-up/" target="_blank">To Make a Dadaist Poem</a>" (1920). Which centers around creating new pieces of writing by re-arranging other texts randomly. In the case of Tzara's Dadaist poems the source was always news papers, which he would "cut-up" and then randomly re-arrange. Check out this modern remix on that piece by <a href="https://timely-meringue-bd64ab.netlify.app/" target="_blank">Nick Turgeon</a> (2022).
+        </p>
+
+        <p>
+          To create something like this we'll need to use a REST API which we can query for news data. Refer to the notes on how to <a href="/notes/fetch">fetch data</a> from third pary REST APIs. Then take a look at this netnet example where I  <a href="https://netnet.studio/?layout=dock-left#code/eJxtVGtr2zAU/Z5fcQmjtvuw01LGyJKWsRVW+mGl2yilFKrIsq1WkTxJTuaV/PddSXbclELA8bkPnXvusWaGal5bMJrOx5W1tZlmGc1l+mRyJvhKp5LZrKwyfPB/TCpdur/4OzKWyJzo/EjwhSa6zRYNF3kmZbrkrv58NT8en82ycMLZaNb/yfahFGpBBEgJ+9kIYESVNBbWSucG5nD/0AE5X+ErdqSaEcviCIEo6YJfri+vWIvx6O7H7xv3ClcXd/D94uYi6lIaLTD+2M9VSrY2KVcZqXm2Os0MI5pW53/mDNPVst0TRJZzJveoaqTV7bwxe5j6zNr5h5dw3ObR0R0VjaSWKwmG2aaGOIEXxJFoyWwcLVTeRklKjYkdDDiHqQVppxCVmufRoQefGmN50X5V0jJpMUbxwXQXJYKX8tKypXkbqRgvK5d/PJmsqg6kjTZKI1gr7nMR3SSjkTt79YpJgaf9xEVO4fQkVNYkz7ksp3AyCcCS/L3lua2m8PGThzZJijm/VD/YaPNKAJT0WrFlL0GWQc3pMxAo2Bo0OkQtu71aha2fGYZqV6AaC6rAkmH3X53sYeGhMj6eHCKvZJvlKm8Hl7h5NMSCWeCITD7jYza0wteDg8CrbxD6uhY753iGSdCjPyKtG1PFQ4ELb9z2/ZTdSrtZJNiKoZQl26GKZwztnnAzcQRR0i8lLD52GV5TYlpJYassWukbsaRXtuPP3OhkTbhFhS2tYvT4oM+TwcI+jrmpA+I+rgRLhSpjByZhkvf0c+GUaMupwA6CydJW70jZZWDdTsE9f/BJqNEYJeJ27LUxVqPLAM2pgEgs1iieKoI3XnW13ArWr7jrmXow9d16Bfv8nBn6Nt1h7qpBFd8WISv0MjBCK+SCa+B5gxeRYwGFRq/6iGkWR4GhNy2XMPY8x4G377QePJKm6UA7eSe6JbnroXCrQcF17xfcnlAkd3dJ+K5i74wROhX3GLlYdBgunQS77MKdYZIepgK/RMS7Vn7j2+v4P4AZ5gk=" target="_blank">recreate the a dadaist poem</a>.
+        </p>
+      </div>
+    </section>
+
+
+    <section style="height: 100vh"></section>
+
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+    <script src="/js/libs/nn.min.js?v=1"></script>
+    <script src="/js/libs/netitor.min.js"></script>
+    <script src="/js/RainbowText.js"></script>
+    <script src="/js/JSDemoEditor.js"></script>
+    <script src="/js/utils.js"></script>
+    <script>
+
+      // animateFontWave(nn.get('h1'), ['Smooch Sans', 'Geo', 'DotGothic16', 'PlaywriteHU'])
+
+      Array.from(document.querySelectorAll('a'))
+        .filter(a => a.className !== 'button')
+        .forEach(a => RainbowText.hoverShimmer(a))
+
+      const de = new JSDemoEditor({ parent: '#de1', dataUrl: 'dates.json' })
+      const de2 = new JSDemoEditor({ parent: '#de2', dataUrl: 'moment.json' })
+      const de3 = new JSDemoEditor({ parent: '#de3', dataUrl: 'geo.json' })
+      const de4 = new JSDemoEditor({ parent: '#de4', dataUrl: 'nws.json' })
+
+    </script>
+  </body>
+</html>

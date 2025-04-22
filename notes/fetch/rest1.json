@@ -1,0 +1,9 @@
+{
+  "params": [
+    {
+      "name": "location.reload()",
+      "code": "<script>\n\nasync function getData () {\n  const res = await fetch('https://dog.ceo/api/breeds/image/random')\n  const json = await res.json()\n  log(json)\n}\n  \ngetData()\n  \n</script>",
+      "text": "This example demonstrates the simplest and most modern way to request data from a third party REST API. Here we simply log the data, but in the examples below we use the <code>message</code> property (which contains a URL to a random dog image) to create an image of a random dog and add it to our page."
+    }
+  ]
+}

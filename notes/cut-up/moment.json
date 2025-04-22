@@ -1,0 +1,9 @@
+{
+  "moment": [
+    {
+      "name": "moment.js",
+      "code": "<script>\n\nconst date = moment().format('MMMM Do YYYY, h:mm:ss a')\n\nlog(date)\n  \n</script>",
+      "text": "The moment.js library allows us to express the date string we want in a single simple function. We do this by passing a string with the format we want the string written in, where <code>M</code> stands for 'month', <code>D</code> for day of the month, <code>Y</code> for year, <code>d</code> for day of the week, <code>h</code> for hour, <code>m</code> for minute, <code>s</code> for second. You can also use <code>a</code> for am/pm and <code>o</code> for oridinal indicators like 'st', 'nd', 'rd' and 'th'. NOTE: clicking on \"open in netnet\" won't work properly for this example unless you import the library at the top of your netnet sketch:<br> <code>&lt;script src=\"https://momentjs.com/downloads/moment.js\"&gt;&lt;/script&gt;</code>"
+    }
+  ]
+}

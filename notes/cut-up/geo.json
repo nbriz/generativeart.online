@@ -1,0 +1,9 @@
+{
+  "geo": [
+    {
+      "name": "nn.askForGPS",
+      "code": "<script>\nlog('code ran... waiting for permission...')\n\nnn.askForGPS((data) => {\n  log(`We've got data! ${data.lat}, ${data.lng}`)\n})\n  \n</script>",
+      "text": "This example uses the <a href=\"XX\" target=\"_blank\">nn</a> library's <a href=\"XX\" target=\"_blank\">askForGPS</a> method. Behind the scenes it uses the Web's <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition\" target=\"_blank\">Geolocation</a> API. NOTE: clicking on \"open in netnet\" won't work properly for this example (because on netnet you'll need to load the nn library in a script tag first)."
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Generative Art Online</title>
+    <meta name="author" content="Nick Briz">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png"  href="/images/hotairballoon.gif">
+    <!-- TODO: social media stuff -->
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+
+      .border {
+        border: 3px solid blue;
+        padding: 20px;
+        border-radius: 3px;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <section id="introduction">
+      <div class="content">
+        <h1>Fetching Data</h1>
+        <h3 style="text-align: center">From third party REST APIs</h3>
+
+        <p>
+           When we visit a website our browser makes an HTTP request for that HTML page as well as any subsequent HTTP requests for loading any assets (fonts, images, videos, etc). In the case of our projects (which we host on GitHub's servers), someone visiting our work in their browser sends requests to the GitHub servers which send them back the code we wrote (and any other files/assets we might be storing on there), but our code can also make requests to other servers. In this way our work can incorporate data and other assets from various other parts of the web.
+        </p>
+
+        <p>
+           One of the most common approaches is to send requests from our JavaScript code to other servers which make data, assets and other services available through an interface known as a REST API. These 3rd party (meaning controlled by someone else) REST APIs usually provide data formatted in JSON (though sometimes you see other formats like XML) which we can access by sending HTTP requests to specific URLs.
+        </p>
+
+        <p>
+          There are loads of these sorts of APIs online, <a href="https://apilist.fun/" target="_blank" style="">apilist.fun</a> and  <a href="https://publicapis.io/" target="_blank" style="">publicapis.io</a> are just a couple of sites which attempt to aggregate as many of them as they can. The Chicago city also has a REST API which gives us access to all sorts of city data at  <a href="https://data.cityofchicago.org/" target="_blank" style="">data.cityofchicago.org</a>
+        </p>
+
+        <p>
+          While it's possible to send requests to these REST APIs by entering their URLs in our browser's address bar (a great way to inspect what sort of data you'll be getting back and how it's structured), in order to create work using this data, we need a way to send HTTP requests in our JavaScript code. There have been different ways of accomplishing this over the years, which first began in the early days of <a href="https://en.wikipedia.org/wiki/Web_2.0" target="_blank">Web 2.0</a> (mid 2000s) with the <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" target="_blank">XMLHttpRequest</a> object, which is a browser API for making HTTP requests. This was followed by an easier to use browser API called <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank">Fetch</a>.
+        </p>
+      </div>
+    </section>
+
+    <br><br>
+    <section id="de1"></section>
+    <br><br>
+
+    <section>
+      <div class="content">
+        <p>
+          Below you'll find 4 netnet examples, which send a request to the same REST API, called <a href="https://dog.ceo/" target="_blank">dog.ceo</a> (also used in the demo above), which returns a random image of a dog. The first example makes use of the <code>nn</code> library and is written in the most modern way possible (this is what our code should look like). That said, I've included three more examples below that one for context, as we may come across code like this online and it's important to be able to recoginzie these other variations. The first uses the older XMLHttpRequest API, the second one uses the Fetch API and the third example uses the newer "<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function" target="_blank" style="">async / await</a>" syntax to use the Fetch API with cleaner and easier to read code. All three examples technically do the same thing (the difference is the syntax)
+        </p>
+
+        <ul class="border">
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJxNkMFuwyAMhu88hdULSdXCvUp72nGnaXsAB1xCRSAC2imb+u5zWqWahIRl//792V0x2U8VSjbHzVDrVA5aGxvVpVgK/pZVpKrdoPnzPxRTdkvIb18qRovZ7oPvM+ZZ91cfrI5RjX7p35w6/XQ/iW4N9BZcSD0GiBG2WggsczRwvkZTfYpgfZkCzm/JQdPCrwAwKZYKmQocAb/RVzhTNUMjV1qbnDKUNE5e95nIFu1HdKQz86VRti+TS+EJqws7qiXRrPUUSIXkmiXZgtZw8wQWK4KPUAdaRYL1vKTJhJUa6UcnW1WoNgstAIZ6AIkRHhCQzoDwJAEmlbuHiM99eOCokUpZdDxvmfH18Q41cQtrnw6sv7cKrf1MjeyTnXmhuxBMwOwyJLRy9+9srRCvs/8BZemdmA==" target="_blank">Using our library (with async/await Fetch)</a>: in this example we reqeust an image of a dog from the dog.ceo API and use the <code>nn</code> library to add it to our page. This is the modern approach and reflects what our code should look like.
+          </li>
+          <b>Other Variations (without libraries) for Historical Context</b><br><br>
+          <li>
+            <a href="https://netnet.studio/?ex=60" target="_blank">Using XMLHttpRequest</a>: this one uses the <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" target="_blank">XMLHttpRequest</a> object, this is the oldest way of doing things. You might still come acorss code like this in old examples, when you do it's best to "refactor" (ie. update) the code to more modern syntax
+          </li>
+          <li>
+            <a href="https://netnet.studio/?ex=61" target="_blank">Using Fetch (with callback)</a>: this one uses the more modern <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank">Fetch</a> object. Unlike the example below, it uses the standard <code>.then()</code> callback pattern of other "Promise based" APIs.
+          </li>
+          <li>
+            <a href="https://netnet.studio/?ex=62" target="_blank">Using Fetch (with async/await)</a>: this one also uses the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank">Fetch</a> object, but this time makes use of the more modern <code>async</code> <code>await</code> syntax (recommended for cleaner/readable code).
+        </ul><br>
+
+        <p>The <a href="https://dog.ceo/" target="_blank">dog.ceo</a> API used in the examples above is designed to be as easy as possible to use. It's a demo created to help beginners practice working with REST APIs. In most real-world cases there are some additional considerations which are important to keep in mind.</p>
+
+        <h2>Other REST API Considerations</h2>
+
+        <h3>Documentation</h3>
+
+        <p>
+          When using an API, meaning a code-based interface created developers for other developers, we should always look up the documentation first. When using a JavaScript library for example, there's no way to know what the names of the functions (or methods) inside that library are (nor how we're supposed to use these functions) without some documentation. When it comes to REST APIs the primary interface isn't a set of functions (like it is in a library), instead it's a URL, what we refer to as an <b>endpoint</b>. How do we know what these endpoint URLs are and what sort of data we should expect to receive? By reviewing the API's documentation.
+        </p>
+        <br><br><br><br>
+
+        <h3>URL Parameters</h3>
+
+        <p>
+          We've previously discussed <a href="/notes/url-params" target="_blank">URL parameters</a>, specifically how to use "search query" parameters them in our own published pages so that the same web page can render differently depending on the value of specific URL parameters. As explained above, a REST API are essentially a collection of URLs, often referred to as "endpoints", which return data (usually structured in JSON) rather than returning a web page (ie. an HTML file). Often we can request specific types of data from the same API endpoint by specifying what we want in the URL's parameters. For example, Let's take a look at <a href="https://restcountries.com/" target="_blank">https://restcountries.com/</a>, a REST API which returns information about countries.
+        </p>
+
+        <p>
+          To get a list of all the countries we can send a request to <a href="https://restcountries.com/v3.1/all" target="_blank">https://restcountries.com/v3.1/all</a>, here we consider the <code>/all</code> the "parameter", because while the first part of the URL will always remain the same, "https://restcountries.com/v3.1", what follows that will be different and will effect what sort of data we get back. For example, if we wanted to get data for a specific country the <a href="https://restcountries.com/#endpoints-name" target="_blank">documentation page</a> explains that we can do that by adding the following parameter <code>/name/{name}</code>, what the <code>{}</code> syntax in the documentation is telling us is that this second part of parameter should be replaced with a specific value, in this case the "name" of the country we want data for, for example: <a href="https://restcountries.com/v3.1/name/Canada" target="_blank">https://restcountries.com/v3.1/name/Canada</a>
+        </p>
+
+        <p>
+          You'll notice that requesting data from the <code>/name/{name}</code> endpoint actually returns a lot of data, which can be hard to visually parse. For this reason it's best to use a browser like Firefox which will make it easier to explore the data and it's structure. Or install a browser extension like the <a href="https://chromewebstore.google.com/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa?pli=1" target="_blank">JSON Formatter</a> for Chrome.
+        </p>
+
+        <p>
+          That said, this particular API allows us to filter the data in our request, so that it sends back less data (rather than all the countries information by default). It does this by taking an additional URL parameter, this time a query string like the ones we used to modify our meditations last week. According to the <a href="https://restcountries.com/#endpoints-filter-response" target="_blank">documentation page</a>, we need to add <code>?fields={field},{field},{field}</code> to the end of our URL, where <code>{field}</code> is the name of a particular field (property) of data returned by the API. For example, if I only wanted the API to return the langauges, flag and capital of a particular country i could add <code>?fields=languages,flag,capital</code> to the end of the URL like this: <a href="https://restcountries.com/v3.1/name/Canada?fields=languages,flag,capital" target="_blank">https://restcountries.com/v3.1/name/Canada?fields=languages,flag,capital</a>
+        </p>
+
+        <p class="border">
+          Here's an <a href="https://netnet.studio/?layout=dock-left#code/eJxtVF1r5DYUfZ9fcTEFzywTu0v7UJZkl7J9CZRSSvapFPaOJNtKZMlI8gzuMv+959qeSbIphIms+3XuuUf3Nqloh0wpqruiy3lIH+paaV89Jm2cPcbKm1y3XY1/9l/jQ2zliL+blNlrjvrG2UPkONWH0Tpde1/1VuI/He/eFx9v66XCx83t5VC/o9aFAzvynt7VG6INp8krakavsg2eWpN/48y03dE3mFXwKdMYHd1ReQEZTcoqjD5Ha1KlQl8ff6re1557U39mz5o/NdY4ne4c+3bk1qR947jdKx5sZldeEyMTEvOJbabGZNVtUWp3NT8mILrY4VvJxVbsdU0PnU3065/3MOQx+kTsiWPkaU8Ho3hMhlLoDQmsRL1tuwwDNQCuyXrqQzSUO0QFb2jpZ6ro3uMS34z40FCxNFTIJfxTF0anEeEmSYZIVBsznUzpHKVs8euN0ZQDDSM+UCCTFkYD3JBQks8wr12quQL6lO7+/vEfaa6xERabTS9QX8bAKJ/fO6DK7EF2JiIcHo0CLJu7pXoTQ7+4rZ0+swTsR+QfBmcF+JzcZROpWKZY0MCRe7lBqTBG+vLX78SHcETzp9ecQD7IEJB1iGEwMUMhdGD1VNHab3CmcqHdlsWqhmKFPMP/UO5XPqrVvHsTJ1JagkB4tL59ESS2txFXGRav6HkRd/VYxWVzCUd34ilRZ9zQjE5GinQ0CQPC6TODtpHbEvrwAQ96xOEkVOdpmEU0T0A8IAioBiRlwJ55uQzGiJT3OADg3FobgibUl7KqM8LgH+G0jPCenjzOb2sYVt0isu9GAD4yW5/2iEXLgsL6bLy8eWwDDHPMMwqpeE9zU1nWw0WkeEMJ/EClXx/g9lkWkLbIJIwL4h++vRjBeb8wuM7wlX29g9DP82ubU0ntidJg+OnZ8zqUyvj2jLnp/7M1kc/V1wUrNqCKhrPZlkO5q1RK27JB6zcJGxTT/vkXXIa58e3a0a5irR/CtjwEPZW7zVkyIQ8WTekCa0StO1Gksbku1f8AA/L1KQ==" target="_blank">example of the Countries API</a> in use on netnet.
+        </p>
+        <br><br><br><br>
+
+        <h3>API Keys</h3>
+
+        <p>
+          The doge.ceo and restcountries.com APIs are unusual in that they do not require an API key, it most cases you will first need to register an API key to send requests to the API. This is so that the entity maintaining the API can monitor who the requests are coming from. In some cases this is done to keep track of how many requests you have sent because while many APIs offer a "free" tier or a free number of queries per hour/month/etc, most of them will charge you some small amount per request. The API key is used to keep track of how many requests have come from that specific user (or an app they created).
+        </p>
+
+        <p>
+          For example, if you visit <a href="https://gnews.io/" target="_blank">https://gnews.io/</a> you can create a free account. Upon creating your account you'll be able to generate your API Key. This will grant you 100 free requests per day, meaning you can only send that many requests to their server each day, that includes both entering the endpoint in ur address bar (as we've done to inspect data) or running your own code which sends a <code>fetch</code> request. Once signed in you'll have access to a user dashboard which shows you how many requests you've sent, while it's not uncommon for APIs to have personal dashboards like this, they don't always look as nice as this one. If you wanted to increase your rate limit from 100 to something larger, that's when you'll need to start paying for the API.
+        </p>
+
+        <p>
+          Once you have your API key, you should refer to the API's documentation on how to "authenticate" (or how to use it). In the case of the <a href="https://gnews.io/docs/v4?javascript#authentication" target="_blank">GNews</a> API, this is done by adding the <code>apikey={your_key}</code> parameter to the URL. In order to use this API we need a minimum of two parameters, in addition to the "apikey" we also need to specify a search query for the sort of news headlines we want returned. To do this we use the <code>q={search_term}</code>. When we need to pass more than one query parameter to a URL the first one always begins with a <code>?</code> and every subsequent paramter must begin with a <code>&</code>, in this case that would be something like: <a href="#" target="_blank">https://gnews.io/api/v4/search?q=economy&apikey=xxxxxxxxxxx</a> (NOTE: that link won't work, unless you replace the xxxxxxxxxxx string with your own API key).
+        </p>
+
+        <p>
+          You'll notice from reviewing the <a href="https://gnews.io/docs/v4?javascript#search-endpoint" target="_blank">documentation</a> that there are a number of other optional parameters we can pass into the URL, for example if I wanted to filter the results so that only news articles written in English are returned I could add <code>&lang=en</code>. If I wanted to filter further so that only articles from the United States are returned i can add <code>&country=us</code>.
+        </p>
+
+        <p class="border">
+          Here's an <a href="https://netnet.studio/?layout=dock-left#code/eJyNU11r20AQfPevWEKJ5KTRpaVPreVQqGlK+kWaUkIpzupuLZ1zvnPvTjZqyH/vSrZEnaeCQKedmZ1ZaTUJ0ut1hOBlflTFuA6vhZDKZsugyOiNzyxFUVaCb/oPWefL9sjXWYhoFXp1ZnTh0TeiqLVRwtpspVv9xSZ/cTSdiJ3DdDTpD+IESuMKNGAtnIgRwAhDYyUsaiujdhZKiu8wIqRjeGBYOhsivP364YoayCG5/fL9ev7+8+zHtzkX51ez2/nl7HqWDNTaG+bd9fOUlrYh007gWovNKxEIvawufufEdLdqjg3aMid7LF1to2/yOhwz9Z6a/NnDzvbxro3Z9/cUuD9uUUdYUJRVyo7jAV4GnqHHmZu1hbTHnaHMuDJti+NdVyHAOLeGWHlXlxWgMXwmIE6j2Uvb7jFDH7U0XEDvsWHhwnlIDUXQ7Hf+hm+Tzn1gZoZsGStGTk93L7NzC9F5All7zxawJ4MrliRj64awQa+xMNQpdmP1tPzQ4qf+1beVnjASXN58+ghkaMXNA2x1rEC1n3Ph3aobZC/tZLwvO1ma6FWZjLsiQBYopgmvZfK8p2d6hSUNBBlCmigd1gYbJiWFcfI+OYS3WsWKwZfn5wOASt24NCmcavZsTt6mmuC0Tw06QB1IdS/YaHsfnmbFZAyDlbORRWmfM+po6HCQytPin0n26/I/czyN+zh6bJeGo/BOJcahYtH+h+nWafjj/gJ7kDZZ" target="_blank">example of the Gnews API</a> in use on netnet. NOTE: you'll need to add your own API key for this example to work.
+        </p>
+        <br><br><br><br>
+
+        <h3>CORS Issues: Client vs Server Requests</h3>
+
+        <p>
+          All the APIs we've discussed so far work on the "client side", meaning the code we write which runs on the viewer's computer can request data from these APIs. This isn't always the case. Some APIs, especially those which are paid or return sensitive data, require that the requests be sent "server side", meaning from the machine running your server. This is because any user can "view source" of a website and if your request is written in the client-side code, then the user will be able to see your API key, which means they'd be able to use it to send other requests if they so choose. To prevent this you have to keep your API key secret and stored on your server, there your server-side code can send the request to the API and then pass it along to your client without revealing your API key.
+        </p>
+
+        <p>
+          In this course we're using GitHub as our server, while it's totally possible to write your own server in JavaScript (or a number of other languages) this is a bit beyond the scope of this course. That said, netnet.studio can serve as a playground to experiment with these APIs without having to role out your own server using a special version of the fetch API built into the the <code>nn</code> library. For example, consider this other <a href="https://newsapi.org/" target="_blank">https://newsapi.org/</a>. Like GNews this API returns breaking news headlines and other info, but unlike GNews it does not have "CORS enabled for all origins" (CORS stands for "cross origin resource sharing" and refers to rules a server will enable regarding which and how other domains are allowed to request data from it).
+        </p>
+
+        <p class="border">
+          Here's an <a href="https://netnet.studio/?layout=dock-left#code/eJx1VO9r2zAQ/Z6/4ghjdvrD7vpxi1sGK2vpxkbJPpQx0rOsWGoVyZPO8bzS/31nOzakMDBY0r1399755GUQXlcEwYtsroiq8D5NRWGTx1BIo3c+sZLSUqX80n+ldb7slvycBkJboC9Ojc49+jbNa22K1Npkqzv+5S57N79YpkOFi9lyXKRHUBqXowFr4SidAcwwtFbApraCtLNQSvqEhBAv4JnDwtlA8PH7za1sIYPo/tuPuzVv17dX9+vrq7uraALV3jDiYXRiZROw0kkne3eeyp30LSlty8vfmWSG27ZvOc55szfPQ4GXh04QQJpCHRgJpCSESgrNgufsbiNJqDk0SgvFEBlgaAhgAIR55d2fdn4CeU1M1QEabQw4a1ponH8CJb3k7Z50Apr43EY0RPUGWldDVedGB9WtPbjGAmd9lII64mdN13U+OfYsIANskBON6mJuw2JCPAZmjRCGJ91BPMadkYlxZdwdLibrxrmK5XtXlwqQDXRdkJa85nLa9tsEPWlh+AC9x5aJG+chNtwKzfXOPvBr2VefkImRtiTFkePj4dv21QI5boqovecSsAeDy3vLXA1hh15jbmTPGGyNsOywxE/9a0wrvESScL36+gWkkVtO3n0OUlB007Xxbtsb2VN7GrdwoMWR3pbRoj8ESIKkOOJbEp2M8ISbvHI3WyzlhBIhxFGhQ2WwZWSUGyeeosNwowtSHDw/O5sCWBQrF0e5K9o9muV30pZ4MUoHniUet6LvstH2KbwWjNECplLOEpPiUSxpMvLQjfJyc2jnME7o+SJ2Nta5Qfvax/9tvnbzMnvpBouV8txFxmHBpP0d70du+kn8A82pcsg=" target="_blank">example of the nn.fetch()</a> used to get around CORS restrictions in use on netnet. NOTE: you'll need to register your own API key with <a href="https://newsapi.org/" target="_blank">https://newsapi.org/</a> to test this out. Alos, the <code>nn.fetch()</code> function <b>only works on netnet</b>, it exists to help you test APIs that prevent client-side requests. We do this by acting as a "proxy", where netnet makes the reques on your behalf on it's own server. If you publish this code to your own project it will no longer work because it'll then be running on GitHub's servers. For this to work in your own published project you'll either need to create your own server (and send the API requests server-side) or use a paid proxy service like <a href="https://corsproxy.io/" target="_blank">https://corsproxy.io/</a>
+        </p>
+        <br><br><br><br>
+
+        <h2>Other Data Sources</h2>
+
+        <p>
+          Not all data-driven projects you come across online make use of these 3rd party REST APIs, sometimes data is made available for download so you can host it locally with your project (ie. upload it directly to your GitHub project like you would images or other assets). There are lots of places to find datasets online, one popular repository of data is <a href="https://www.kaggle.com/datasets" target="_blank" style="">kaggle.com</a>, or checkout Jeremy Singer's <a href="https://www.data-is-plural.com/" target="_blank" style="">Data Is Plural</a> newsletter where he shares interesting datasets on a weekly basis (every single dataset he's shared in the newsletter previously can be found on this <a href="https://docs.google.com/spreadsheets/d/1wZhPLMCHKJvwOkP4juclhjFgqIY8fQFMemwKL2c64vk/edit#gid=0" target="_blank" style="">spreadsheet</a>)
+        </p>
+
+        <p>
+          Sometimes the data we want is out there on some website, but there's no "download" button nor is there a REST API to conveniently request the data from. When this is the case you can create a "web scraper", a little bit of JavaScript code which acts as a bot that goes out onto the Internet and downloads the data off the website you want. These typically need to be custom written to ensure you get only the data you want, organized the way you want. This is beyond the scope of what we'll cover in class, but if this is something you're interested in learning more about, email me.
+        </p>
+
+        <p>
+          Lastly, you could create a project which generates its own data, this can be an automated process or it could be user generated data (like in Aaron Koblin's mechanical turk projects discussed in the <a href="/notes/cut-up">Data Driven Compositions</a> notes). In these cases you need somewhere to put the generated data, which requires "server side" or "back-end" JavaScript. In this class we're mostly focused on "client side" or "front-end" JavaScript, though again, while this is beyond the scope for this class, email me if you're interested in experimenting with something like this.
+        </p>
+      </div>
+    </section>
+
+    <section style="height: 100vh"></section>
+
+    <script src="/js/libs/nn.min.js"></script>
+    <script src="/js/libs/netitor.min.js"></script>
+    <script src="/js/RainbowText.js"></script>
+    <script src="/js/JSDemoEditor.js"></script>
+    <script src="/js/utils.js"></script>
+    <script>
+
+      // animateFontWave(nn.get('h1'), ['Smooch Sans', 'Geo', 'DotGothic16', 'PlaywriteHU'])
+
+      Array.from(document.querySelectorAll('a'))
+        .filter(a => a.className !== 'button')
+        .forEach(a => RainbowText.hoverShimmer(a))
+
+      const de = new JSDemoEditor({ parent: '#de1', dataUrl: 'rest1.json' })
+
+    </script>
+  </body>
+</html>

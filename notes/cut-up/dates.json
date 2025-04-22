@@ -1,0 +1,24 @@
+{
+  "dates": [
+    {
+      "name": "new Date()",
+      "code": "<script>\n\nconst d = new Date()\n\nlog(d)\n  \n</script>",
+      "text": "In this example we creat a new <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date?utm_medium=firefox-desktop&utm_source=firefox-suggest&utm_campaign=firefox-mdn-web-docs-suggestion-experiment&utm_content=treatment\" target=\"_blank\">Date</a> object. Although our new <code>d</code> variable is technically an object, if we log it we'll get a string version of the current date and time"
+    },
+    {
+      "name": "Time",
+      "code": "<script>\n\nconst d = new Date()\nconst hour = d.getHours()\nconst min = d.getMinutes()\nconst sec = d.getSeconds() \n\nlog(`The current time is ${hour}:${min}:${sec}`)\n  \n</script>",
+      "text": "We can use the Date object's built in methods to pull specific info about the current Date/Time, for example the <code>.getHours()</code> method will return the current hour (in 24hr time)."
+    },
+    {
+      "name": "Date",
+      "code": "<script>\n\nconst d = new Date()\nconst day = d.getDate()\nconst month = d.getMonth()\nconst year = d.getFullYear()\n\nlog(`Today is the ${day} day of ${month} the year ${year}`)\n  \n</script>",
+      "text": "As you might imagine, the Date object also has methods for getting the current date, <code>.getDate()</code> returns the current day of the month, <code>.getMonth()</code> returns the number of the current month and <code>.getFullYear()</code> returns the current year."
+    },
+    {
+      "name": "Index Values",
+      "code": "<script>\n\nconst d = new Date()\nconst day = d.getDate()\nconst m = d.getMonth()\nconst months = [\n  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', \n  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'\n]\nconst month = months[m]\n\nconst year = d.getFullYear()\n\nlog(`Today is the ${day} day of ${month} the year ${year}`)\n  \n</script>",
+     "text": "If we create an array of month names, we can use the month number returned by <code>.getMonth()</code> as an index value."
+    }
+  ]
+}
