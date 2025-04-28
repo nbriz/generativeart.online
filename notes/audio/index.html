@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Generative Art Online</title>
+    <meta name="author" content="Nick Briz">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png"  href="/images/hotairballoon.gif">
+    <!-- TODO: social media stuff -->
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+
+      .example-editor > nav {
+        margin: 10px;
+      }
+      .example-editor > div {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 3fr 1fr;
+        height: 30vh;
+      }
+
+      .example-editor > div > .editor {
+        overflow-y: scroll;
+        background: var(--netizen-background);
+      }
+
+      .example-editor > div > .render {
+        grid-row: 1 / 3;
+        grid-column: 2 / 2;
+      }
+    </style>
+  </head>
+  <body>
+
+    <section id="introduction">
+      <div class="content">
+        <h1>Audio Element</h1>
+
+        <h3>including sound assets (using the <a href="https://github.com/netizenorg/netnet-standard-library" target="_blank">nn.min.js</a> library), feel free to download this <a href="/files/sound-samples.zip">package of audio samples</a> to experiment with</h3>
+        <ul>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJxdUctOwzAQvOcrVlySIGofuFWlEhe+gB9w7aUxctZhvaEqFf/Oxk0RQrLk9czsY9a74jlOAoX9090gMpWttT6QeS8BU/xkQyj2OFi94hdS5uMS6tkUcRQch02KB3Z8toc5pmCJzBiX/Lv9zl6r75vdLbD3cEz54BIQwb0FaBIKjHOJHprmbSYvMRMUlHmCrodLAyv7pBnGMzrBrnVziLntlQQwKu4uNYTFxxZaTOiFo99M0VHe+CFzKGacHtuHVeczCedUtiA84w1NOU9XpALfawMXwmvu2kMO57bXkb//TOoojjrSbVbGjxmLPFdU+Rd2I3araClnLcgQC5xiStrvqC8EPzMjyWscEfJbhapDUCOjEte8iAZOA7JqqGpE9SkS1seU3HlAF0CLr/XSGZyYprotOaHRfl3dpvnTsV/86G4zdW3KLrQP1/X3/8BfE7/f+gMezbu9" target="_blank">basic audio element</a>
+          </li>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJyFUstOKzEM3ecrLDaZQW0CSEgVartjj+D+QF5Mc5txRnmACrr/jtOhQDdcKdIkPj4+x/ass0l+KpCT2VzsSpnynZTGovibrQv+JQl0RQ47SR//5jCmoV3pLHNRaFWyy+B1UukgdfXBSkQx+sa/2K7lXH3L1qeLvIQhRK0CIMKlBGDBkXqsaBegaykRmYmYC9QUYAP85KlOISorXv3ej856JZqT9praS5o4jkSTK7m6lfe4rHmpq9bBiTgMnLHniqb4iDAFdXhqctD18M5g1hZTctmlF5cffDE7En5WIbtvmFhamf2jKo5A6jFR83HsrsT1Am76s8SuZ/8o8K2ZXanTmd5cwyRH9TquqvWRtyIAgpI7TuvgizaCz6Cy9k/suI72cMqL2PGmRnlUebP9nJ4wOXc8Tsr40rArcdv/YDi0zv6Hcn0k0Jnhc69z7GSCVlUckmETvNnPvfHfPR8zSeVrEW1ajBQa2HZM2HFgPfv6fz4AbOLXnQ==" target="_blank">custom button</a> to trigger <code>.play()</code> and modify <code>palybackRate</code>
+          </li>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJxdUdFuwyAMfOcrrL4kqRrotLeq7Vd0H0CAtUwER8ZU6qr++0jSVNskJKy78x02+2TIDwyJzGF1YR7STiljo/xK1gV/JRkdq/NFlct/u4h0Hsty2sQ6Wk22Db4jTTfVZR+silH2fuxfHfdqdj+K/VKoNZwDdjpAjLBWACI4hj4nb0CIzxwNe4xgMn8MUDdwFzCz0mQiF/nkeweH0i2pxGNfz6zNpMfO5qW/Ysj/pCOZ3GSBmespZANv220jHr/CiyT/DZ9dDDnNrq50th6r0QxAFnF9n0oYl7iDygVnmLxpB68jtuaCZJPsh/dq89QZjEwY0g6YslvQgDjMyAQ8ngHa2hPWVYf2tmRirKuA2jprNetqM69rGqI8c2ELPk3SiNc//ABUYZ5X" target="_blank">adjusting other properties</a> including <code>currentTime</code> and <code>volume</code>
+          </li>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJyNVE1v2zAMvedXEL3YLhI7TT/WBU0vxQ4Dhm1Aext2UCTaVitLhiQ39Yr+91FKnK8W2IAEYcgnko+P0o3jVrYenOWLk9r71s2LggudPzqBSj7bXKMvqrqgH/kHtbFVMOkzcZ5pwayYKLm0zPbFspNKFFrnjQznT25vinX229HNYBSnUCmzZAq0htMCYKTQQ9M5ycfgvGkfZIN2NCo7zb00GlrF+nvWtAohzeB1BMCNdtRw9DlYwC/yAbyCKUuHfg7T/HI6BtFZFhLM4TyfXcHb+Ah1kc8+H6IuZu9R1/ns0xHq+j3qbJbPLg9hl+cfwK6ok39nm03/D0YMLo6KTj+AXb/rLYyDUL/puxsnDZKUsySpadLNcDMKR2ly3lmL2gdxCOjydXYKFwV8//HwZQ6cKSV1Bb7GqBk06GsjwOgeVsY+OWClRxvjnSOjZg6kJhfjHgWspK/Xh1mFFABnqNaKEqWlsYAvrKEVMFr1u0R98ozAleRPGArFI76WlQbmQSEjXkZz3NEIjaXZAe/NykVWw5DgFM6m0+kB6CcdDfwWYQ0Xt0NCRlxiRllCut3fjLpCZoNtOr/nJ+D2TyiJfh+zqbG7CJtWSZgKfZosjeiTLOfOkc34U2VNp0Uy3il3Z5SxaZaN3vauUCkVfjNM0JA2V4jw3CLzmCauZTrJ4tLkxNaTymkSZwpM96saLW7DoS5tgjOWaiatifINUSbEgxl6PKhPLLt2r/Qxl9eYICzFPSrktLSJNhqT9SrXKKs6+EiS53rjFNIFLclbKnzZOB8752XZ361ZUIxjbHAdZYoW46vHxu0iFHjbzDjqub4Ew2hYJ6QZ6LnQNL2SgXns0ko+aSXTZsJrY4XLm/b841lEl9FpoqIIgnlGWXaqxGlR3QFCwTiybHBGOci7ewuz0fZt/Qu8zc18" target="_blank">sampling sections</a> by calling <code>play()</code> and <code>pause()</code> at specific times. The "offset" time and "duration" in this example where generated using my <a href="https://algorithmicmusic.online/sampling/#waveform-sampler" target="_blank">Waveform Sampler</a> tool
+          </li>
+        </ul>
+        <br><br>
+
+        <h3><a href="https://patatap.com/" target="_blank">Patatap</a> (by <a href="https://www.jono.fyi/" target="_blank">Jono</a> and <a href="http://lullatone.com/" target="_blank">Lullatone</a>) inspired interactive audio sampler</h3>
+        <ul>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJyFVcuO2zoM3fsriAKF7YHjZ96YmU1XBe6iQGd3cReKJTtqHcmV5E59B/PvpRTbidNpCySxQh4dHpKifK9LxVsDWpUP747GtHqfJCUV8RdNWcO/q1gwk9THBB/8fyakqu0SPwttiKBE0UXDD4qoPjl0vKGJEPGJ2/3vHu+TM/ujdz8ukjuoG3kgDQgBdwmA1zADp07zMgJtZPvET0x5XimFRlXk1DZMwwO8eAD+N38PLyCrSjOzhzRepRHQThHDpdhDEedreI0s8HkGXMb5bg5c5gOQzYDbON/cALcDUM2AWR7nqzlyVQxIM0euUdVvOPsZMkeZyxvO1CJfPS9JoGaCoYdReObmuIepV1rXilDOhIm5TIbCORMRZlY6v+GCEbUY8cEupayOVH0gwTKPMKsCf1aYWBZC+j4C59liSbIdFjArCudZTa68QF+eZxFsz64sTd+H/tSCPwXEeNi9Yj0PhmFsJEuJ5mI12hGaZ7glH9RdBWJvBbrEKZZWvpW3u0ksX1mrTW/5C6ltt+9q2FxIS67Khp1p17h3t7SCsltWlLlBvVm6uWU1f6lJViDZamtVpW9otafYfuc9sPGyDdZxvbuN1/8ti7ywwTY2jzSfR8yW26E6eXHdXHscq06U9oxC25D+s5tRCFiIhxkw7DC6ePKG8f2XxV9Z/59zukmPy04p1GJn3cLi8wxMbksbhN4123AzOPQ4InBnNaUz0CfcykWNuCCEh8eRkHSaOUZeQTBdMyFgJYiya9mZKzsCpz82JDPXmCHG5b6aST3Y4NP8DbmjF+/FmpnAP0ja+2GMc4trUn6tlewE9SPcGM6KW/GG/SMJxZHHXF7OFKVieAkEvm6J8G1cgDNVJYVZVOTEmx65/JMUEjElm0Dot+33W8W0BnNkgML0Hr5F8BwBw7ZHYCLoxw2E0ic5yp0Jw3J07ZWm27ReHAFWXH1mDSvxbvOFFMydSYAj4/XR2rB334+DkXJtm47WqmE/BuOXThte9R/OytFX4oOpwUsaXouPhp30xYOO16EZrvHYiauakY5yOaanrWh869liOZWKl4sWeyYX5VEqquNTW7xdC2eSIvAb1x1KDEGWS7tctTDuCEGnK1k4GrHwrgvouExQ6E2vy5/rQzJ2" target="_blank">gradiant sampler demo</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section style="height: 100vh"></section>
+
+    <script src="/js/libs/nn.min.js"></script>
+    <script src="/js/libs/netitor.min.js"></script>
+    <script src="/js/RainbowText.js"></script>
+    <script src="/js/utils.js"></script>
+    <script>
+
+      // animateFontWave(nn.get('h1'), ['Smooch Sans', 'Geo', 'DotGothic16', 'PlaywriteHU'])
+
+      Array.from(document.querySelectorAll('a'))
+        .filter(a => a.className !== 'button')
+        .forEach(a => RainbowText.hoverShimmer(a))
+
+    </script>
+  </body>
+</html>

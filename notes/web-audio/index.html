@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Generative Art Online</title>
+    <meta name="author" content="Nick Briz">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png"  href="/images/hotairballoon.gif">
+    <!-- TODO: social media stuff -->
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+
+      .example-editor > nav {
+        margin: 10px;
+      }
+      .example-editor > div {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 3fr 1fr;
+        height: 30vh;
+      }
+
+      .example-editor > div > .editor {
+        overflow-y: scroll;
+        background: var(--netizen-background);
+      }
+
+      .example-editor > div > .render {
+        grid-row: 1 / 3;
+        grid-column: 2 / 2;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <section id="introduction">
+      <div class="content">
+        <h1>Web Audio API + Tone.js</h1>
+
+        <h3>Synthesizing sound using the Web Audio API, with some helper functions from <a href="https://github.com/netizenorg/netnet-standard-library" target="_blank">nn.min.js</a> library</h3>
+        <ul>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJxVUsFu2zAMvfsriF5sd6mdDR1QFEmLoaedNmD7AUVibLUK5Up0HK/ov4+yF6cDDJB4j6Qen7mJOtiOIQa9vWqZu3hf19pQ9RwNOnsMFSHXTVtLsH+QfGhSKt9NZEVGBXPj7C6oMNa73jpTE1UHm/ofj9svVw+ben7hIduck/oaGud3ygERXNeZ9hQZVG+sf+ITbIFwgMGS8UP1bUI9MZ64KLNs35Nm6wkict9BUcJbBjKnapCLfOfNmJcCAFQ6NZGA2ln9AorGocWAsPcBgij3B+gs63apj7F4m1KAFm3T8j3kn9frY5uv/sF9xPALHepEkSdcGGNj59Qo8N7haYGf+8h2Pz7NUoTVEjAsvHK2oe+Mh3jhJuq9zN4luaw7K/6ZBJ+Xnm2bdhDPzvZVOqBi/BG1dU6xD0Xab6qqeOxQSnMOVlHjMIe6BrEjWsIVxNdehRTVwN5zu7TtA772SHqsjsr1aYL4PQsqbm/XK7i7W18eEVkkDhWLIINiAqm0RqpalJMf/tPdhyAO/LYHXGbJiQUupLD8APkuIfAJ1tXXZFOWiRxPRe68MvlqvozyDE5/X9APBpbZcpR/AfKu+N4=" target="_blank">synthesizing sound</a> (random frequency)
+          </li>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJx1U01v2zAMvftXEL04KVw7BXooirbA0AHDTjvssh0VibHVKZQr0Um8Iv99lL/aoRsQQMx75NOjSN9HHWzLEIN+uGiY23hXVdpQ+RwNOnsIJSFXdVPJYX8j+VCnUH5XkRUZFcyVs9ugQl9tO+tMRVTubaq/eLyvRvXH7H4Oqkuond8qB0RwWWXaU2RQnbH+iU/wAIRHOFoy/lh+GlBPjCderbOqAh1QMYKCWlkC8gaBPYgGB++AG4SDd90eJ1n5I4qzeDlWf5FSUROuTCrlQbkOJW0zQFJIqHm1FBmMbEmx9fS3BR+1dU6xD4uRGgnDyLaWdTPZGOKPRr4tAmJnyCm5b5OVnINVVDvMQW6UC6IlLCC+dCqkUx3Ze26mol3Alw5J90srNzebiZvbkdbmO2RsQZ4zKQ/h7NpSPbxg9B2ZLNt1pFPTEJG7FqTgNQMZWlkjr/KtN32+FgAg3cFIAmpn9S+QpQATVA297wLsfRdxyYxx9TqEAA3auuE7yK83m0OTFxMs2eE7OvEsFHnChTE2tk71Au8cnhb4uZP57Pqn0YSwWg4MC6+crekr4z6+cQN1XmdnCd4a7VqTZjd1anewSquc/H/2RxpRgGmz0qYKq9ol6WcBmyKBY2cFXAswNv5h1w7vpNqPUj9mqaM13BRpngXc3k5q/5t6K+wZ0EWcrP5jxSVDus4y0fa0yp1XJi/GEa9ncLCw9wd5+ulN1tnyJf8BEyFcFA==" target="_blank">controlling sound</a> (mouse theramin)
+          </li>
+        </ul>
+        <h3>some music theory</h3>
+        <ul>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJxtUsFu2zAMvfsriO5gu0usDGi7IUgyDAUG7LLtkJ2GHRRZSdQqpCvRcbOh/14qdrIWKGBA1iP5+MinWTTBNQwxmPnFlrmJU6VMjdVdrK13+1ChZbXZKjncX4sUNulXvnFkjbUO9di7VdDhoFat87VCrHYu1X/ezz9MLhYz1bdYZLO3emm/oeB4u3Nm10ZnKkLv0Kq7qEywmu24cRpJ+N6gWmTqEjaeVtoDIlyqzBBGBt3Wjm75EeaAtoPOYU1d9eWIErJ95KLMvGU4cv/6lmXrFg07QggyFO2+E1soSviXAfSUjWOzFb4TddWr+xGN814zBWGEPqviQ2MlNecg9Btvc1AKKECUwUYQH1od0qk7JuLtuUwaoTVcnFvUNrJDnXQl8rMWTOpkNKx6tYX8JSyW8B7yq/ycuA72oU9M4SV9lXtr0RyKdP8veH3Cq732beJOyOuW3avh2xAs8tLt7JlE3kNgIe7KFxA1CRFZk+p6mGHYeRVstDxsrUc0szb3g7anF6ZIYtuc/BiyRU5vwc/+XqQYgNcr6+MUOLR2dETIsN5bgX5fjeDmTw9qY0T/LXkKU8jfTa4/3thPaXFPg0rZWU9f5KuWmTAvj4XJJZbSIjfemXtYi6+9C0dbTlm6rpckpVQfThDhUJOPXryyNKg0lHYp7knXEj7OW2bn9/4MHxgy0g==" target="_blank">random note</a> (traditional 12-tone tuning system)
+          </li>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJxtU8Fu2zAMvfsriO5gp0usDmi7IUgyDAUG7LINWHYadlBkJVGqkK5EJ82G/vso23E7oIABWY/k4yOfPYsmuJohBjO/2DLXcaqUqbDcxcp6dwglWlabrZLD/bFIYZNe5ZlE1ljpUE28WwUdTmrVOF8pxHLvUv3Hw/zd1cViproWi2z2Wi/tNxQcb/fO7JvoTEnoHVq1i8oEq9lOaqeRhO8VqkWmLmHjaaU9IMKlygxhZNBN5eiOH2EOaI9wdFjRsfzUooRsH7kYZd4ytNw/v2TZukHDjhCCDEX7r8QWihH8zQA6ytqx2Qrfmbrs1H2LxnmvmYIwQpdV8qm2kppzEPqNtzkoBRQgymBjiA+NDunURybi7VAmjdAaLoYWlY3sUCddiXzQEo32qYGsulPxIwFFfnedjyHf6x2FfDRkY5qlTe5mK9ry5/g62IcunjKX9FnujUVzKtL9ear1GS8P2jeJMiEvdSEd/9tQE4JFXrq9HUjkowksxMfRC4jqhMBbuCpv+kF7Y8pgo+V+tR2imbW577U9vXBOEpv6bFqfLXK6DX3v7kWKAXi9sj5OgUNjxy1ChvXBCvTregy3vztQGyP678hTmEL+5urm/a39kEvoqVc5GFDkq4aZsF07QLKSpbTIjXfmHtZifrf81o1zlq6qJUkpVaczRNjXiJPPn2IaVBpKuxT3pCsJt/OOsuGn+Aerhz7/" target="_blank">random note from scale</a>
+          </li>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJxtU11r2zAUffevuHQPdrrUyqDtRkg7RmCwl22w7GnsQZGURK2i60rXSbPR/74ry3EyKBhsnXvuuR9HnkUVbEMQg7q72BA1cSqE0r5+iNo4uwu1NyTWG8Ev+8d4DOv0yc9VJOm1DPrK2WWQ4SCWrXVaeF9vbcr/uLt7N7m4n4lc4r6YvVZLujUGS5utVds2WlWjd9Yb8RCFCkaSuWqs9Mh6r0jdF+IS1g6X0oH3cCkKhT4SyFZbnNMz3IE3e9hbr3Fff+pQ9GSeqRoVzhB02j+/FMWq9Yosegg8FG6/IhmoRvC3AMiSjSW1Yb2jdJ27+xaVdU4SBlaEzKrp0BimlhRYfu1MCUIABog82BjiUytDess9IdJmSONC3iiqhhLaRLJepr6S+NBLVNKlArzq3MWPBFTl/LocQ7mVDxjK0cBWGwz6nD1PQNWJjHOT+ozu0+gdO6+i6vJP8VUwTzmemAv8zOfWeHWo0vm0hNURr3fStUkyIedjeNz/t9A2BONpYbdmEOE7FoiF96MzCJuEwFuY1Df9Xnof62Ciod6JjEgiqR773l7OjGZi2xw97tncTl7R93yuUgzAyaVxcQoUWjPuEFQkd4ahX9djuP2dQakU9z9Hh2EK5ZvJzftb86Hk0Evf5eBAVS5bIvTd2gGS88SpVamcVY+w4ruSl9+5cWRJrRfIqagPRwh9n8PGn25uGpQLcrkUd8j+jvO8o2L4h/4BpWxOmg==" target="_blank">random note from chord</a>
+          </li>
+        </ul>
+
+        <p>
+          You can find more <a href="https://algorithmicmusic.online/editor/#Web%20Audio%20API/the%20basics/Audio%20Context" target="_blank">Web Audio API examples</a> in the class website for my Algorithmic Music Online class.
+        </p>
+        <br><br>
+
+        <h3>Synthesizing sound using the <a href="https://tonejs.github.io/" target="_blank">Tone.js</a>  (v 15) library</h3>
+        <ul>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJx1ks9O4zAQxu95ihGXJKjEVOKESqUVe+EKvIBrTxNTdxzZk7JZxLszNjSsVruSJVvfN54/P3tj3WlrvDMH0DS/DhgROMDo9QwaKDBuVA6pNslENzKkaO4uBuYx3SplLHUvyaJ3p9gRsuoHJZv7jRRin4+yrhJrsjraK+92UcdZ7SbnrSLqji7fv9hu1Gf2/5SZaDz0nQlHxYHwH+HbSl1C78NOeyBawbOEwaWqPEqmmXioqv1Ehl0gSMjT2LTwVoHEdj1yU++CnetWBAApQ4wk4l9U9iFClEHCsWBZwlNq3soRYEDXD3wL9fr6+jTUqy95Shif0KPJFklri2NdyqRF3nv8tcgvU2K3n+8/OxHXyIZx8bV3PT0wHtO3V6z33JSsMjPcAeFrYdE9ZaFpOw4/UXKTziiatnr/A0zu5IuLUucfUN/f1GXeMv9a6Akfey7RcXR9j/EHszaHR5lRJ2zynRWsS3YhLIVqH7QVrbBvz2IBLGou1VbLo34AspXTKg==" target="_blank">basic synth</a>
+          </li>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJx1Ustu2zAQvOsrFrnIDmzRRtuL4RgIkkuvTX+AptYSY2opkCu7apB/71KS1QdSgACJmX3NLPelvRyMs+YMmvprjQGBPbRO96CBPONepZBsH02wLUMM5uGuZm7jTilTUvEaS3T2EgpCVlWt5LI/kXyo0lPOOrKmUody7ewx6NCrY2ddqYiKxqb8u8NejdX/06aj9lwVxjeKPeEH4YdM3UPl/FE7IFrBdwmDe5U5lEo9cZ1lp44MW08Qkbt2sYS3DCS2qJAX+dGXfb4UAEDaECMJ+I8rJx8giBDfDLbM4TEu3oYnQI22qnkH+XazudT5aoK7iOEFHZpEkYw2M6WNyWmBTw5/zPBrF9me+qdxEmGNXBhmXjtb0VfGJv7mBuo9DSVn0AwPQHgdvCheEjDNefGua3AH6y8rUAosQYnGinURBt5HY53T7MMObsq4byUj52A1VQ6nbuM8SBd0PvG3aM2szXkHm1knmqRyU2xvSBSJ2lLCPt2wIB7pKHW2Y/ksCSrYP6PYQTptb7HM3v/Y5dhoWuYgupARqwrD48jkT5/zlCKuzElTG/go7dvIjW3kd0jH3Hld5qvx3yxvYONlq6W/kjDjFH9TXSvE1GmZzR/2FzsvEWg=" target="_blank">custom synth settings</a>
+          </li>
+        </ul>
+        <p>
+           refer to my interactive <a href="https://algorithmicmusic.online/signals/#adsr-diagram" target="_blank">ADSR</a> diagram to better understand how an ADSR (attack, delay, sustain, release) works, as well as my <a href="https://algorithmicmusic.online/signals/#synth-presets" target="_blank">Synth Presets</a> to explore other synths and settings.
+        </p>
+        <p>
+          You can also find more examples on Tone.js <a href="https://algorithmicmusic.online/editor/#Tone.js/Synths/Synth" target="_blank">Synths</a> and <a href="https://algorithmicmusic.online/editor/#Tone.js/Effects/Reverb" target="_blank">Effects</a> on the class website for my Algorithmic Music Online class.
+        </p>
+        <br><br>
+
+        <h3>Time/Rythm using Tone.js Transport functions</h3>
+        <ul>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJx1VMFu2zAMvfsriBxqp0jtpOihCJoOQ3cZsF3W/oAiM7ZaWfIkKp1b9N9HyanTdh0Q2A75xPfIR/vKS6d6Au/kZtYS9X5dVbI25b2vUau9Kw1S1bQV39QTGuua+Mi/M0/C1MLVZ1ptnXBDtQ1K15UxZafi+S/7zWo5u76qRorr7OozrmD6h6aUtqvIGvwEfp1Vp9BouxUajFnAHcPgtMo0cqXBUJtlu2AkKWuAbNNo/Bm8klDM4TkDUDso4pHyzgnje+uoZOGEsNlsIOdHR1jnIxbgH6TtizlnXgC1x/+BuMaIyl74epTTazEcxJDqcCSpqhQHATcXYCzhGNtZB9Qi1MGJdNjuQBi4pPYNSFDCzGK1GdToVWO4lxq2Q0pMomD2w9p+xqfSiEpyqmnQfSUS8uEXahQei/zmIl9Afmn4mvSx/KN4jxT6YtLMfxOF75H5itY+QifMAL9DnKBLIj0ow32x/YEwDuTDpLZ9V+6FDjx8WJ0v3xfWLHgBLhjAPbph6hwKhSXQo5IIPRO9JYwcBh9HnthxMY18bGz+xp2JLvSwtfXAlmKHhuDkBLaBeP1iNVM2SEUeAfk82V1K74vReYAWVdPSGvLVcrlv88UhHDy6W64nY8qwmilTKx81cXin8c8Uvg+e1G64sYZYAmcl39BNeaHZ2u+EnT/mUurl0AoLlQ7ZfNaaxE9qx5LFuNtVXOG0cMo0rxBR13f2fY/WFLnUSj7EXTi+RR/nlraJ1+4J3etusZeTBbcxcJjV3urQ4RrOVudjU9ZLpbUg69bwDDT0nMx9tBNziC/Oy7wk+w15MCa9AkVaSG40itNW1KwtyZhn01fiL3U6ggU=" target="_blank">basic transport example</a>
+          </li>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJx1VN9P2zAQfu9fcUITSaAkBe0BVZRp2l4mbS+DN4SE61wTg2Nn9qUsQ/3fd3ZCCoxJVWPdj+++7+7sCy+dagm8k6uDmqj1y6KQpcnvfYlabV1ukIqqLvij/qCxrgpH/p14EqYUrjzRau2E64t1p3RZGJM3KuR/2q5OFweXF8VQ4nJ28V6tzrQPVS5tU5A1+E745aw4gkrbtdBgzByuOQyOiplGRuoN1XPwUmgcDIQtrGAxm206I0lZA2SrSuOPzisJaQZPMwC1gTTA5NdOGN9aRzmLIYTVagUJHx1hmQyxAP9E2jbN2LMD1B7/F8QYQ9Rsx/97Oq0W/VXgCympBoci0hpPYGygMKi5CUpu2RUl5uRUVaH7TCTkw0/UKDymIX4OyblJ5hCxQjinHR+PGmM3LkfEXKOpqM72Pdq96JJH6tqxPUUBLKS0je5B1taySKoRnLUjx8NDaGzJVgsVGnShdWKcwrOYB+y5CC/DAJXyKeT6DKaQCLiKkcfwcTIHaM/2m6QR99axuIQXig+3r0JeocecqD+2NrqkQyYWe52GUvOYlg0CWW8U5VvEEtLaPkIjTA+/ujB8F3V6UIZ1cfGOYt6bIa/bJt8K3YV6p2eL18Da2nYOrjOAW3Q9nFM9NC9VmAM9KonQcqGXBUMNg49Dne8MkE7bMsw5e7FYU7muhbUte95GbNBQmM66I75NAc3kFVKahIAki5uaS+/TYWkBalRVTUtITheLbZ3MR3Pn0V0xngwuw2wmT6l84MTmjcbfk/m+86Q2/RdriCmwV/IH3eQXWlXmG2Hj977o2o1Spnkx10h+YjtApndReRFuX+zvhyfemx1/wlB3w9zvxhxRltf2tWhr0kRqJR/CXdm/CG8bGW8ben7p3PPdC8v0PJOrYBibt7W6a3AJJ6dng0rrpdJakHVLeALqW3YmPswXEwiPwC7LyX5F7pQR4dLxGPkKsvJATltRMrdII5tNr+Bfj0/Mkw==" target="_blank">stepping through notes in a scale</a>
+          </li>
+        </ul>
+        <br><br>
+
+        <h3>A <a href="https://tristanperich.bandcamp.com/album/1-bit-symphony" target="_blank">1-Bit Symphony</a> (by <a href="https://tristanperich.com/" target="_blank">Tristan Perich</a>) inspired algorithmic composition</h3>
+        <ul>
+          <li>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJylVt1u2zYUvvdTnAVrLdeOZDtZ2mZJhq67KdAMw5K7IEBpiZbYUKRKUk7dIECv9gDbO+zB+iQ7h5QlOXUzDAMMiz+H53znOz/kiU2NqBxYk57uFc5V9jhJ0kzF723GpViZWHGX5EWCH/GJK21yGuJv3zqmMmayfSkWhpl1sqiFzBKl4lLQ+Z9Wp7Pp3tlJEkycDU522apVdZPHqS4TpxXfIX42SJ5BLvWCSVBqApcoBs+SgeSoKWWST4CZiue50GFtrVxh4RSurv18wZnD2cxPUBLH07DBrPWTwbJWqRNagTNM2UpbDpHSDjVrXF9xO4K7AUCqlXVQikzgMXSTRC71Oc699AhFxBKiIHCKIrWUIzDc1Ub5SavD8lKQu2S/MQHPYDZHgY04sZiJS/0rag4qx92x0eC+j1rnueTntRUpRAEq4SCi4svgkXExhstxj2uIQ+N4NgyyAF9J6ioib+6BS+TiG0KoI0ghGIAOTiXZ+hXyHDlR8j5zRBI6vInWFQXjSTuNJVe5K65RPITwanodOyPynJtXzrH05ncuObO8Cc3whRpOwNvAI6hlPN4B5GcKcg8JEeMz4gxmRxv/O3g+b/wadMkQ+TRDOBPYn40m39g+fHz76H+dnv+H09f+/4FjlLHk35XP+idh0qO8JX32OOmzPungawh5350EbznLvs4CYt/+xs05qq0NATvEvSQBreQafFoBWzpuQuUezL98/rsfuJNTXNuUVTi5FDlp0rWD20KkBXziRu8jNp5B2Zi55UP8F+o4HAm6D758/uvgCL788edG7o3K+Ed4MYGD57h3OPV7LyfAXRp3LaAvewrnzBXxUmptogBxH2YjSB56OgqWiZngK9LEV9zgwBXo7gZp9AKEpR1sdi9pqLNsArOpX0Iy2j7TR/EE5vAd1vZ0mxlvjEL3sAh3Jfd81NXe/F/S4KjLg34rsmi7anoQmkcjmS7R1bTQ1FXRTzBaNyiePoVSZ7iqIeeKG+pPLPT0Fu4NX4dmG1RFTdvFjtxFA3X4uh0iAsEI2DDTphlVhVnnzVius2ZUio+6mzGu5UZEp/7k9Zb6LQjenqeKkJJhcjU1vIcf3K2mzs6os0utcl8tcRyjmiB5QWIRuTeGw4m30tTvt6R+aKQGocR30Isfk8FSm+5G3Hjhty4KVjVUYXBZRg5byipX0FCJZoCxDovX2+e3aOhpbBqwtxhkAvrXJBI1l7SXHzUKteSx1HlQ0l3go91+MVhUZSh/CxWVilA1XrjeVV0baK+lrsvggR7aN8pFz5HA+eGUbDy4y1A4XjFZUzBxPPDdE3H4bIY9rJX0xu7hmuK34exbjVck5vnpma/y8RhZO1TDUe9a3JZtLsVwbT0uRldW6LSPy1F7bUqxL9iHvtDZGu9wXmI0qdwWtcP3A2lTcc5dNCSBYWjlcWptdNdcMAUXeeGOUft0usKcaJZry80F6ktpSyGadicTljDh8lLyj+3y+9o6sVy/1sohBNxN8cNNu8+kyNUbx0vb7fmt+8aVNpcQqwffog0qo3fe84TeLBj6Elua8J1IKPj+DgvnHj9UNvfvmoMsyy71tudaRcNUivSGelr3mHrIpm+N3OIz2Fhcp+SL6CFJz8Hpj/g5gQP8jMebd0XXFih6/rhfb5+plKKbuF7QQhuAlZZ1yY/xVp9vuNI2FVIyp80x3IFbV7g9tB9qZvgQ7hvWYqd/4ci5YsRCNGpxaElha8wiOcwYtu5d/HFV2yLy4/Coo76O7BM3Uvte4VkYDdoX+j+eaN8x" target="_blank">algorithmic music demo</a>
+          </li>
+        </ul>
+
+      </div>
+    </section>
+
+    <section style="height: 100vh"></section>
+
+    <script src="/js/libs/nn.min.js"></script>
+    <script src="/js/libs/netitor.min.js"></script>
+    <script src="/js/RainbowText.js"></script>
+    <script src="/js/utils.js"></script>
+    <script>
+
+      // animateFontWave(nn.get('h1'), ['Smooch Sans', 'Geo', 'DotGothic16', 'PlaywriteHU'])
+
+      Array.from(document.querySelectorAll('a'))
+        .filter(a => a.className !== 'button')
+        .forEach(a => RainbowText.hoverShimmer(a))
+
+    </script>
+  </body>
+</html>

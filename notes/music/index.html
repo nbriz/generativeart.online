@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Generative Art Online</title>
+    <meta name="author" content="Nick Briz">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png"  href="/images/hotairballoon.gif">
+    <!-- TODO: social media stuff -->
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+      .border {
+        border: 3px solid blue;
+        padding: 20px;
+        border-radius: 3px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <section id="introduction">
+      <div class="content">
+        <h1>Generative Music</h1>
+
+
+        <h2>Playing Sounds</h2>
+
+        <iframe width="800" height="450" src="https://www.youtube.com/embed/o5igwpQIpi4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        <p>
+          We've already discussed how to add images to our page uploading an image file and setting it as the <code>src</code> of a <code>nn.create('img')</code> element, but we could also upload audio files and set them as the <code>src</code> of an <code>nn.create('audio')</code> element. Typically this will create a simple audio player interface for that file on your website, but we don't have to display these default controls. Instead we can write our own code to trigger different sounds (or pieces of sounds) on events of our choosing. We could also generate visuals at the same time, essentially turning our browser into an audio/visual instrument like the piece <a href="https://patatap.com/" targ="_blank">Patatap</a> (video above) a "visual sound kit application" with animations by computer programmer Jono Brandel and Japanese electronic duo Lullatone (James Seymour and Yoshimi Tomida).
+        </p>
+
+        <p class="border">
+          Check out the <a href="/notes/audio">Audio Element</a> notes to learn more about how to use the audio element to produce <a href="https://netnet.studio/?layout=dock-left#code/eJyFVcuO2zoM3fsriAKF7YHjZ96YmU1XBe6iQGd3cReKJTtqHcmV5E59B/PvpRTbidNpCySxQh4dHpKifK9LxVsDWpUP747GtHqfJCUV8RdNWcO/q1gwk9THBB/8fyakqu0SPwttiKBE0UXDD4qoPjl0vKGJEPGJ2/3vHu+TM/ujdz8ukjuoG3kgDQgBdwmA1zADp07zMgJtZPvET0x5XimFRlXk1DZMwwO8eAD+N38PLyCrSjOzhzRepRHQThHDpdhDEedreI0s8HkGXMb5bg5c5gOQzYDbON/cALcDUM2AWR7nqzlyVQxIM0euUdVvOPsZMkeZyxvO1CJfPS9JoGaCoYdReObmuIepV1rXilDOhIm5TIbCORMRZlY6v+GCEbUY8cEupayOVH0gwTKPMKsCf1aYWBZC+j4C59liSbIdFjArCudZTa68QF+eZxFsz64sTd+H/tSCPwXEeNi9Yj0PhmFsJEuJ5mI12hGaZ7glH9RdBWJvBbrEKZZWvpW3u0ksX1mrTW/5C6ltt+9q2FxIS67Khp1p17h3t7SCsltWlLlBvVm6uWU1f6lJViDZamtVpW9otafYfuc9sPGyDdZxvbuN1/8ti7ywwTY2jzSfR8yW26E6eXHdXHscq06U9oxC25D+s5tRCFiIhxkw7DC6ePKG8f2XxV9Z/59zukmPy04p1GJn3cLi8wxMbksbhN4123AzOPQ4InBnNaUz0CfcykWNuCCEh8eRkHSaOUZeQTBdMyFgJYiya9mZKzsCpz82JDPXmCHG5b6aST3Y4NP8DbmjF+/FmpnAP0ja+2GMc4trUn6tlewE9SPcGM6KW/GG/SMJxZHHXF7OFKVieAkEvm6J8G1cgDNVJYVZVOTEmx65/JMUEjElm0Dot+33W8W0BnNkgML0Hr5F8BwBw7ZHYCLoxw2E0ic5yp0Jw3J07ZWm27ReHAFWXH1mDSvxbvOFFMydSYAj4/XR2rB334+DkXJtm47WqmE/BuOXThte9R/OytFX4oOpwUsaXouPhp30xYOO16EZrvHYiauakY5yOaanrWh869liOZWKl4sWeyYX5VEqquNTW7xdC2eSIvAb1x1KDEGWS7tctTDuCEGnK1k4GrHwrgvouExQ6E2vy5/rQzJ2" target="_blank">something similar</a> to Patatap.
+        </p>
+
+        <h2>Synthesizing Sound</h2>
+
+        <p>
+          When it comes to making sound on the web, we're not limited to audio files we can load into our projects. Using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API" target="_blank">Web Audio API</a> we can actually synthesize sounds from scratch.
+        </p>
+
+        <iframe width="800" height="450" src="https://www.youtube.com/embed/qsRuhCflRyg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        <p>
+          In the early days of electronic music artists like Delia Derbyshire (of the BBC Radiophonic Workshop) would record samples on tape and then play those tape back at different speeds to turn those "samples" into a musical isntrument. Similar to <a href="https://netnet.studio/?layout=dock-left#code/eJxdUdFuwyAMfOcrrL4kqRrotLeq7Vd0H0CAtUwER8ZU6qr++0jSVNskJKy78x02+2TIDwyJzGF1YR7STiljo/xK1gV/JRkdq/NFlct/u4h0Hsty2sQ6Wk22Db4jTTfVZR+silH2fuxfHfdqdj+K/VKoNZwDdjpAjLBWACI4hj4nb0CIzxwNe4xgMn8MUDdwFzCz0mQiF/nkeweH0i2pxGNfz6zNpMfO5qW/Ysj/pCOZ3GSBmespZANv220jHr/CiyT/DZ9dDDnNrq50th6r0QxAFnF9n0oYl7iDygVnmLxpB68jtuaCZJPsh/dq89QZjEwY0g6YslvQgDjMyAQ8ngHa2hPWVYf2tmRirKuA2jprNetqM69rGqI8c2ELPk3SiNc//ABUYZ5X" target="_blank">this example</a> from the <a href="/notes/audio" target="_blank">Audio Element</a> notes, but they would also synthesize sounds from scratch, as explained in the video, by using analog electronic sound generators which could produce basic tones from simple mathematics: the sine function. We've used the <code>Math.sin()</code> function to generate values that oscillate back and forth between some min/max values which we've used to position elements on the screen, but those same values can be used to generate sounds digitally in the browser.
+        </p>
+
+        <p>
+          While it's possible to <a href="https://netnet.studio/?layout=dock-left#code/eJx1lE1v2zAMhu/+FUROTuvZbVdgQJcU27rLDsOG7rDDsIMi07EKWcokKmlR9L+P+oiLYe3BcCy9fEk+ErPa2P7hetWlV7Xy0qkdgXdyvRiJdv6q62Rv2jvfo1Z71xqkzuymrn/74d2C43LAK5FCb61TNE5KTsEr2VqjlcHuznfSoSB8cxB7HKybOMELbtdVdwJbbTdCQw74WfRw0lXSGk8g6R7WYPAAB2V6e2g/hl7ZG2sI76leVtUQjCRlDXhOHeOhHhz+acAjO/S+AW3tbgmPFUCxHNnxYv7UaPi7qOEkZmy9mHYab7miWeb4g3Wv7G7CMKAr+7mXT2mplmMTUzTJgOsF6DqgUXnwUmjhIPYbtOD+tGYlQchbyCoEZdhtQkPKbGEvdIhLYINLbcEGtT3A5iFpxWSDIYaFPfZAFiZB3GzcikgCGvlQPHbCe9Yow6podqQ4N1SKW2eajOWCn6+Cxvb7lyV0/3PgNqCO5Se8Z+/je1W4tCZMG3TfhptRGIPax93T03woc8bk5jm4BG2Riv6zIMEgl0k9J/I5j39Ow5y3NPLSs3fCPaJDOCCTZUiwiDdlMbecWES6zHXhFw0rMiMaBT3z95HyOaDgvhQhn2aMpdHZsM2M44E0wGdJaqcV0+WAyLagTKalptLrL/+be0hUuYI63r4szp0+VfnJfIzt8YUL9oNTSKxjRFS0803MP47L6basU43HJbY1KKmOjj16vmGpp+jkkIIzSVY9VRUjjNT3ygehfZnMONuxnn8Gt34EkQaU7q/S7D7xlc96sibqj2NaX16eNXDewMCWPBhxey4pepclT8KlQZ//Pv4C6jmeww==" target="_blank">generate these tones from scratch</a> using the sine function, we don't have to because the Web Audio API provides an interface for doing just that called <code>createOscillator()</code>, you can see that in use in <a href="https://netnet.studio/?layout=dock-left#code/eJxVUsFu2zAMvfsriF5sd6mdDR1QFEmLoaedNmD7AUVibLUK5Up0HK/ov4+yF6cDDJB4j6Qen7mJOtiOIQa9vWqZu3hf19pQ9RwNOnsMFSHXTVtLsH+QfGhSKt9NZEVGBXPj7C6oMNa73jpTE1UHm/ofj9svVw+ben7hIduck/oaGud3ygERXNeZ9hQZVG+sf+ITbIFwgMGS8UP1bUI9MZ64KLNs35Nm6wkict9BUcJbBjKnapCLfOfNmJcCAFQ6NZGA2ln9AorGocWAsPcBgij3B+gs63apj7F4m1KAFm3T8j3kn9frY5uv/sF9xPALHepEkSdcGGNj59Qo8N7haYGf+8h2Pz7NUoTVEjAsvHK2oe+Mh3jhJuq9zN4luaw7K/6ZBJ+Xnm2bdhDPzvZVOqBi/BG1dU6xD0Xab6qqeOxQSnMOVlHjMIe6BrEjWsIVxNdehRTVwN5zu7TtA772SHqsjsr1aYL4PQsqbm/XK7i7W18eEVkkDhWLIINiAqm0RqpalJMf/tPdhyAO/LYHXGbJiQUupLD8APkuIfAJ1tXXZFOWiRxPRe68MvlqvozyDE5/X9APBpbZcpR/AfKu+N4=" target="_blank">this example</a>. If we can generate a tone in any frequency (ie. pitch) in the browser, then we could also use code to generate musical compositions...
+        </p>
+
+        <blockquote>
+          <p>[the Analytical Engine] might act upon other things besides number, were objects found whose mutual fundamental relations could be expressed by those of the abstract science of operations, and which should be also susceptible of adaptations to the action of the operating notation and mechanism of the engine . . . supposing, for instance, that the fundamental relations of pitched sounds in the science of harmony and of musical composition were susceptible of such expression and adaptations, the engine might compose elaborate and scientific pieces of music of any degree of complexity or extent.</p>
+          <cite><a href="https://en.wikipedia.org/wiki/Ada_Lovelace" target="_blank">Ada Lovelace</a> (sketch of the Analytical Engine) 1842</cite>
+        </blockquote>
+
+        <h2>Generating Music</h2>
+
+        <p>
+          Ada Lovelace, considered by many to be the first programmer, wrote about the possibilities of computer generated music as early as the mid 1800s, but it wouldn't be for another 100 years before computers were advanced enough to both synthesize sounds from scratch as well as algorithmically create musical compositions. It's important to note here that these are not mutually exclusive concepts. One can create their own compositions using computer synthesized sounds (this is very common in modern music) just as someone can create a system for writing musical compositions and then perform those compositions with real life musicians playing traditional instruments. This is exactly what David Cope did with EMI, Experiments in Musical Intelligence or EMI back in the 1980s.
+        </p>
+
+        <img src="images/cope.jpg" alt="composer david cope in front on his electric piano and computer" class="rwd">
+
+        <p>
+          While suffering from writers block, with a looming deadline to finish a commissioned opera, David Cope was motivated to come up with some unconventional way to finish his composition. After talking with a programmer friend he was convinced the solution to his problem was to write a program which would analyze all music he'd ever written and then create new musical compositions in his own style. The program worked, and could in fact create new compositions in any style you could input data for. This might sound like modern day AI, and in some ways it is very similar, but this was before the days of "large language models", Cope's "model" is actually much simpler something he wrote himself. You can learn more about it by listening to this Radiolab episode on Cope's <a href="https://www.radiolab.org/podcast/91515-musical-dna" target="_blank">Experiments in Musical Intelligence</a>.
+        </p>
+
+        <p>
+          There's is a lot of gray area between writing code which performs a composition you've written out note for note yourself (be it in musical notation or JavaScript) and writing code which generates the entire musical composition (either randomly or based on input or patterns form some external data set). As generative artists, it's the space in between those extremes that contains the most creative possibilities, deciding how much to leave to chance and how much to compose ourselves. If we outsource too much to chance we might rob ourselves of the expressive possibilities that art/music provides, at the same time, adopting a purely traditional approach to writing music might mean missing out on new possibilities and perspectives for how music can grow in the future.
+        </p>
+
+        <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=843485539/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://tristanperich.bandcamp.com/album/1-bit-symphony">1-Bit Symphony by Tristan Perich</a></iframe>
+
+        <p>
+          One example is the album 1-Bit Symphony by Tristan Perich. Following in the tradition of other minimalist composers which preceded him (like Phillip Glass, Steve Reich, Brian Eno and others) Perich was interested in the beauty that arises from simplicity, both in the synthesis of sounds--all the tones are generated using simple "1-bit" square waves--but also in the repetitive nature of the compositions. But where composers like Phillip Glass and Steve Reich, who would embark on long marathon performances, would eventually need to stop playing their instruments, Perich's performer is the micro-chip which runs on code... and code can perform forever. The last piece in 1-Bit Symphony has a run time of "infinity", which would be impossible with traditional music methods, but trivially easy with generative art.
+        </p>
+
+        <p>
+          There is of course no "right" answer to the question: how much control vs how much chance is the right balance? A classical composer might argue we should leave nothing to chance, while the Dadaist artist might argue to leave it all to chance. This is really a personal choice, one musicians have been experimenting with long before Ada Lovelace speculated on the computer's (or Analytical Engine as it was called then) role in musical composition.
+        </p>
+
+        <p>
+          Like all ideas, the idea of a generative system for musical composition can be traced back even further, at least another century before Lovelace's quote, to a musical "game" played by classical composers called <a href="https://en.wikipedia.org/wiki/Musikalisches_W%C3%BCrfelspiel" target="_blank">Musikalisches Würfelspiel</a>. This was a "musical dice game" (translation from German) where fragments of musical phrases would be randomly arranged by rolling dice, not dissimilar to the Dada system for generating poems discussed last week. Composers like Mozart and others before him would use systems like this to get around their own writers block, to escape their bias or just to have a little fun.
+        </p>
+
+        <h3>Meditaion #5</h3>
+
+        <p>
+          For our meditation this week we'll create something which incorporates sound somehow. This could be something of an audio/visual instrument, like Patatap, using sound files (mp3, ogg, etc) within an audio element as discussed in <a href="/notes/audio">the notes</a>. Or it could be sound synthesized from scratch, using the <a href="https://tonejs.github.io/" target="_blank">Tone.js</a> library. Our meditation could simply trigger sounds based on some interaction or event, but it could also create algorithmically driven musical compositions by making use of some of the musical functions and techniques demoed in the <a href="/notes/web-audio">Web Audio API notes</a>. 
+        </p>
+
+
+
+      </div>
+    </section>
+
+    <section style="height: 50vh"></section>
+
+    <script src="/js/libs/nn.min.js"></script>
+    <script src="/js/libs/netitor.min.js"></script>
+    <script src="/js/RainbowText.js"></script>
+    <script src="/js/utils.js"></script>
+    <script>
+
+      // animateFontWave(nn.get('h1'), ['Smooch Sans', 'Geo', 'DotGothic16', 'PlaywriteHU'])
+
+      Array.from(document.querySelectorAll('a'))
+        .filter(a => a.className !== 'button')
+        .forEach(a => RainbowText.hoverShimmer(a))
+
+    </script>
+  </body>
+</html>
