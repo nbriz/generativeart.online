@@ -45,7 +45,7 @@
         </p>
 
         <div class="flex" style="margin: 60px 0px;">
-          <a class="button" target="_blank" href="Generative Art Online (SP 25) syllabus.pdf">syllabus</a>
+          <a class="button" target="_blank" href="files/Generative Art Online (SP 25) syllabus.pdf">syllabus</a>
           <a class="button" target="_blank" href="https://canvas.uchicago.edu/courses/64031">canvas</a>
         </div>
 
@@ -104,14 +104,17 @@
                 <a href="/notes/web-audio">the Web Audio API + Tone.js</a>
               </li>
             </ul>
-            <li class="comming-soon">
-              Meditation #6: <a href="#">The Demoscene</a>
+            <li style="text-decoration: line-through">
+              Meditation #6: The Demoscene
             </li>
             <ul>
-              <li class="comming-soon">3D Algorithmic Compositions</li>
+              <li style="text-decoration: line-through">3D Algorithmic Compositions</li>
             </ul>
-            <li class="comming-soon">
-              <a href="#">Final Project</a>: Notes + Considerations
+            <li>
+              <a href="/notes/bonus">Bonus</a>: other creative libraries
+            </li>
+            <li>
+              <a href="/notes/final">Final Project</a>: Notes + Considerations
             </li>
           </ul>
 
@@ -133,16 +136,13 @@
     <script src="/js/utils.js"></script>
     <script>
 
-
       // animateFontWave(nn.get('h1#title'), ['Smooch Sans', 'Geo', 'DotGothic16', 'PlaywriteHU'])
-
       Array.from(document.querySelectorAll('a'))
         .filter(a => a.className !== 'button')
         .forEach(a => RainbowText.hoverShimmer(a))
 
       const trail = new MouseTrails('rainbow')
       nn.on('mousemove', e => trail.mouseMoved(e.x, e.y))
-
 
     </script>
   </body>

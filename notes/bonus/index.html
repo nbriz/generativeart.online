@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Generative Art Online</title>
+    <meta name="author" content="Nick Briz">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png"  href="/images/hotairballoon.gif">
+    <!-- TODO: social media stuff -->
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+      .border {
+        border: 3px solid blue;
+        padding: 20px;
+        border-radius: 3px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <section id="introduction">
+      <div class="content">
+        <h1>Other Creative Libs</h1>
+
+        <p>
+          As discussed in our notes on APIs and libraries, <a href="http://localhost/notes/libraries/" target="_blank">They Myth of Writing Code from "Scratch"</a>, there are a number of other JavaScript libraries out there which abstract some of the brower's more creative APIs. Like the libraries we've discussed so far, like <a href="https://github.com/netizenorg/netnet-standard-library" target="_blank">netnet's standard library</a>, <a href="https://momentjs.com/" target="_blank">moment.js</a> and <a href="https://tonejs.github.io/" target="_blank">tone.js</a>, most of these can be included in our project by adding a <code>&lt;script&gt;</code> tag pointing to that libraries code. After that, learning how to use the library is a matter of reading through the documentation page and exploring examples. However, because there are other ways to import libraries in the JavaScript eco-system, getting started with a library can be triky (even when refering to their documentation). Below are some netnet.studio starter templates to get you over that initial hurdle.
+        </p>
+
+        <ul>
+          <li>
+            <h3>GSAP</h3>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJx1UctuwyAQvOcrVr3YqRzIQ+nBSiNV+YBe+gMYtjYpYS0eTdKq/15MHB8qVUICZmeHmWXnpdN9AO/k80MXQu9rzqWy7OgVGv3pmMXA246nTX+hJdcOx7QWPgirhFMLoxsn3JU3URvFrWUnPfQ/7Hf8pr6f7f555uiZNBTVuxEOmaQTF0dx4UnR89aLnm/Yas3W+fy/7H4GwB+hNdQIA9ZWMPDhkSf8PVoZNFnwGGJfzuE7gYnO4eBQBAQBDV0ADZ7QBohe2zZJZJIk60MuPyeIydxQFkp/FvNMAGDS+/J7vACctQpdDavlsoIJ7FC3XfiLNkJ+tI6iVQcy5GooHKpiLP9M+j15Pfgvt6l5u5xwodQblUVD6prM3DO9WH0aQoUOs+9bnGEamZHHGKhMpQrurlV0YnihhnU1QpcaNsnseHMURsLmaQK9FAZTJradaNin+dSwWN2RK12phuAi3hEUPjUVPZ3RrZi2rzHcIufAP0OONOiUtjAkVFHdfm0+m778F6tjyS0=" target="_blank">GSAP - netnet.studio template</a>
+            <br>
+            <p>
+              One of the most popular libraries in the Web design community is <a href="https://gsap.com/" target="_blank">GSAP</a>, it provides a fairly declarative API for animating any HTML elements we <i>create</i> or <i>get</i> on our page.
+            </p>
+          </li>
+          <li>
+            <h3>D3</h3>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJx1ksFuwjAMhu88hcUlKSpNWQdDE6DtsNvuO0w7hDq0mbK0agwMTXv3pS0rBcQlsn5/9m9bWbi00iWBq9LlMCcq3aMQKdro06EyeldFVpGw5ZfA5OlhuFqItmA1WPwHAGIEmSnW0gAmMBJe2WxtSrqw4BRtSx7AjxcB0sI6ApQkYQnvSRzCfBbCZDYP4W4+CSGJE//Mph89eq+Rco/fx3FPzZXOcrqS17J6O/JtnWjcIqNsRvmgR7pd5iFMIqeMSomzdYEHFjQEQCTLUlnkzGM9kajirGnMwtbgIteO5ZNtELSOvsnR5tkYziofnJrW8/H66RRlSVX8apTzstbv21txDEEHsFyBhlF3gQvw4EGsmePhxoA31upOOIbpre2aTqcGjg5GcbbRxvgkIyVNM+hvvf5eWyz2kUR82fnNXrUjZf1+zBQSPd78kGDQfaw/+re6CQ==" target="_blank">D3 - netnet.studio template</a>
+            <br>
+            <p>
+              Another popular library in the Web design community is <a href="https://d3js.org/" target="_blank">D3</a>, it's specifically used for creating data visualizations (charts, graphs, etc) from "vector graphics" (SVG) which levarage the interactive and dynamic nature of the Web. Keep in mind, we want to make generative <i>art</i> works in this class (not data visulaizations), still, I share this here because a library like D3 can be used in all sorts of less obvious or conventional ways.
+            </p>
+          </li>
+          <li>
+            <h3>Paper.js</h3>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJx1VN9v2yAQfs9fceoebFcpJJX20CitNFXq66pt0h6qPGAgMS0BC3Dcrur/vgNsJ11X2bLhfvHdfXesPXeqDeAdvz5rQmj9ilIuDHn0Qmp1cMTIQHcNxZ/6I411u7jE98IHZgRz4kKr2jH3QutOaUGNIXsV/c9u1jRHv5mtPznm0ROubSe2mjlJuN1T9sieKUb0tGWtdBiHLsjykiy/ZsHFttP68xNuZgD0HHba1kyDMXNIXnBOUcGt8QG4clxLD9fwsJlFcwrbzvCgrIFgwXUG+kbiRwLXij9BlDe4YebAPDpM1kldyoM0oYJX1Lw/Ak8wss8AyD0LDblN8jKbojE6SreCFIG0VpkwH1SOCdX5FVwuRslWaX1rtUX7otadLEaFD84+yaOK8ad/dL+VCA3GSsK3apaR5jKQtvNNmTeDBgvyzag9CzLnnXSFHzCdOBNr7hzbx0THmpRjIQB9lSeeM0x4Qa6uqkGstlAmVW07IzzpIzhYw/LoOfg6ubcHWVaTdITsWyy8LMetMkI+f9+mqNUcAw0Ob7Px+zY7pc3L0LUTUMz21smYLLYzsLaV+DvyHVsi7oTl3R5pgtqKl1OqsxVSbQhPccoiy4oRB8EDy1foMwtol1ZzaKTaNSFJ8jJyM7i01qtUz8UcFpOUCfHLlkWEMEQfU/AWaVAIyHUpyUzTCSahDkdACD1gLoj0Y4NDLbXti49Ilghl+RmWEcfPWFu4H0YXc0ZuU+wEQxyHCIa5yGRk8THMyAjU2M07FzsFnOR44+y0zKm9n6wfo3IarjROK3iIBdxM84B3GMqOHEy13/xvzr5sF/Ep3g0Owrs7uS8abBuc9b3t/HBhnKZ3ULInLATGm7JINsL2pphny2rsTYSBFS60ZQJ1qSbVbLrc/gIj4bwW" target="_blank">Paper.js - netnet.studio template</a>
+            <br>
+            <p>
+              <a href="http://paperjs.org/" target="_blank">Paper.js</a> is a drawing, interaction and animation library built on top of the Web's <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API" target="_blank">Canvas API</a> which makes it easier to create generative/interactive animations using vector style graphics.
+            </p>
+          </li>
+          <li>
+            <h3>p5.js</h3>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJxtkMFuwyAMhu95CqsnUkVAp3GZklz2EuuRENqSEkCYtJOmvfugaasedrBlf7/8W3aLKpqQAKPqNqeUAn4wpkY3IVXWL+PByqip8jOTk/xm1gzIgqATsh3dccpLMxuXwaZv2WrWV+2jAGBbOFo/SAtBwJZlYnVed9ZJnaADEmroevjJHCBQ1GkJBb/QwlXUMulP6S4SyTvnDeRUP+VBqvMx+sWNJEtvQtzSqv9Wd+8xyus/1gdjLbmNlNFXV22tCahJoLNfUH81cK/2DQhe4rFhDaev+Uiy3lZXz3f8AWh8YnM=" target="_blank">p5.js - netnet.studio template</a>
+            <p>
+              Another library that abstracts the Web's <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API" target="_blank">Canvas API</a> (and many other APIs) is <a href="https://p5js.org/" target="_blank">p5.js</a>. P5 is an increadibly popular library in art and creative coding communities, it's really more of a "framework" than a library, which is generally meant to be used it it's own <a href="https://editor.p5js.org/" target="_blank">editor</a> following a specific code structure. That said, we could technically use any editor to work with p5.js and even combine it with other libraries, but that requires a less conventional setup for those already familiar with p5 (see template above).
+            </p>
+          </li>
+          <li>
+            <h3>three.js</h3>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJyNU11P3DAQfOdXWLzg0MjOVf2QqjskQFf6AFUFSH127OXik2OntsPdUfHfu0mcQAQPlRIpmpmdWe86yyC9biIJXq6Oqxib8I1zqew2MGlcqx6M8MCkq7nYij03ugw8Vh6AbQMv2OILvhNwfLbkg9/Z0XL8IISfko1xpTDk/sftek1OOYIGMFSChZxIUYMXOfFgFXjwiLQlJM1Oq1iRFflUFAmpQG+qmCDEHloro3aWBIhtQzPyF0EymKPKwm7IZXcdQrOeHTJn9C/woQG0eoTLnqVfP+cpn6fUnOB5c7IoiiI76o3GpmdWv6G8ur5NTEochQzbvNNPQHvnPBkPGuVkW4ONrHTqwETTYM1lpY2iU7Vy9dpAJ0oNSGdDJBtwNUR/mLVx4fZXCadd1/hkr2pqEcFrXMvrmhsI1U/na2FuEj1ODHfyRknH3Hxyy16mz4RStKsbW+3HyhoXdLcw9oR+H5F5nq1RWN15TYv08KeFEM97GAXfPdrQpBqdMYR5F3sB25MPK1xUsXiHO0zcfCvDB51dyWzsbaetcrvuOOtHnPy1DhFlnp4YJ9RJPty87D+EU9fTj/IPwFobkA==" target="_blank">three.js v160 - netnet.studio template (script tag)</a><br>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJyNVF1v0zAUfd+vuNpLHYicFAGT0DoBVRkPG6ANiWc3vls8xbGxnbXdtP/OTey0i9jDJEup7j33nHM/1FNfOWUDhJ3FxbE2smvw+OwIQGlrXIA3IDz8/n61WsGNMxpmdQjWfyoK9Jr7ugi1Q/xc8vnJR17ODnWP8NOtVViaNjjTeHh6RXmBW6Ftg76487qoUmkxIeJ3vleh12AAX2GLOVRCoxP0TaAcHLYSHTqKdWtM6I2SoYYFvC/LFKlR3dZhH6J307VVUKYFj6GzLINHCkIUIlyLmzgNft1HWDZko/4k/Qudt0hU97gcsuzkQ54cFEk3B2o8h3lZltnRQDTanlD9wfX5xVXKJMURyMnmtXpANjDniThipKk6jW3gayN3XFhLNctaNZLtq6XRqwZ7UDJAE/QBbtFoDG43sfHVbM9TnPWu6WXParQI6JRoJjWX6OsfxmnRXKb0ODHayn9INurme7bsMH0upGR9XYyN0vG8ItXkUth4FS92e1gbt8arfuX8gWjeUebp6PkhiFb1bvan4PBvhz58GcIE+OaIhiXUOEayyZ0JA4Bv4e2CVl3OX8jtJrlJU7yzchCe3gaPP9jk9rPR9ka10mz6Wa3uqdEL5QPBHJs1RshZHs86ewXw0NBpEf8jzv4BvTxTsA==" target="_blank">three.js v176 - netnet.studio template (module import)</a>
+            <br>
+            <p>
+              Though the canvas API can be used for creating 2D (interactive and/or generative) drawings from pure code (as opposed to using SVG or HTML elements including assets like images), it can also be used to create 3D compositions by tapping into the Web's <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Getting_started_with_WebGL" target="_blank">WebGL</a> API. While the 2D canvas API isn't all that difficult to use directly (meaning without a library) the WebGL API can be much more challenging. Here one of the most popular libraries is <a href="https://threejs.org/" target="_blank">three.js</a>. While it used to be possible to use three.js by including it with a script tag, more recent versions of three.js only allow you to use it via <code>import</code> statements as a JavaScript <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import" target="_blank">module type</a>. That said, older versions of the library still work the traditional way, above I've linked to templates which use both the old and new versions.
+            </p>
+          </li>
+          <li>
+            <h3>Hydra</h3>
+            <a href="https://netnet.studio/?layout=dock-left#code/eJxtkMFuwyAMhu99CquXkCqFpNthrdpqu+0B9gIEaMJGTQROq2zqu4803dbDJAT4//ls7G1UwXYEMajdvCXq4kYIpZG/R22cPQWOhkTTinTYT4M+NOM1rWUkiVoGvXS2DjIMou6t0wKRH+3Iz/dbMWXfz7b/lemx+2i48kfRDjrIZRyQ2ueKP/DVWmgb6V7/P+F+BiAW0DhfSweIBbyOSAE+KliI5B56VGQ9QjTUdyyHryQCKI+RQEk8yQi7RHIVjCTDsknLci61fvMsq70esnyCrhY/W01tgh7L8l5ujW1auulXA815+g+biv48LW6RNmQUvfTa+g0cpIvmalzyCU89sKosoORVARVf5Tcsjcz5wEq+Hr2ncfvzfE9sDC5jjtSWR5Y5L3VWTBPIZ79D/AaX2JsK" target="_blank">Hydra - netnet.studio template</a>
+            <br>
+            <p>
+              Unlike the vast majority of our JavaScript code which runs on our CPU (central processing unit), the WebGL API allows us to write code that runs on our GPU (graphical processing unit). The GPU is optimized for certain sorts of tasks, specifically processing complex graphics (but it's also really good at other "parallel" tasks like mining crypto currency and training/running AI models). For artists, working with WebGL and the GPU means generating 3D graphics, but WebGL can also be used to generate 2D graphics that leverage the processing power of the GPU known as "shaders". These shaders are often times used to create dynamic algorithmic textures and materials for 3D objects/meshes (like in three.js) but these shaders could also be artworks in/of themselves. One of the most popular JavaScript libraries for this is <a href="https://hydra.ojack.xyz/" target="_blank">Hydra</a>. Like p5.js, hydra isn't only a library it's also a code editor, specifically a "life coding" editor (the most popular for generating visuals in the live coding and algo rave communities). That said, it's not exclusively for live visuals, we can also use it like we would any other library (and combine it with other libraries) as seen in the template/example linked above.
+            </p>
+          </li>
+        </ul>
+
+        <p>
+          It's worth noting, that there are creative individuals behind the creation of these libraries. Many of these libraries were started by a single artist before an open source community of creative devlopers formed around it to keep devloping and maintaining it. For example, Tone.js was stared by <a href="https://yotammann.info/" target="_blank">Yotam Mann</a>, Three.js was started by <a href="https://mrdoob.com/" target="_blank">mr.doob</a> (aka Ricardo Cabello), Hydra was started by <a href="https://ojack.xyz/" target="_blank">Olivia Jack</a> and p5.js by <a href="https://lauren-mccarthy.com/" target="_blank">Lauren Lee McCarthy</a> (and the p5 editor by <a href="https://cassietarakajian.com/" target="_blank">Cassie Tarakajian</a>) based on another library called Processing (for Java) originally created by <a href="https://reas.com/" target="_blank">Casey Reas</a> and <a href="https://www.benfry.com/" target="_blank">Ben Fry</a> inspired by an even older library by <a href="https://en.wikipedia.org/wiki/John_Maeda" target="_blank">John Maeda</a>.
+        </p>
+
+      </div>
+    </section>
+
+    <section style="height: 50vh"></section>
+
+    <script src="/js/libs/nn.min.js"></script>
+    <script src="/js/libs/netitor.min.js"></script>
+    <script src="/js/RainbowText.js"></script>
+    <script src="/js/utils.js"></script>
+    <script>
+
+      // animateFontWave(nn.get('h1'), ['Smooch Sans', 'Geo', 'DotGothic16', 'PlaywriteHU'])
+
+      Array.from(document.querySelectorAll('a'))
+        .filter(a => a.className !== 'button')
+        .forEach(a => RainbowText.hoverShimmer(a))
+
+    </script>
+  </body>
+</html>
