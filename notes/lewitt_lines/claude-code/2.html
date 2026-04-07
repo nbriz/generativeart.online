@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Circles and Lines 2</title>
+<style>
+  body { margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f5f0e8; }
+  svg { border: 1px solid #ccc; }
+</style>
+</head>
+<body>
+<svg id="drawing" width="800" height="800" viewBox="0 0 800 800"></svg>
+<script>
+const svg = document.getElementById('drawing');
+const ns = 'http://www.w3.org/2000/svg';
+
+// Place 24 circles on a loose grid with jitter
+const cols = 6;
+const rows = 4;
+const cellW = 800 / cols;
+const cellH = 800 / rows;
+const circles = [];
+
+for (let r = 0; r < rows; r++) {
+  for (let c = 0; c < cols; c++) {
+    circles.push({
+      x: cellW * c + cellW / 2 + (Math.random() - 0.5) * cellW * 0.6,
+      y: cellH * r + cellH / 2 + (Math.random() - 0.5) * cellH * 0.6
+    });
+  }
+}
+
+// Shuffle and split into two groups of 12
+const shuffled = [...circles].sort(() => Math.random() - 0.5);
+const groupA = shuffled.slice(0, 12);
+const groupB = shuffled.slice(12, 24);
+
+// Connect nearest unconnected neighbor within each group
+function connectNearest(group) {
+  const used = new Set();
+  const pairs = [];
+  const remaining = [...group];
+
+  while (remaining.length >= 2) {
+    let bestDist = Infinity;
+    let bestI = -1, bestJ = -1;
+    for (let i = 0; i < remaining.length; i++) {
+      for (let j = i + 1; j < remaining.length; j++) {
+        const dx = remaining[i].x - remaining[j].x;
+        const dy = remaining[i].y - remaining[j].y;
+        const d = dx * dx + dy * dy;
+        if (d < bestDist) {
+          bestDist = d;
+          bestI = i;
+          bestJ = j;
+        }
+      }
+    }
+    pairs.push([remaining[bestI], remaining[bestJ]]);
+    remaining.splice(bestJ, 1);
+    remaining.splice(bestI, 1);
+  }
+  return pairs;
+}
+
+const straightPairs = connectNearest(groupA);
+const wavyPairs = connectNearest(groupB);
+
+// Draw straight lines
+for (const [a, b] of straightPairs) {
+  const line = document.createElementNS(ns, 'line');
+  line.setAttribute('x1', a.x);
+  line.setAttribute('y1', a.y);
+  line.setAttribute('x2', b.x);
+  line.setAttribute('y2', b.y);
+  line.setAttribute('stroke', '#2a2a2a');
+  line.setAttribute('stroke-width', '1.5');
+  svg.appendChild(line);
+}
+
+// Draw wavy lines using SVG path with cubic beziers
+for (const [a, b] of wavyPairs) {
+  const dx = b.x - a.x;
+  const dy = b.y - a.y;
+  const dist = Math.sqrt(dx * dx + dy * dy);
+  const nx = -dy / dist;
+  const ny = dx / dist;
+  const segments = 6;
+  const amp = 15;
+
+  let d = `M ${a.x} ${a.y}`;
+  for (let i = 0; i < segments; i++) {
+    const t1 = (i + 0.33) / segments;
+    const t2 = (i + 0.66) / segments;
+    const t3 = (i + 1) / segments;
+    const dir = i % 2 === 0 ? 1 : -1;
+
+    const cx1 = a.x + dx * t1 + nx * amp * dir;
+    const cy1 = a.y + dy * t1 + ny * amp * dir;
+    const cx2 = a.x + dx * t2 + nx * amp * dir;
+    const cy2 = a.y + dy * t2 + ny * amp * dir;
+    const ex = a.x + dx * t3;
+    const ey = a.y + dy * t3;
+
+    d += ` C ${cx1} ${cy1}, ${cx2} ${cy2}, ${ex} ${ey}`;
+  }
+
+  const path = document.createElementNS(ns, 'path');
+  path.setAttribute('d', d);
+  path.setAttribute('fill', 'none');
+  path.setAttribute('stroke', '#2a2a2a');
+  path.setAttribute('stroke-width', '1.5');
+  svg.appendChild(path);
+}
+
+// Draw circles on top
+for (const c of circles) {
+  const circle = document.createElementNS(ns, 'circle');
+  circle.setAttribute('cx', c.x);
+  circle.setAttribute('cy', c.y);
+  circle.setAttribute('r', 3.5);
+  circle.setAttribute('fill', '#2a2a2a');
+  svg.appendChild(circle);
+}
+</script>
+</body>
+</html>

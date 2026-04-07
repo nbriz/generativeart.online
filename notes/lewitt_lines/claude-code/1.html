@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Circles and Lines</title>
+<style>
+  body { margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background: #fff; }
+  canvas { border: 1px solid #ccc; }
+</style>
+</head>
+<body>
+<canvas id="c" width="800" height="800"></canvas>
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+const W = canvas.width;
+const H = canvas.height;
+
+// Generate 24 random circle positions
+const circles = [];
+for (let i = 0; i < 24; i++) {
+  circles.push({
+    x: Math.random() * (W - 40) + 20,
+    y: Math.random() * (H - 40) + 20
+  });
+}
+
+// Shuffle indices to randomly assign circles to straight vs wavy
+const indices = Array.from({ length: 24 }, (_, i) => i);
+for (let i = indices.length - 1; i > 0; i--) {
+  const j = Math.floor(Math.random() * (i + 1));
+  [indices[i], indices[j]] = [indices[j], indices[i]];
+}
+
+const straightIndices = indices.slice(0, 12);
+const wavyIndices = indices.slice(12, 24);
+
+// Pair them up (6 pairs each)
+function makePairs(arr) {
+  const pairs = [];
+  for (let i = 0; i < arr.length; i += 2) {
+    pairs.push([arr[i], arr[i + 1]]);
+  }
+  return pairs;
+}
+
+const straightPairs = makePairs(straightIndices);
+const wavyPairs = makePairs(wavyIndices);
+
+// Draw straight lines
+ctx.strokeStyle = '#333';
+ctx.lineWidth = 1.5;
+for (const [a, b] of straightPairs) {
+  ctx.beginPath();
+  ctx.moveTo(circles[a].x, circles[a].y);
+  ctx.lineTo(circles[b].x, circles[b].y);
+  ctx.stroke();
+}
+
+// Draw wavy lines
+for (const [a, b] of wavyPairs) {
+  const p1 = circles[a];
+  const p2 = circles[b];
+  const dx = p2.x - p1.x;
+  const dy = p2.y - p1.y;
+  const dist = Math.sqrt(dx * dx + dy * dy);
+  const waves = Math.max(4, Math.floor(dist / 30));
+  const amp = 10;
+
+  ctx.beginPath();
+  ctx.moveTo(p1.x, p1.y);
+
+  for (let i = 1; i <= 100; i++) {
+    const t = i / 100;
+    const x = p1.x + dx * t;
+    const y = p1.y + dy * t;
+    // Perpendicular offset for wave
+    const nx = -dy / dist;
+    const ny = dx / dist;
+    const offset = Math.sin(t * waves * Math.PI * 2) * amp;
+    ctx.lineTo(x + nx * offset, y + ny * offset);
+  }
+  ctx.stroke();
+}
+
+// Draw all 24 tiny circles on top
+ctx.fillStyle = '#333';
+for (const c of circles) {
+  ctx.beginPath();
+  ctx.arc(c.x, c.y, 4, 0, Math.PI * 2);
+  ctx.fill();
+}
+</script>
+</body>
+</html>

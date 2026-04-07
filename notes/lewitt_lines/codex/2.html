@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lewitt Lines — 24 Circles (2)</title>
+  <style>
+    html, body { height: 100%; margin: 0; }
+    body { display: grid; place-items: center; background: #fafafa; color: #111; }
+    canvas { background: #fff; box-shadow: 0 2px 16px rgba(0,0,0,0.08); }
+  </style>
+  </head>
+<body>
+  <canvas id="c" width="960" height="640"></canvas>
+  <script>
+    const canvas = document.getElementById('c');
+    const ctx = canvas.getContext('2d');
+
+    function rand(min, max) { return Math.random() * (max - min) + min; }
+    function dist(a, b) { const dx = a.x - b.x, dy = a.y - b.y; return Math.hypot(dx, dy); }
+
+    function generatePoints(n, w, h) {
+      const pts = [];
+      const r = 4;
+      const margin = 24;
+      const minSep = 22;
+      while (pts.length < n) {
+        const p = { x: rand(margin, w - margin), y: rand(margin, h - margin) };
+        if (pts.every(q => dist(p, q) >= minSep)) pts.push(p);
+      }
+      return { pts, r };
+    }
+
+    function shuffle(a) {
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    function pairUp(arr) {
+      const a = shuffle(arr.slice());
+      const pairs = [];
+      for (let i = 0; i < a.length; i += 2) pairs.push([a[i], a[i + 1]]);
+      return pairs;
+    }
+
+    function drawCircle(ctx, p, r) {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+      ctx.fillStyle = '#fff';
+      ctx.fill();
+      ctx.strokeStyle = '#111';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    function drawStraight(ctx, a, b) {
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.strokeStyle = '#111';
+      ctx.lineWidth = 1.25;
+      ctx.stroke();
+    }
+
+    function drawWavy(ctx, a, b, amp = 8, cycles = 3, steps = 80) {
+      const dx = b.x - a.x, dy = b.y - a.y;
+      const len = Math.hypot(dx, dy) || 1;
+      const ux = dx / len, uy = dy / len;
+      const px = -uy, py = ux;
+      ctx.beginPath();
+      for (let i = 0; i <= steps; i++) {
+        const t = i / steps;
+        const baseX = a.x + ux * len * t;
+        const baseY = a.y + uy * len * t;
+        const offset = Math.sin(t * Math.PI * 2 * cycles) * amp * (1 - 0.0 * Math.abs(0.5 - t));
+        const x = baseX + px * offset;
+        const y = baseY + py * offset;
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = '#0a67a3';
+      ctx.lineWidth = 1.25;
+      ctx.stroke();
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const { pts, r } = generatePoints(24, canvas.width, canvas.height);
+      const straightGroup = pts.slice(0, 12);
+      const wavyGroup = pts.slice(12);
+
+      pairUp(straightGroup).forEach(([a, b]) => drawStraight(ctx, a, b));
+      pairUp(wavyGroup).forEach(([a, b]) => drawWavy(ctx, a, b));
+
+      pts.forEach(p => drawCircle(ctx, p, r));
+    }
+
+    draw();
+  </script>
+</body>
+</html>
