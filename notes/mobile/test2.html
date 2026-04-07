@@ -1,0 +1,34 @@
+<script src="https://cdn.jsdelivr.net/gh/netizenorg/netnet-standard-library/build/nn.min.js"></script>
+<script>
+/* global nn */
+let drawing = false
+
+function drawCD (e) {
+  if (!drawing) return
+
+  nn.create('img')
+    .set('src', 'cd.gif')
+    .positionOrigin('center')
+    .position(e.x, e.y)
+    .css('pointer-events', 'none')
+    .addTo('body')
+}
+
+function touch () {
+  drawing = true
+}
+
+function release () {
+  drawing = false
+}
+
+function setup () {
+  nn.get('body').css('touch-action', 'none')
+}
+
+nn.on('load', setup)
+nn.on('pointerdown', touch)
+nn.on('pointermove', drawCD)
+nn.on('pointerup', release)
+nn.on('pointercancel', release)
+</script>
