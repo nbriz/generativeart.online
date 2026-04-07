@@ -7,7 +7,7 @@ function drawCD (e) {
   if (!drawing) return
 
   nn.create('img')
-    .set('src', 'cd.gif')
+    .set('src', 'https://dev.netnet.studio/cd.gif')
     .positionOrigin('center')
     .position(e.clientX, e.clientY)
     .css('pointer-events', 'none')
@@ -17,7 +17,7 @@ function drawCD (e) {
 function touch () {
   drawing = true
 }
-  
+
 function release () {
   drawing = false
 }
